@@ -1,0 +1,29 @@
+.breadcrumbs {
+  position: relative;
+  font-size: 10px;
+  color: #fff;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: inline-block;
+  padding: 5px 15px 0 5px;
+  z-index: 9999;
+  transform: scale(0.9);
+
+  .open-menu & {
+    opacity: 0;
+  }
+
+  a {
+    color: #fff;
+
+    &:hover {
+      color: #000;
+    }
+  }
+
+  .separator {
+    padding: 0 6px;
+    display: inline-block;
+  }
+}

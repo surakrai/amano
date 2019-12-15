@@ -1,0 +1,91 @@
+@font-face {
+  font-family: "Flaticon";
+  src: url("../../src/fonts/Flaticon.eot");
+  src: url("../../src/fonts/Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("../../src/fonts/Flaticon.woff2") format("woff2"),
+       url("../../src/fonts/Flaticon.woff") format("woff"),
+       url("../../src/fonts/Flaticon.ttf") format("truetype"),
+       url("../../src/fonts/Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("../../src/fonts/Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+  font-size: 30px;
+  font-style: normal;
+}
+.ui-widget-overlay {
+  z-index: 99999 !important;
+}
+.amano-icons-modal {
+  display: none;
+}
+
+.column-amano_thumbnail{
+  position: relative;
+  width: 52px;
+  white-space: nowrap;
+  text-align: center !important;
+}
+td.column-payment_thumbnail img,
+td.column-amano_thumbnail img {
+  margin: 0;
+  width: auto;
+  height: auto;
+  max-width: 40px;
+  max-height: 40px;
+  vertical-align: middle;
+  border: 1px solid #e5e5e5;
+  border: 1px solid rgba(0,0,0,.07);
+}
+@media only screen and (max-width: 782px){
+  td.column-payment_thumbnail img,
+  td.column-amano_thumbnail img {
+    min-width: 32px;
+  }
+  .column-amano_thumbnail{
+    display: none;
+  }
+  .post-type-recipe .wp-list-table .column-amano_thumbnail,
+  .post-type-post .wp-list-table .column-amano_thumbnail{
+    text-align: left !important;
+    padding-bottom: 0;
+  }
+  .post-type-recipe .wp-list-table .toggle-row,
+  .post-type-post .wp-list-table .toggle-row{
+    top: -28px;
+  }
+  .post-type-recipe .wp-list-table .is-expanded td:not(.hidden),
+  .post-type-post .wp-list-table .is-expanded td:not(.hidden){
+    overflow: visible;
+  }
+
+}
+
+.column-amano_thumbnail span{
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  font-size: 16px;
+}
+.column-amano_thumbnail span:before{
+  font-family: Dashicons;
+  speak: none;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  text-indent: 0;
+}

@@ -1,0 +1,42 @@
+.news {
+  &-col {
+    margin-bottom: 30px;
+  }
+
+  &-item {
+    height: 100%;
+    background: #fff;
+  }
+
+  &-thumbnail {
+    position: relative;
+    display: block;
+  }
+
+  &-date {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    line-height: 1;
+    color: #fff;
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 2px;
+    padding: 4px 8px;
+    background: #0c74d7;
+  }
+
+  &-caption {
+    padding: 20px 30px;
+  }
+
+  &-title {
+    margin: 0;
+
+    a {
+      font-size: 16px;
+      font-weight: 500;
+      color: #000;
+    }
+  }
+}

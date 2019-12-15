@@ -1,0 +1,59 @@
+.column-amano_thumbnail{
+  position: relative;
+  width: 52px;
+  white-space: nowrap;
+  text-align: center !important;
+}
+td.column-payment_thumbnail img,
+td.column-amano_thumbnail img {
+  margin: 0;
+  width: auto;
+  height: auto;
+  max-width: 40px;
+  max-height: 40px;
+  vertical-align: middle;
+  border: 1px solid #e5e5e5;
+  border: 1px solid rgba(0,0,0,.07);
+}
+@media only screen and (max-width: 782px){
+  td.column-payment_thumbnail img,
+  td.column-amano_thumbnail img {
+    min-width: 32px;
+  }
+  .column-amano_thumbnail{
+    display: none;
+  }
+  .post-type-recipe .wp-list-table .column-amano_thumbnail,
+  .post-type-post .wp-list-table .column-amano_thumbnail{
+    text-align: left !important;
+    padding-bottom: 0;
+  }
+  .post-type-recipe .wp-list-table .toggle-row,
+  .post-type-post .wp-list-table .toggle-row{
+    top: -28px;
+  }
+  .post-type-recipe .wp-list-table .is-expanded td:not(.hidden),
+  .post-type-post .wp-list-table .is-expanded td:not(.hidden){
+    overflow: visible;
+  }
+
+}
+
+.column-amano_thumbnail span{
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  font-size: 16px;
+}
+.column-amano_thumbnail span:before{
+  font-family: Dashicons;
+  speak: none;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  text-indent: 0;
+}

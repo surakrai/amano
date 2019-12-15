@@ -1,0 +1,44 @@
+.site-footer {
+  color: #fff;
+  font-weight: 300;
+  padding: 100px 0;
+  background: #0c74d7;
+
+  &-branding {
+    width: 154px;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 30px;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li {
+      width: 50%;
+      display: block;
+      float: left;
+
+      a {
+        color: #fff;
+      }
+    }
+  }
+  
+  body:not(.home) {}
+
+  body.home &:not(.section) {}
+
+  body.home &.section {
+    height: 345px !important;
+  }
+  .fp-tableCell {
+    display: block;
+    height: auto !important;
+  }
+}

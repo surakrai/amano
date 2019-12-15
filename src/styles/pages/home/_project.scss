@@ -1,0 +1,55 @@
+.our-project {
+  h3 {
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 20px;
+    letter-spacing: 3px;
+    color: #fff;
+    margin-bottom: 90px;
+
+    strong {
+      font-weight: 700;
+    }
+  }
+
+  img {
+    opacity: 0;
+    transition: opacity 0.4s;
+
+    .fp-viewing-our-project &{
+      opacity: 1;
+    }
+  }
+
+  .swiper-slide:nth-child(7) img {
+    transition-delay: 0.1s;
+  }
+
+  .swiper-slide:nth-child(6) img {
+    transition-delay: 0.2s;
+  }
+
+  .swiper-slide:nth-child(3) img {
+    transition-delay: 0.3s;
+  }
+  
+  .swiper-slide:nth-child(4) img {
+    transition-delay: 0.4s;
+  }
+
+  .swiper-slide:nth-child(8) img {
+    transition-delay: 0.5s;
+  }
+  
+  .swiper-slide:nth-child(2) img {
+    transition-delay: 0.6s;
+  }
+
+  .swiper-slide:nth-child(1) img {
+    transition-delay: 0.7s;
+  }
+
+  .swiper-slide:nth-child(5) img {
+    transition-delay: 0.8s;
+  }
+}

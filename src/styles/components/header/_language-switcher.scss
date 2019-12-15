@@ -1,0 +1,24 @@
+.language-switcher {
+  display: flex;
+  margin-left: auto;
+  padding-right: 25px;
+
+  a {
+    color: #fff;
+    font-weight: 300;
+    text-transform: uppercase;
+    line-height: 1;
+    display: inline-block;
+    padding: 34px 5px 32px;
+
+    .open-menu & {
+      color: #606060;
+    }
+
+    &.is-active {
+      font-weight: 700;
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+}

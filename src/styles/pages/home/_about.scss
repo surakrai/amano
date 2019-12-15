@@ -1,0 +1,68 @@
+.about-company {
+  color: #000;
+  padding-top: 0;
+
+  h3 {
+    font-weight: bold;
+    font-size: 24px;
+    color: $primary-color;
+    text-align: center;
+    margin-bottom: 45px;
+  }
+
+  &-description {
+    max-width: 850px;
+    margin: 0 auto 80px;
+
+    p {
+      margin-bottom: 30px;
+    }
+  }
+
+  &-feature {
+
+    &-item {
+
+      opacity: 0;
+      transition: opacity 0.4s, transform 0.5s;
+      transform: translateY(20%);
+      
+      &:nth-child(odd) {
+        transform: translateY(-20%);
+      }
+
+      &:nth-child(2) {
+        transition-delay: 0.2s;
+      }
+
+      &:nth-child(3) {
+        transition-delay: 0.4s;
+      }
+
+      &:nth-child(4) {
+        transition-delay: 0.6s;
+      }
+
+      img {
+        margin-bottom: 15px;
+      }
+
+      h4 {
+        font-size: 14px;
+        color: $primary-color;
+        font-weight: bold;
+        text-align: center;
+        padding: 0 30px;
+      }
+    }  
+  }
+
+  &.fp-completely {
+
+    .about-company-feature-item {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+
+  }
+}

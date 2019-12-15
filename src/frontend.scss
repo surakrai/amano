@@ -1,0 +1,35 @@
+@import "~bootstrap/scss/bootstrap-reboot";
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/bootstrap-reboot";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/bootstrap-grid";
+@import "~swiper/src/swiper";
+@import "~fullpage.js/dist/fullpage";
+
+@import "styles/global-vars";
+@import "styles/base";
+// @import "styles/fonts";
+
+@import "styles/components/header/header";
+@import "styles/components/header/branding";
+@import "styles/components/header/page_header";
+@import "styles/components/header/breadcrumbs";
+@import "styles/components/header/navigation";
+@import "styles/components/header/hamburger";
+@import "styles/components/header/language-switcher";
+
+@import "styles/components/news-item";
+
+@import "styles/components/footer";
+
+@import "styles/components/pagination";
+
+@import "styles/pages/home/home";
+@import "styles/pages/home/welcome";
+@import "styles/pages/home/about";
+@import "styles/pages/home/business";
+@import "styles/pages/home/product";
+@import "styles/pages/home/project";
+@import "styles/pages/home/news";
+
+@import "styles/pages/contact";

@@ -1,0 +1,64 @@
+@font-face {
+  font-family: "Flaticon";
+  src: url("fonts/Flaticon.eot");
+  src: url("fonts/Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("fonts/Flaticon.woff2") format("woff2"),
+       url("fonts/Flaticon.woff") format("woff"),
+       url("fonts/Flaticon.ttf") format("truetype"),
+       url("fonts/Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("fonts/Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+  font-style: normal;
+}
+
+.flaticon-search:before { content: "\f100"; }
+.flaticon-youtube:before { content: "\f101"; }
+.flaticon-facebook:before { content: "\f102"; }
+.flaticon-twitter:before { content: "\f103"; }
+.flaticon-instagram:before { content: "\f104"; }
+.flaticon-whatsapp:before { content: "\f105"; }
+.flaticon-clipboard:before { content: "\f106"; }
+.flaticon-null:before { content: "\f107"; }
+.flaticon-next:before { content: "\f108"; }
+.flaticon-back:before { content: "\f109"; }
+.flaticon-download:before { content: "\f10a"; }
+.flaticon-upload:before { content: "\f10b"; }
+.flaticon-checked:before { content: "\f10c"; }
+.flaticon-cancel:before { content: "\f10d"; }
+.flaticon-next-1:before { content: "\f10e"; }
+.flaticon-back-1:before { content: "\f10f"; }
+.flaticon-up-arrow:before { content: "\f110"; }
+.flaticon-ticket:before { content: "\f111"; }
+.flaticon-boat:before { content: "\f112"; }
+.flaticon-taxi:before { content: "\f113"; }
+.flaticon-pier:before { content: "\f114"; }
+.flaticon-van:before { content: "\f115"; }
+.flaticon-aircraft:before { content: "\f116"; }
+.flaticon-fish:before { content: "\f117"; }
+.flaticon-dive:before { content: "\f118"; }
+.flaticon-cook:before { content: "\f119"; }
+.flaticon-copy-machine:before { content: "\f11a"; }
+.flaticon-print:before { content: "\f11b"; }
+.flaticon-cashew:before { content: "\f11c"; }
+.flaticon-crab:before { content: "\f11d"; }
+.flaticon-mill:before { content: "\f11e"; }
+.flaticon-wifi:before { content: "\f11f"; }
+.flaticon-sim:before { content: "\f120"; }
+.flaticon-internet:before { content: "\f121"; }
+.flaticon-card:before { content: "\f122"; }
+.flaticon-visa:before { content: "\f123"; }
+.flaticon-bike:before { content: "\f124"; }
+.flaticon-loan:before { content: "\f125"; }
+.flaticon-time-and-date:before { content: "\f126"; }

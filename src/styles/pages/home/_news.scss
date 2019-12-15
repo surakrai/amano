@@ -1,0 +1,48 @@
+.our-news {
+  h3 {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 3px;
+    color: $primary-color;
+    margin-bottom: 90px;
+
+    strong {
+      font-weight: 700;
+    }
+  }
+
+  &__see-more {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #7a7a7a;
+    line-height: 1;
+    display: inline-block;
+    padding: 8px 30px;
+    background: #fff;
+    border-radius: 30px;
+    margin-top: 50px;
+  }
+
+  .news-col {
+    opacity: 0;
+    transform: translateY(40%);
+    transition: opacity 0.4s, transform 0.5s;
+    transition-delay: 0.1s;
+
+    .fp-viewing-contact &,
+    .fp-viewing-our-news & {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+
+    &:nth-child(2) {
+      transition-delay: 0.3s;
+    }
+
+    &:nth-child(3) {
+      transition-delay: 0.5s;
+    }
+  }
+
+}
