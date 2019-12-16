@@ -15,6 +15,6 @@ module.exports = {
       "no-new": 0,
       'no-plusplus': 0,
       'func-names': 0,
-      "prettier/prettier": ["error", { "singleQuote": true, "semi": false }]
+      "prettier/prettier": ["error", { "singleQuote": true, "semi": false, "parser": "flow" }]
    }
 }

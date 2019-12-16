@@ -13,11 +13,8 @@ import contactUs from './routes/contact'
  * @type {Router} routes - An instance of our router
  */
 const routes = new Router({
-  /** All pages */
   common,
-  /** Home page */
   home,
-  /** About Us page, note the change from about-us to aboutUs. */
   contactUs
 })
 

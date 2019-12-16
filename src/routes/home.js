@@ -5,14 +5,14 @@ import Parallax from 'parallax-js'
 
 export default {
   init() {
-    const navItems = document.querySelectorAll('.fullpage-navigation-item')
     const branding = document.querySelector('body.home .site-branding')
-    const videoWrap = document.querySelector('.business-area-video')
-    const videoButton = document.querySelector('.business-area-video a')
-    const clickToScroll = document.querySelector('.click-to-scroll')
-    const scene = document.querySelector('#business-parallax')
+    const navItems = document.querySelectorAll('.welcome__navigation-item')
+    const scrollIcon = document.querySelector('.welcome__scroll-icon')
+    const videoParallax = document.querySelector('.video-parallax')
+    const videoPlayer = document.querySelector('.video-player')
+    const playVideo = document.querySelector('.video-player__play')
 
-    const fullPage = new Fullpage('#fullpage', {
+    const fullpage = new Fullpage('.home-fullpage', {
       anchors: [
         'welcome',
         'about-company',
@@ -23,40 +23,25 @@ export default {
         'contact'
       ],
       lockAnchors: false,
-      slideSelector: '.fullpage-navigation-slide',
       navigation: true,
-      navigationPosition: 'right',
-      navigationTooltips: [
-        'Welcome',
-        'About Company',
-        'Business Area',
-        'Product Details',
-        'Our Project',
-        'Our News',
-        'Contact'
-      ]
+      navigationPosition: 'right'
     })
 
     branding.onclick = event => {
       event.preventDefault()
-      fullPage.moveTo('welcome', 1)
-    }
-
-    function moveToSection(event) {
-      event.preventDefault()
-      fullPage.moveTo(event.target.dataset.anchor, 1)
+      fullpage.moveTo('welcome', 1)
     }
 
     for (let i = 0; i < navItems.length; i++) {
-      navItems[i].onclick = event => {
-        moveToSection(event)
+      navItems[i].onclick = function(event) {
+        event.preventDefault()
+        fullpage.moveTo(this.dataset.anchor, 1)
       }
     }
 
-    clickToScroll.onclick = event => {
+    scrollIcon.onclick = event => {
       event.preventDefault()
-      // eslint-disable-next-line no-undef
-      fullpage_api.moveTo('about-company', 1)
+      fullpage.moveTo('about-company', 1)
     }
 
     const swiperProject = new Swiper('.swiper-our-project', {
@@ -76,15 +61,15 @@ export default {
       swiperProject.init()
     })
 
-    new Parallax(scene, {
+    new Parallax(videoParallax, {
       relativeInput: false,
       pointerEvents: true
     })
 
-    videoButton.onclick = function(event) {
+    playVideo.onclick = function(event) {
       event.preventDefault()
 
-      videoWrap.classList.add('is-playing')
+      videoPlayer.classList.add('is-playing')
 
       const iframe = document.createElement('iframe')
 

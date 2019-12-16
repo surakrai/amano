@@ -1,23 +1,23 @@
 <?php get_header(); ?>
-<div id="fullpage">
-  <div class="section welcome">
+<div class="home-fullpage">
+  <div class="welcome section">
 		<div class="container">
 			<h1><small>Perfect technique, principle of Amano Thailand</small> World’s Innovative Technology Creator</h1>
 		</div>
-		<div class="fullpage-navigation">
+		<div class="welcome__navigation">
 			<div class="container">
 				<ul class="d-flex justify-content-between">
-					<li><a class="fullpage-navigation-item" data-anchor="about-company" href="#">About Company</a></li>
-					<li><a class="fullpage-navigation-item" data-anchor="business-area" href="#">Business Area</a></li>
-					<li><a class="fullpage-navigation-item" data-anchor="product-details" href="#">Product Details</a></li>
-					<li><a class="fullpage-navigation-item" data-anchor="our-project" href="#">Our Project</a></li>
-					<li><a class="fullpage-navigation-item" data-anchor="our-news" href="#">Our News</a></li>
-					<li><a class="fullpage-navigation-item" data-anchor="contact" href="#">Contact</a></li>
+					<li><a class="welcome__navigation-item" data-anchor="about-company" href="#">About Company</a></li>
+					<li><a class="welcome__navigation-item" data-anchor="business-area" href="#">Business Area</a></li>
+					<li><a class="welcome__navigation-item" data-anchor="product-details" href="#">Product Details</a></li>
+					<li><a class="welcome__navigation-item" data-anchor="our-project" href="#">Our Project</a></li>
+					<li><a class="welcome__navigation-item" data-anchor="our-news" href="#">Our News</a></li>
+					<li><a class="welcome__navigation-item" data-anchor="contact" href="#">Contact</a></li>
 				</ul>
 			</div>
 		</div>
-    <a href="#" class="click-to-scroll disible-select">
-      <div class="icon-scroll"></div>
+    <a href="#" class="welcome__scroll-icon">
+      <div></div>
     </a>
 	</div>
 
@@ -40,11 +40,11 @@
 	</div>
 
 	<div class="section business-area">
-	  <div id="business-parallax">
-			<div class="business-area-video" data-depth="1.4">
-				<a href="#" id="D1xMPjmgyAA">
-					<i class="business-area-video-play"></i>
-					<div class="business-area-video-body">
+	  <div class="video-parallax">
+			<div class="video-player" data-depth="1.4">
+				<a href="#" id="D1xMPjmgyAA" class="video-player__play">
+					<i class="video-player__icon-play"></i>
+					<div class="video-player__body">
 						<h3>AMANO THAILAND</h3>
 						<span>PLAY VIDEO</span>
 					</div>
