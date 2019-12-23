@@ -59,7 +59,7 @@ body::-webkit-scrollbar{
 }
 body::-webkit-scrollbar-thumb{
   background-color: $primary-color;
-  border-radius: 7px;
+  // border-radius: 7px;
 }
 .wrapper {
   position: relative;
@@ -68,4 +68,5 @@ body::-webkit-scrollbar-thumb{
 }
 .main-content {
   min-height: 500px;
+  padding-bottom: 100px;
 }

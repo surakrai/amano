@@ -9,8 +9,8 @@ export default {
       center: { lat: latitude, lng: longitude },
       scrollwheel: false,
       draggable: false,
-      navigationControl: false,
-      mapTypeControl: false,
+      // navigationControl: false,
+      // mapTypeControl: false,
       scaleControl: false,
       styles: []
     })

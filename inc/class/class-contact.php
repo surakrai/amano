@@ -39,7 +39,7 @@ class Amano_Contact {
 
     wp_enqueue_script(
       THEME_SLUG . '-google-map',
-      'https://maps.googleapis.com/maps/api/js?key=AIzaSyCHZVnludoo9-AuBLAJ2oRPk4_gu94jW3I&language=th&region=th-TH',
+      'https://maps.googleapis.com/maps/api/js?key=AIzaSyC9Y183VzljYHM2a1paTUMih4O-FVklb74&language=th&region=th-TH',
       array(),
       THEME_VERSION,
       true

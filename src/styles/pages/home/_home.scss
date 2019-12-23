@@ -1,18 +1,19 @@
-#fullpage {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
+.home {
+  &-fullpage {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
 
-.home .section {
-  position: relative;
-  background-size: cover;
+  .section {
+    position: relative;
+    background-size: cover;
+  }
 }
 
 #fp-nav ul li  {
-
   a {
     span {
       background: #fff;
@@ -34,5 +35,4 @@
       color: #000;
     }
   }
-
 }

@@ -42,7 +42,7 @@
 	<div class="section business-area">
 	  <div class="video-parallax">
 			<div class="video-player" data-depth="1.4">
-				<a href="#" id="D1xMPjmgyAA" class="video-player__play">
+				<a href="#" id="VAe16A_NSFE" class="video-player__play">
 					<i class="video-player__icon-play"></i>
 					<div class="video-player__body">
 						<h3>AMANO THAILAND</h3>
@@ -57,10 +57,11 @@
 		<?php if( have_rows('_home_product') ): ?>
 			<?php while( have_rows('_home_product') ): the_row(); ?>
 				<div class="product-details-item">
-					<?php echo wp_get_attachment_image(get_sub_field('image'), 'full'); ?>
+					<?php $link = get_term_link(get_sub_field('category'), 'product_cat'); ?>
+					<a href="<?php echo $link; ?>" class="product-details-image"><?php echo wp_get_attachment_image(get_sub_field('image'), 'full'); ?></a>
 					<div class="product-details-content">
 						<h4><?php the_sub_field('title'); ?></h4>
-						<a href="">Learn more</a>
+						<a href="<?php echo $link; ?>">Learn more</a>
 					</div>
 				</div>
 			<?php endwhile; ?>

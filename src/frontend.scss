@@ -9,6 +9,7 @@
 @import "styles/global-vars";
 @import "styles/base";
 // @import "styles/fonts";
+@import "styles/components/forms/button";
 
 @import "styles/components/header/header";
 @import "styles/components/header/branding";
@@ -32,4 +33,6 @@
 @import "styles/pages/home/project";
 @import "styles/pages/home/news";
 
+@import "styles/pages/product";
+@import "styles/pages/news";
 @import "styles/pages/contact";

@@ -1,5 +1,5 @@
 import ImagesLoaded from 'imagesloaded'
-import Swiper from 'swiper/dist/js/swiper'
+import Swiper from 'swiper'
 import Fullpage from 'fullpage.js'
 import Parallax from 'parallax-js'
 
@@ -11,6 +11,8 @@ export default {
     const videoParallax = document.querySelector('.video-parallax')
     const videoPlayer = document.querySelector('.video-player')
     const playVideo = document.querySelector('.video-player__play')
+    const hamburger = document.querySelector('.hamburger-menu')
+    const body = document.querySelector('body')
 
     const fullpage = new Fullpage('.home-fullpage', {
       anchors: [
@@ -22,13 +24,30 @@ export default {
         'our-news',
         'contact'
       ],
-      lockAnchors: false,
       navigation: true,
-      navigationPosition: 'right'
+      navigationPosition: 'right',
+      navigationTooltips: [
+        'Welcome',
+        'About Company',
+        'Business Area',
+        'Product Details',
+        'Our Project',
+        'Our News',
+        'Contact'
+      ]
     })
+
+    hamburger.onclick = () => {
+      let scrolling = true
+      body.classList.toggle('open-menu')
+      if (body.classList.contains('open-menu')) scrolling = false
+      fullpage.setMouseWheelScrolling(scrolling)
+    }
 
     branding.onclick = event => {
       event.preventDefault()
+      fullpage.setMouseWheelScrolling(true)
+      body.classList.remove('open-menu')
       fullpage.moveTo('welcome', 1)
     }
 
@@ -54,7 +73,16 @@ export default {
       navigation: {
         nextEl: '.our-project .swiper-button-next',
         prevEl: '.our-project .swiper-button-prev'
-      }
+      },
+      navigationTooltips: [
+        'Welcome',
+        'About Company',
+        'Business Area',
+        'Product Details',
+        'Our Project',
+        'Our News',
+        'Contact'
+      ]
     })
 
     ImagesLoaded('.our-project', () => {
