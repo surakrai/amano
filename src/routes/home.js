@@ -1,5 +1,5 @@
 import ImagesLoaded from 'imagesloaded'
-import Swiper from 'swiper'
+import Swiper from 'swiper/dist/js/swiper'
 import Fullpage from 'fullpage.js'
 import Parallax from 'parallax-js'
 
@@ -73,16 +73,7 @@ export default {
       navigation: {
         nextEl: '.our-project .swiper-button-next',
         prevEl: '.our-project .swiper-button-prev'
-      },
-      navigationTooltips: [
-        'Welcome',
-        'About Company',
-        'Business Area',
-        'Product Details',
-        'Our Project',
-        'Our News',
-        'Contact'
-      ]
+      }
     })
 
     ImagesLoaded('.our-project', () => {

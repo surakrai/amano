@@ -1,0 +1,51 @@
+.accordion {
+  &__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+
+  &__body {
+    padding: 15px 0;
+  }
+
+  &__item {
+    .accordion__content {
+    }
+  }
+
+  &__toggle {
+    position: relative;
+    width: 100%;
+    color: #000;
+    outline: none !important;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-align: left;
+    border: none;
+    border-bottom: solid 1px #e8e8e8;
+    padding: 10px 0 20px;
+    margin-bottom: 10px;
+    background: transparent;
+
+    &::after {
+      position: absolute;
+      right: 15px;
+      top: 20px;
+      border-left: solid 3px transparent;
+      border-right: solid 3px transparent;
+      border-top: solid 5px #1f1f1f;
+      content: '';
+      transition: transform 0.3s;
+    }
+
+    &.is-active {
+      color: $primary-color;
+
+      &::after {
+        border-top-color: $primary-color;
+        transform: scaleY(-1);
+      }
+    }
+  }
+}

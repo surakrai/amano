@@ -11,29 +11,30 @@
               'show_count'        => false,
               'hide_empty'        => false,
               'title_li'          => false,
-              'order_by'          => 'name',
-              'order'             => 'DESC',
+              'orderby'           => 'ID',
+              'order'             => 'ASC',
             )); ?>
           </ul>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-md-9">
-    <div class="row">
+  <div class="col-md-9 product">
+    <div class="row amano-row">
       <?php if ( have_posts() ) : ?>
         <?php while ( have_posts() ) : the_post(); ?>
-          <div class="col-md-4">
-            <div class="tours-item">
-              <a href="<?php the_permalink() ?>" class="tours-thumbnail">
+          <div class="col-md-4 amano-col">
+            <div class="product-item">
+              <a href="<?php the_permalink() ?>" class="product-item__thumbnail">
                 <?php
-                  if( has_post_thumbnail() ) : echo get_the_post_thumbnail( get_the_ID(), 'thumb-attractions' );
-                  else : echo "<img src='https://via.placeholder.com/360x320/09f/fff'>";
+                  if( has_post_thumbnail() ) : echo get_the_post_thumbnail( get_the_ID(), 'medium' );
+                  else : echo "<img src='https://via.placeholder.com/600x600/e8e8e8/e8e8e8'>";
                   endif;
                 ?>
               </a>
-              <h4 class="tours-title"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h4>
-              <div class="tours-info"></div>
+              <h4 class="product-item__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+              <div class="product-item__model"><?php the_field('_product_model'); ?></div>
+              <a class="product-item__view-detail" href="<?php the_permalink() ?>"><?php pll_e('View Detail') ?></a>
             </div>
           </div>
         <?php endwhile; ?>

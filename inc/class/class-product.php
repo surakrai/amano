@@ -21,24 +21,24 @@ class Amano_Product {
 
 	public function hooks() {
 
-    add_action( 'save_post', array( $this, 'save' ), 13, 2 );
+    add_action('save_post', array($this, 'save' ), 13, 2);
 
-    add_action( 'init', array( $this, 'register_taxonomy' ), 8 );
-    add_action( 'init', array( $this, 'register_post_type' ), 9 );
+    add_action('init', array($this, 'register_taxonomy'), 8);
+    add_action('init', array($this, 'register_post_type'), 9);
 
-    // add_action( 'acf/init', array( $this, 'fields' ) );
+    add_action('acf/init', array($this, 'fields'));
 
-    add_action( 'display_post_states', array( $this, 'post_states' ), 10, 2 );
+    add_action('display_post_states', array($this, 'post_states'), 10, 2);
 
-    add_filter( 'manage_product_posts_columns', array( $this, 'columns' ) );
-    add_action( 'manage_product_posts_custom_column', array( $this, 'columns_display' ), 10, 2  );
+    add_filter('manage_product_posts_columns', array( $this, 'columns'));
+    add_action('manage_product_posts_custom_column', array($this, 'columns_display'), 10, 2);
 	}
 
 	public function register_post_type(){
 		$labels = array(
-			'name' => __('Product', THEME_SLUG),
-			'menu_name' => __('Product', THEME_SLUG),
-			'all_items' => __('All Post', THEME_SLUG),
+			'name' => __('Products', THEME_SLUG),
+			'menu_name' => __('Products', THEME_SLUG),
+			'all_items' => __('All Products', THEME_SLUG),
 		);
 
 		$args = array(
@@ -52,7 +52,7 @@ class Amano_Product {
 			'hierarchical' => false,
 			'menu_position' => 20,
 			'menu_icon' => 'dashicons-cart',
-			'supports'  => array( 'title', 'editor', 'thumbnail'  )
+			'supports'  => array('title', 'editor')
 		);
 
 		register_post_type( 'product', $args );
@@ -86,7 +86,7 @@ class Amano_Product {
         'hierarchical' => true,
       ),
       'has_archive' => true,
-      // 'meta_box_cb' => true,
+      'meta_box_cb' => false,
       'show_admin_column' => false,
       'labels' => $labels,
     ));
@@ -103,6 +103,14 @@ class Amano_Product {
       'key' => $prefix . 'setting',
       'title' => __( 'Product Detail', THEME_SLUG ),
       'fields' => array (
+        array(
+          'key' => $prefix . 'general_tab',
+          'label' => __( 'General', THEME_SLUG ),
+          'name' => $prefix . 'general_tab',
+          'type' => 'tab',
+          'placement' => 'top',
+          'endpoint' => 0,
+        ),
         array (
           'key' => $prefix . 'post_recommend',
           'label' => __( 'Recommend product', THEME_SLUG ),
@@ -112,6 +120,37 @@ class Amano_Product {
           'message' => '',
           'default_value' => 0,
           'ui' => 1,
+        ),
+        array (
+          'key' => $prefix.'category',
+          'label' => __( 'Category', THEME_SLUG ),
+          'name' => $prefix.'category',
+          'type' => 'taxonomy',
+          'instructions' => '',
+          'required' => 0,
+          'conditional_logic' => 0,
+          'taxonomy' => 'product_cat',
+          'field_type' => 'radio',
+          'allow_null' => 0,
+          'add_term' => 1,
+          'save_terms' => 1,
+          'load_terms' => 1,
+          'return_format' => 'id',
+          'multiple' => 0,
+        ),
+        array (
+          'key' => $prefix.'model',
+          'label' => __( 'Model', THEME_SLUG ),
+          'name' => $prefix.'model',
+          'type' => 'text',
+        ),
+        array(
+          'key' => $prefix . 'image_tab',
+          'label' => __( 'Images', THEME_SLUG ),
+          'name' => $prefix . 'image_tab',
+          'type' => 'tab',
+          'placement' => 'top',
+          'endpoint' => 0,
         ),
         array (
           'key' => $prefix.'cover',
@@ -132,9 +171,67 @@ class Amano_Product {
           'library' => 'all',
           'mime_types' => '',
           // 'instructions' => '600px X 600px',
+        ),
+        array(
+          'key' => $prefix . 'content_tab',
+          'label' => __( 'Content', THEME_SLUG ),
+          'name' => $prefix . 'content_tab',
+          'type' => 'tab',
+          'placement' => 'top',
+          'endpoint' => 0,
+        ),
+        array (
+          'key' => $prefix.'content',
+          'label' => '',
+          'name' => $prefix.'content',
+          'type' => 'repeater',
+          'required' => 0,
+          'min' => 0,
+          'max' => 0,
+          'layout' => 'table',
+          'button_label' => __( 'Add Content', THEME_SLUG ),
+          'sub_fields' => array (
+            array (
+              'key' => $prefix.'content_title',
+              'label' => __( 'Title', THEME_SLUG ),
+              'name' => 'title',
+              'type' => 'text',
+              'wrapper' => array('width' => 20)
+            ),
+            array (
+              'key' => $prefix.'content_description',
+              'label' => __( 'Description', THEME_SLUG ),
+              'name' => 'description',
+              'type' => 'wysiwyg',
+              'instructions' => '',
+              'required' => 0,
+              'conditional_logic' => 0,
+              'default_value' => '',
+              'media_upload' => 1,
+              'delay' => 0,
+              'wrapper' => array('width' => 80)
+            ),
+          ),
+        ),
+        array(
+          'key' => $prefix . 'brochure_tab',
+          'label' => __( 'Brochure', THEME_SLUG ),
+          'name' => $prefix . 'brochure_tab',
+          'type' => 'tab',
+          'placement' => 'top',
+          'endpoint' => 0,
+        ),
+        array (
+          'key' => $prefix.'brochure',
+          'label' => '',
+          'name' => $prefix.'brochure',
+          'type' => 'file',
+          'return_format' => 'array',
+          'library' => 'all',
+          'mime_types' => '',
         )
       ),
-      'style' => 'seamless',
+      // 'style' => 'seamless',
       'label_placement' => 'top',
       'instruction_placement' => 'label',
       'location' => array (

@@ -356,7 +356,7 @@ function the_breadcrumbs() {
 		'after' => '</nav>',
 	);
 	$options = array(
-		'separator'  => '<span class="separator">-</span>',
+		'separator'  => '<span class="separator">/</span>',
 		'show_htfpt' => true
 	);
 	$breadcrumb = new DS_WP_Breadcrumb( $templates, $options );

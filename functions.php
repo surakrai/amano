@@ -8,7 +8,7 @@ define('THEME_DIR', trailingslashit(get_template_directory()));
 define('THEME_URI', trailingslashit(get_template_directory_uri()));
 define('THEME_NAME', 'Amano');
 define('THEME_SLUG', 'amano');
-define('THEME_VERSION', '0.0.9');
+define('THEME_VERSION', '0.1.3');
 define('SRC_URI', THEME_URI . 'src');
 define('STATIC_URI', THEME_URI . 'static');
 define('INC_DIR', THEME_DIR . 'inc');
@@ -37,6 +37,7 @@ function amano_enqueue_scripts() {
 	$front     = $manifest->front;
 
 	wp_enqueue_style(THEME_SLUG . '-font', 'https://fonts.googleapis.com/css?family=Prompt:200,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i&display=swap&subset=thai',  false, null);
+	// wp_enqueue_style(THEME_SLUG . '-icon', 'https://fonts.googleapis.com/icon?family=Material+Icons',  false, null);	
 	wp_enqueue_style(THEME_SLUG . '-css', THEME_URI . 'build/' . $front->css,  false, THEME_VERSION);
 	wp_enqueue_script(THEME_SLUG . '-js', THEME_URI . 'build/' . $front->js, array(), THEME_VERSION, true);
 
@@ -212,13 +213,11 @@ add_action('login_head', 'amano_add_favicon');
 add_action('admin_head', 'amano_add_favicon');
 
 function amano_add_favicon() {
-
-	echo '<link rel="apple-touch-icon-precomposed" sizes="144x144" href="' . IMG_URI . '/favicon144.png">';
-	echo '<link rel="apple-touch-icon-precomposed" sizes="114x114" href="' . IMG_URI . '/favicon114.png">';
-	echo '<link rel="apple-touch-icon-precomposed" sizes="72x72" href="' . IMG_URI . '/favicon72.png">';
-	echo '<link rel="apple-touch-icon-precomposed" href="' . IMG_URI . '/favicon57.png">';
-	echo '<link rel="shortcut icon" href="' . IMG_URI . '/favicon.png">';
-	
+	echo '<link rel="apple-touch-icon-precomposed" sizes="144x144" href="' . content_url('uploads/2019/12/favicon114.png') . '">' . PHP_EOL;
+	echo '<link rel="apple-touch-icon-precomposed" sizes="114x114" href="' . content_url('uploads/2019/12/favicon114.png') . '">' . PHP_EOL;
+	echo '<link rel="apple-touch-icon-precomposed" sizes="72x72" href="' . content_url('uploads/2019/12/favicon72.png') . '">' . PHP_EOL;
+	echo '<link rel="apple-touch-icon-precomposed" href="' . content_url('uploads/2019/12/favicon57.png') . '">' . PHP_EOL;
+	echo '<link rel="shortcut icon" href="' . content_url('uploads/2019/12/favicon.png') . '">' . PHP_EOL;
 }
 
 add_filter( 'jpeg_quality', 'amano_regenerate_thumbnail_quality');
@@ -328,3 +327,24 @@ if ( ! function_exists( 'languages_switcher' ) ) {
   }
 
 }
+
+function add_the_table_button( $buttons ) {
+
+	if ( ! $pos = array_search( 'undo', $buttons ) ) {
+		array_push( $buttons, 'table' );
+		return $buttons;
+	}
+
+	$buttons = array_merge( array_slice( $buttons, 0, $pos ), array( 'table' ), array_slice( $buttons, $pos ) );
+	return $buttons;
+
+}
+add_filter( 'mce_buttons', 'add_the_table_button' );
+
+function add_the_table_plugin( $plugins ) {
+	$plugins['table'] = 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.9.6/plugins/table/plugin.min.js';
+	return $plugins;
+}
+add_filter('mce_external_plugins', 'add_the_table_plugin');
+
+// $plugins['table'] = content_url('plugins/mce-table-buttons/tinymce47-table/plugin.min.js');

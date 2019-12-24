@@ -1,8 +1,218 @@
 
 .product {
-  &-archive {
-    padding-top: 100px;
-  } 
+  
+  &:not(body) {
+    padding-top: 40px;
+  }
+
+  &__title {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: $primary-color;
+  }
+
+  &__model {
+    font-weight: 500;
+    color: $primary-color;
+    margin-bottom: 30px;
+  }
+
+  &__description {
+    color: #000;
+    font-size: 18px;
+    padding: 0 0 30px;
+  }
+
+  &__content {
+    color: #000;
+    font-size: 14px;
+    padding: 0 0 30px;
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    ol,
+    ul {
+      padding: 0;
+      margin: 0 0 15px;
+      list-style: none;
+
+      li {
+        position: relative;
+      }
+    }
+
+    ol {
+      counter-reset: ol-counter;
+
+      li {
+        counter-increment: ol-counter;
+        padding: 0 0 0 40px;
+
+        &::before {
+          position: absolute;
+          top: 1px;
+          left: 0;
+          color: $primary-color;
+          font-weight: 700;
+          font-size: 14px;
+          content: "0" counter(ol-counter) ".";
+        }
+      }
+    }
+
+    ul {
+      li {
+        padding: 0 0 0 20px;
+
+        &::before {
+          position: absolute;
+          top: 7px;
+          left: 0;
+          width: 4px;
+          height: 4px;
+          border-radius: 100%;
+          background: $primary-color;
+          content: '';
+        }
+      }
+    }
+
+    table {
+      border: solid 1px #f1f1f1;
+      vertical-align: top;
+
+      tr {
+        // border-bottom: solid 1px #e8e8e8;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &:nth-child(odd) {
+          background: #f8f8f8;
+        }
+      }
+
+      td {
+        width: auto !important;
+        padding: 10px;
+        vertical-align: top;
+
+        &:first-child {
+          font-weight: 500;
+          // white-space: nowrap;
+          // padding-right: 20px;
+          // background: #f8f8f8;
+        }
+      }
+    }
+
+  }
+
+  &__gallery {
+    position: relative;
+
+    &-item {
+      padding: 15px;
+
+      &::after {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.05);
+        content: '';
+        z-index: 12;
+      }
+    }
+
+    &--thumb {
+      padding-top: 15px;
+
+      a {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        display: block;
+        padding: 5px;
+        border: solid 1px #e5e5e5;
+        margin-left: 5px;
+
+        &.is-active {
+          border-color: #0c74d7;
+
+          img {
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+  }
+
+  &__footer {
+    padding-top: 30px;
+
+    .button {
+      font-size: 12px;
+      text-align: center;
+      text-transform: uppercase;
+      padding-left: 18px;
+      padding-right: 18px;
+      border-radius: 0;
+      letter-spacing: 0;
+      color: #fff !important;
+
+      img {
+        width: 18px;
+        height: 18px;
+        display: inline-block;
+        margin-right: 5px;
+      }
+    }
+  }
+
+}
+
+.related-product {
+  padding-top: 100px;
+
+  h3 {
+    position: relative;
+    font-size: 22px;
+    letter-spacing: 1px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #0c74d7;
+    margin-bottom: 50px;
+
+    span {
+      position: relative;
+      display: inline-block;
+      padding: 0 10px;
+      transform: translate(-10px, 0);
+
+      &::before,
+      &::after {
+        position: absolute;
+        width: 75vw;
+        bottom: 5px;
+        height: 1px;
+        background: #eee;
+        content: '';
+      }
+  
+      &::before {
+        right: 100%;
+      }
+  
+      &::after {
+        left: 100%;
+      }
+    }
+  }
 }
 
 .sidebar {
@@ -10,8 +220,6 @@
     position: relative;
 
     &__title {
-      position: absolute;
-      bottom: 100%;
       font-size: 18px;
       text-transform: uppercase;
       color: $primary-color;
@@ -28,11 +236,13 @@
           a {
             font-size: 16px;
             color: #000;
+            font-weight: 500;
             line-height: 1;
-            padding: 0 0 20px;
+            padding: 0 0 15px;
             display: block;
           }
 
+          .post-type-archive-product &.cat-item-all,
           &.current-cat {
             a {
               font-weight: 700;

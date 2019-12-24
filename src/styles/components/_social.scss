@@ -1,0 +1,23 @@
+.social {
+  margin: 0;
+  padding: 0;
+  text-align: right;
+
+  &__item {
+    display: inline-block;
+    padding: 0 0 0 10px;
+    
+    &--label {
+      color: #0C74D7;
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    a {
+      width: 28px;
+      height: 28px;
+      display: block;
+    }
+  }
+}

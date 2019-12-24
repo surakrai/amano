@@ -64,7 +64,7 @@ get_header(); ?>
               <textarea name="message" class="form-control" id="contact-message" rows="4"></textarea>
             </div>
 
-            <button class="submit-contact"><span><?php _e( 'Submit', THEME_SLUG ) ?></button>
+            <button class="submit-contact button"><span><?php _e( 'Submit', THEME_SLUG ) ?></button>
             <?php wp_nonce_field( 'contact_nonce', 'security_nonce' ); ?>
             <input type="hidden" name="action" value="contact">
           </form>

@@ -138,7 +138,7 @@ class Amano_Home {
               'type' => 'text',
             ),
             array(
-              'key' => $prefix . 'cat',
+              'key' => $prefix . 'product_cat',
               'label' => __( 'Product Category', THEME_SLUG ),
               'name' => 'category',
               'type' => 'taxonomy',
