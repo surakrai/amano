@@ -8,7 +8,7 @@ define('THEME_DIR', trailingslashit(get_template_directory()));
 define('THEME_URI', trailingslashit(get_template_directory_uri()));
 define('THEME_NAME', 'Amano');
 define('THEME_SLUG', 'amano');
-define('THEME_VERSION', '0.1.3');
+define('THEME_VERSION', '0.1.8');
 define('SRC_URI', THEME_URI . 'src');
 define('STATIC_URI', THEME_URI . 'static');
 define('INC_DIR', THEME_DIR . 'inc');
@@ -38,7 +38,7 @@ function amano_enqueue_scripts() {
 
 	wp_enqueue_style(THEME_SLUG . '-font', 'https://fonts.googleapis.com/css?family=Prompt:200,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i&display=swap&subset=thai',  false, null);
 	// wp_enqueue_style(THEME_SLUG . '-icon', 'https://fonts.googleapis.com/icon?family=Material+Icons',  false, null);	
-	wp_enqueue_style(THEME_SLUG . '-css', THEME_URI . 'build/' . $front->css,  false, THEME_VERSION);
+	wp_enqueue_style(THEME_SLUG . '-css', THEME_URI . 'build/' . $front->css, array(), THEME_VERSION, 'all');
 	wp_enqueue_script(THEME_SLUG . '-js', THEME_URI . 'build/' . $front->js, array(), THEME_VERSION, true);
 
   wp_localize_script(THEME_SLUG . '-js', 'AMANO', array(
@@ -175,11 +175,11 @@ function add_slug_to_body_class($classes) {
 		}
 
 	} elseif(is_post_type_archive()) {
-		$post_type = get_post_type_object( get_post_type() );
-		$classes[] = sanitize_html_class($post_type->name);
+		// $post_type = get_post_type_object( get_post_type() );
+		// $classes[] = sanitize_html_class($post_type->name);
 	} elseif(is_tax()) {
-		$taxonomy = explode('_', get_queried_object()->taxonomy);
-		$classes[] = sanitize_html_class($taxonomy[0]);
+		// $taxonomy = explode('_', get_queried_object()->taxonomy);
+		// $classes[] = sanitize_html_class($taxonomy[0]);
 	}
 	
 	return $classes;
@@ -192,6 +192,8 @@ function amano_styles_inline() {
 	$custom_css  .= '.our-project{background-image: url('. content_url('uploads/2019/12/project.jpg') .')}';
 	$custom_css  .= '.our-news{background-image: url('. content_url('uploads/2019/12/new_bg.jpg') .')}';
 	$custom_css  .= '.page-header{background-image: url('. content_url('uploads/2019/12/header-bg.jpg') .')}';	
+	$custom_css .= '.site-navigation .menu-main > li{opacity:0}';
+
   wp_add_inline_style(THEME_SLUG . '-css', minify_css($custom_css));
 
 }

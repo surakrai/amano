@@ -7,7 +7,7 @@
           <ul>
             <?php wp_list_categories(array(
               'taxonomy'          => 'product_cat',
-              'show_option_all'   => __('All' , THEME_SLUG),
+              'show_option_all'   => __('All Products' , THEME_SLUG),
               'show_count'        => false,
               'hide_empty'        => false,
               'title_li'          => false,

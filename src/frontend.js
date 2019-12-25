@@ -20,6 +20,6 @@ const routes = new Router({
   product
 })
 
-window.onload = () => {
+window.addEventListener('DOMContentLoaded', () => {
   routes.loadEvents()
-}
+})

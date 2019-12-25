@@ -4,8 +4,9 @@ import Swiper from 'swiper/dist/js/swiper'
 export default {
   init() {
     const thumbItems = document.querySelectorAll('.product__gallery--thumb a')
+    const productGallery = document.querySelector('.swiper-product-gallery')
 
-    const gallery = new Swiper('.swiper-product-gallery', {
+    const gallery = new Swiper(productGallery, {
       init: false,
       slidesPerView: 1,
       spaceBetween: 0,
@@ -14,7 +15,8 @@ export default {
     })
 
     ImagesLoaded('.product__gallery', () => {
-      gallery.init()
+      if (typeof productGallery !== 'undefined' && productGallery != null)
+        gallery.init()
     })
 
     gallery.on('slideChange init', () => {

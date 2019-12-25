@@ -2,13 +2,11 @@
 <html <?php language_attributes(); ?> class="">
 	<head>
 		<meta charset="<?php bloginfo('charset'); ?>">
-		<meta name="viewport" content="width=device-width">
-		<link rel="profile" href="http://gmpg.org/xfn/11">
-		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="profile" href="https://gmpg.org/xfn/11">
 		<meta name="theme-color" id="theme-color" content="#0c74d7">
 		<meta name="mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-capable" content="yes">
-		<link rel="profile" href="http://gmpg.org/xfn/11">
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?>>

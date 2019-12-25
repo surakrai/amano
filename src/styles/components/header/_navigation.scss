@@ -41,7 +41,7 @@
   .menu-main {
     > li {
       opacity: 0;
-      transition: 0.3s;
+      transition: transform 0.3s, opacity 0.3s, visibility 0.3s;
       transform: translateY(50%);
       transition-delay: 0.3s;
 
@@ -60,7 +60,7 @@
       .open-menu & {
         opacity: 1;
         transform: translateY(0%);
-        transition: 0.6s;
+        transition: transform 0.6s, opacity 0.6s, visibility 0.6s;
         transition-delay: 0.4s;
 
         &:nth-child(2) {

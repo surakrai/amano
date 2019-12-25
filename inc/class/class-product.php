@@ -262,8 +262,9 @@ class Amano_Product {
     unset( $columns['title'] );
     unset( $columns['date'] );
 
-    $columns['amano_thumbnail']       = '<span class="dashicons-format-image"></span>';
+    $columns['amano_thumbnail']      = '<span class="dashicons-format-image"></span>';
     $columns['title']                = __( 'Title' );
+    $columns['product_model']        = __( 'Model', THEME_SLUG );
     $columns['author']               = __( 'Author', THEME_SLUG );
     $columns['date']                 = __( 'Date' );
 
@@ -282,6 +283,9 @@ class Amano_Product {
           echo '<img src="https://via.placeholder.com/150.jpg/f8f8f8/f8f8f8">';
         }
       break;
+      case 'product_model' :
+        echo get_post_meta($post_id, '_product_model', true);
+      break;      
     }
   }
 

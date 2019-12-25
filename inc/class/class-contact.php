@@ -36,20 +36,17 @@ class Amano_Contact {
 
 
   public function scripts() {
+    global $post;
 
-    wp_enqueue_script(
-      THEME_SLUG . '-google-map',
-      'https://maps.googleapis.com/maps/api/js?key=AIzaSyC9Y183VzljYHM2a1paTUMih4O-FVklb74&language=th&region=th-TH',
-      array(),
-      THEME_VERSION,
-      true
-    );
-    
-    wp_localize_script(THEME_SLUG . '-contact', 'CONTACT', array(
-      'ajaxurl' => admin_url( 'admin-ajax.php' ),
-      )
-    );
-    
+    if( is_page_template('template-contact.php') ) {
+      wp_enqueue_script(
+        THEME_SLUG . '-google-map',
+        'https://maps.googleapis.com/maps/api/js?key=AIzaSyC9Y183VzljYHM2a1paTUMih4O-FVklb74&language=th&region=th-TH',
+        array(),
+        THEME_VERSION,
+        true
+      );
+    }
   }
 
 	public function register_post_type(){

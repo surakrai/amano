@@ -10,7 +10,7 @@ import './backend.scss'
 const routes = new Router({
   /** All pages */
   common
-});
+})
 
 window.onload = () => {
   routes.loadEvents()

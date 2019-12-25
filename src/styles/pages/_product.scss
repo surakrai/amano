@@ -80,7 +80,7 @@
     }
 
     table {
-      border: solid 1px #f1f1f1;
+      // border: solid 1px #f1f1f1;
       vertical-align: top;
 
       tr {
@@ -99,6 +99,7 @@
         width: auto !important;
         padding: 10px;
         vertical-align: top;
+        border: solid 1px #f1f1f1;
 
         &:first-child {
           font-weight: 500;
