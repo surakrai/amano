@@ -43,6 +43,15 @@
 
     .form-group {
       margin-bottom: 30px;
+
+      em {
+        font-size: 12px;
+        color: $primary-color;
+      }
+
+      &.has-error .form-control {
+        border-color: #0c74d7;
+      }
     }
 
     .form-control {
@@ -56,9 +65,36 @@
         border-bottom-color: #0c74d7;
       }
     }
-
+    
     button {
       font-size: 12px;
+    }
+
+    &__response {
+      div {
+        position: relative;
+        margin-bottom: 30px;
+        padding: 10px 10px 10px 65px;
+        background: #f8f8f8;
+
+        .checkmark {
+          position: absolute;
+          top: 10px;
+          left: 15px;
+        }
+
+        h4 {
+          font-size: 18px;
+          line-height: 1;
+          color: $primary-color;
+          margin: 0;
+        }
+
+        p {
+          margin: 0;
+        }
+
+      }
     }
 
   }

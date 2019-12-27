@@ -170,7 +170,7 @@ class Amano_Product {
           'insert' => 'append',
           'library' => 'all',
           'mime_types' => '',
-          // 'instructions' => '600px X 600px',
+          'instructions' => '800px X 800px',
         ),
         array(
           'key' => $prefix . 'content_tab',

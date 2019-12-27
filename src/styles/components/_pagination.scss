@@ -1,38 +1,52 @@
 .amano-pagination {
-  text-align: right;
+  text-align: center;
   display: block;
-  float: right;
   border-radius: 0;
   background: #fff;
   margin: 30px 0 0;
 
   > * {
     line-height: 1;
-    display: block;
-    float: left;
-    color: #6c6c6c;
-    padding: 10px;
+    display: inline-block;
+    font-weight: 500;
+    color: #000;
+    padding: 10px 5px;
 
     &.current {
       font-weight: bold;
-      color: #91b1b0;
+      color: $primary-color;
     }
+    
+    &.next,
+    &.prev {
+      padding-left: 15px;
+      padding-right: 15px;
 
-    i {
-      font-size: 12px;
+      &::after {
+        border-top: solid 4px transparent;
+        border-bottom: solid 4px transparent;
+        display: inline-block;
+        vertical-align: middle;
+        content: '';
+        transform: translateY(-1px);
+      }
+
     }
 
     &.prev {
-      border-right: solid 1px #f3f3f3;
+      &::after {
+        border-right: solid 5px #1f1f1f;
+      }
     }
 
     &.next {
-      border-left: solid 1px #f3f3f3;
+      &::after {
+        border-left: solid 5px #1f1f1f;
+      }
     }
 
     &:hover {
-      color: #fff;
-      background: #91b1b0;
+      color: $primary-color;
     }
   }
 

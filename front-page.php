@@ -7,12 +7,12 @@
 		<div class="welcome__navigation">
 			<div class="container">
 				<ul class="d-flex justify-content-between">
-					<li><a class="welcome__navigation-item" data-anchor="about-company" href="#">About Company</a></li>
-					<li><a class="welcome__navigation-item" data-anchor="business-area" href="#">Business Area</a></li>
-					<li><a class="welcome__navigation-item" data-anchor="product-details" href="#">Product Details</a></li>
-					<li><a class="welcome__navigation-item" data-anchor="our-project" href="#">Our Project</a></li>
-					<li><a class="welcome__navigation-item" data-anchor="our-news" href="#">Our News</a></li>
-					<li><a class="welcome__navigation-item" data-anchor="contact" href="#">Contact</a></li>
+					<li class="flex-fill"><a class="welcome__navigation-item" data-anchor="about-company" href="#">About Company</a></li>
+					<li class="flex-fill"><a class="welcome__navigation-item" data-anchor="business-area" href="#">Business Area</a></li>
+					<li class="flex-fill"><a class="welcome__navigation-item" data-anchor="product-details" href="#">Product Details</a></li>
+					<li class="flex-fill"><a class="welcome__navigation-item" data-anchor="our-project" href="#">Our Project</a></li>
+					<li class="flex-fill"><a class="welcome__navigation-item" data-anchor="our-news" href="#">Our News</a></li>
+					<li class="flex-fill"><a class="welcome__navigation-item" data-anchor="contact" href="#">Contact</a></li>
 				</ul>
 			</div>
 		</div>
@@ -21,15 +21,15 @@
     </a>
 	</div>
 
-	<div class="section about-company">
+	<div class="section about">
 		<div class="container">
-			<div class="about-company-description">
+			<div class="about__description">
 				<?php the_field('_home_about_content'); ?>
 			</div>
-			<div class="about-company-feature row no-gutters">
+			<div class="about__feature row no-gutters">
         <?php if( have_rows('_home_about_feature') ): ?>
           <?php while( have_rows('_home_about_feature') ): the_row(); ?>
-            <div class="about-company-feature-item col-md-3">
+            <div class="about__feature-item col-md-3">
 							<?php echo wp_get_attachment_image(get_sub_field('image'), 'about-feature'); ?>
 							<h4><?php the_sub_field('title'); ?></h4>
             </div>
@@ -54,18 +54,22 @@
 	</div>
 
 	<div class="section product-details">
-		<?php if( have_rows('_home_product') ): ?>
-			<?php while( have_rows('_home_product') ): the_row(); ?>
-				<div class="product-details-item">
-					<?php $link = get_term_link(get_sub_field('category'), 'product_cat'); ?>
-					<a href="<?php echo $link; ?>" class="product-details-image"><?php echo wp_get_attachment_image(get_sub_field('image'), 'full'); ?></a>
-					<div class="product-details-content">
-						<h4><?php the_sub_field('title'); ?></h4>
-						<a href="<?php echo $link; ?>">Learn more</a>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+			<?php if( have_rows('_home_product') ): ?>
+				<?php while( have_rows('_home_product') ): the_row(); ?>
+					<div class="product-details__item swiper-slide">
+						<?php $link = get_term_link(get_sub_field('category'), 'product_cat'); ?>
+						<a href="<?php echo $link; ?>" class="product-details__image"><?php echo wp_get_attachment_image(get_sub_field('image'), 'full'); ?></a>
+						<div class="product-details__content">
+							<h4><?php the_sub_field('title'); ?></h4>
+							<a href="<?php echo $link; ?>">Learn more</a>
+						</div>
 					</div>
-				</div>
-			<?php endwhile; ?>
-		<?php endif; ?>
+				<?php endwhile; ?>
+			<?php endif; ?>
+			</div>
+		</div>
 	</div>
 
 	<div class="section our-project">
@@ -81,6 +85,11 @@
 					</div>
 				</div>
 			<?php endif; ?>
+
+			<p class="text-center">
+				<button class="button-prev"><div class="rippleJS"></div></button>
+				<button class="button-next"><div class="rippleJS"></div></button>
+			</p>
 
 		</div>
 	</div>

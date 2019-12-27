@@ -1,10 +1,40 @@
 .button {
+  position: relative;
   color: #fff;
   text-transform: uppercase;
   line-height: 1;
   letter-spacing: 2px;
   border-radius: 30px;
+  display: inline-block;
   padding: 10px 30px;
   border: none;
+  outline: none !important;
   background: #0c74d7;
+
+  &.is-loading {
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      content: " ";
+      width: 14px;
+      height: 14px;
+      margin: -7px 0 0 -7px;
+      border: 1px solid #fff;
+      border-radius: 50%;
+      border-top-color: transparent !important;
+      animation: load-spin 450ms infinite linear;
+    }
+
+    span {
+      opacity: 0;
+    }
+  }
+
+}
+@keyframes load-spin {
+  100% {
+    transform: rotate(360deg);
+  }
 }

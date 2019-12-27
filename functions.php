@@ -8,7 +8,7 @@ define('THEME_DIR', trailingslashit(get_template_directory()));
 define('THEME_URI', trailingslashit(get_template_directory_uri()));
 define('THEME_NAME', 'Amano');
 define('THEME_SLUG', 'amano');
-define('THEME_VERSION', '0.1.8');
+define('THEME_VERSION', '0.4.1');
 define('SRC_URI', THEME_URI . 'src');
 define('STATIC_URI', THEME_URI . 'static');
 define('INC_DIR', THEME_DIR . 'inc');
@@ -21,8 +21,9 @@ require INC_DIR . '/class/class-menu.php';
 require INC_DIR . '/class/class-home.php';
 require INC_DIR . '/class/class-product.php';
 require INC_DIR . '/class/class-news.php';
+require INC_DIR . '/class/class-about.php';
 require INC_DIR . '/class/class-contact.php';
-// require INC_DIR . '/class/class-contact.php';
+require INC_DIR . '/class/class-gallery.php';
 
 
 add_action('wp_enqueue_scripts', 'amano_enqueue_scripts', 100);
@@ -38,7 +39,7 @@ function amano_enqueue_scripts() {
 
 	wp_enqueue_style(THEME_SLUG . '-font', 'https://fonts.googleapis.com/css?family=Prompt:200,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i&display=swap&subset=thai',  false, null);
 	// wp_enqueue_style(THEME_SLUG . '-icon', 'https://fonts.googleapis.com/icon?family=Material+Icons',  false, null);	
-	wp_enqueue_style(THEME_SLUG . '-css', THEME_URI . 'build/' . $front->css, array(), THEME_VERSION, 'all');
+	wp_enqueue_style(THEME_SLUG . '-css', THEME_URI . 'build/' . $front->css, array(), THEME_VERSION, 'all');		
 	wp_enqueue_script(THEME_SLUG . '-js', THEME_URI . 'build/' . $front->js, array(), THEME_VERSION, true);
 
   wp_localize_script(THEME_SLUG . '-js', 'AMANO', array(
@@ -105,13 +106,13 @@ if ( ! function_exists( 'amano_setup' ) ) :
 
 		add_image_size('about-feature', 300, 300, true);
 		add_image_size('our-project', 534, 352, true);
-		add_image_size('thumb-review-review', 350, 350, array('center', 'top'));
+		add_image_size('thumb-gallery', 300, 240, true);
 
 		add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form']);
 
 	  register_nav_menus(array(
 			'primary_navigation'         => __('Primary Navigation', THEME_SLUG),
-	    // 'footer_navigation_mobile'   => __('Footer Navigation for Mobile', THEME_SLUG),
+	    'footer_navigation'          => __('Footer Navigation', THEME_SLUG),
 		));
 		
 	}
@@ -174,9 +175,16 @@ function add_slug_to_body_class($classes) {
 			$classes[] = sanitize_html_class('product');
 		}
 
+		if ( is_singular('gallery') ) {
+			$classes[] = sanitize_html_class('gallery');
+		}
+
 	} elseif(is_post_type_archive()) {
-		// $post_type = get_post_type_object( get_post_type() );
-		// $classes[] = sanitize_html_class($post_type->name);
+
+		$post_type = get_post_type_object(get_post_type());
+
+		if($post_type->name === 'gallery') $classes[] = sanitize_html_class($post_type->name);
+
 	} elseif(is_tax()) {
 		// $taxonomy = explode('_', get_queried_object()->taxonomy);
 		// $classes[] = sanitize_html_class($taxonomy[0]);
@@ -191,7 +199,7 @@ function amano_styles_inline() {
 	$custom_css  .= '.business-area{background-image: url('. content_url('uploads/2019/12/business_bg.jpg') .')}';
 	$custom_css  .= '.our-project{background-image: url('. content_url('uploads/2019/12/project.jpg') .')}';
 	$custom_css  .= '.our-news{background-image: url('. content_url('uploads/2019/12/new_bg.jpg') .')}';
-	$custom_css  .= '.page-header{background-image: url('. content_url('uploads/2019/12/header-bg.jpg') .')}';	
+	$custom_css  .= '.page-header, .site-header.is-sticky.up{background-image: url('. content_url('uploads/2019/12/header-bg.jpg') .')}';	
 	$custom_css .= '.site-navigation .menu-main > li{opacity:0}';
 
   wp_add_inline_style(THEME_SLUG . '-css', minify_css($custom_css));
@@ -286,9 +294,9 @@ if ( ! function_exists( 'the_pagination' ) ) :
     $paginate_links = paginate_links( array(
       'base'         => str_replace( $big, '%#%', esc_url(  get_pagenum_link( $big ) ) ),
       'format'       => '?paged=%#%',
-      'prev_text'    => '<i class="flaticon-back"></i>',
-      'next_text'    => '<i class="flaticon-next"></i>',
-      'show_all'     => false,
+      'prev_text'    => '',
+      'next_text'    => '',
+      'show_all'     => true,
       'current'      => max( 1, get_query_var('paged') ),
       'total'        => $wp_query->max_num_pages
     ) );

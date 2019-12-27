@@ -1,6 +1,6 @@
 <?php
 
-class Amano_Email {
+class Mimo_Email {
 
 	public function __construct() {
 
@@ -302,7 +302,7 @@ class Amano_Email {
 		              <table border="0" cellpadding="0" cellspacing="0">
 		                <tr>
 		                  <td class="content-block">
-		                    <span class="apple-link">1,1/1 Suansiam Rd, khannayao, Bangkok 10230</span>
+		                    <span class="apple-link">Room No. 3A, 3 rd Fl., Chai-Ho Wong Wai Wit Building 889 Moo 5, Srinakarin Road, T. Samroong-Nua, A. Muang, Samutprakarn 10270<br> Tel : (66) 02-7458812-3</span>
 		                    <!-- <br> Don't like these emails? <a href="#">Unsubscribe</a>. -->
 		                  </td>
 		                </tr>

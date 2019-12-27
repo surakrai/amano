@@ -13,8 +13,14 @@ module.exports = {
 
    rules: {
       "no-new": 0,
-      'no-plusplus': 0,
-      'func-names': 0,
-      "prettier/prettier": ["error", { "singleQuote": true, "semi": false, "parser": "flow" }]
+      "no-plusplus": 0,
+      "func-names": 0,
+      "no-undef": 0,
+      "no-console": 0,
+      "prettier/prettier": ["error", { 
+         "singleQuote": true,
+         "semi": false,
+         "parser": "flow"
+      }]
    }
 }

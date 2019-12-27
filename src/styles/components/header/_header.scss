@@ -6,13 +6,29 @@
   right: 0;
   z-index: 999;
   transition: 0.3s;
+  background-position: center center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+
+  &.is-sticky {
+    position: fixed;
+    opacity: 0;
+
+    body.scrollup & {
+      opacity: 1;
+      background: #0c74d7 !important;
+    }
+  }
 
   .fp-viewing-about-company &,
   .fp-viewing-product-details &,  
-  .fp-viewing-our-project &,
   .fp-viewing-our-news &,
   .fp-viewing-contact & {
     background: #0c74d7;
+  }
+
+  .fp-viewing-our-project & {
+    background: rgba(12, 116, 215, 0.3);
   }
 
   .container-fluid {

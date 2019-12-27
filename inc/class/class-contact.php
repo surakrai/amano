@@ -21,17 +21,20 @@ class Amano_Contact {
 
 	public function hooks() {
 
-    add_action( 'wp_enqueue_scripts', array($this, 'scripts'), 100 );
-    add_filter( 'script_loader_tag', array($this, 'regal_tag'), 10, 3 );
+    add_action('wp_enqueue_scripts', array($this, 'scripts'), 100 );
+    add_filter('script_loader_tag', array($this, 'regal_tag'), 10, 3 );
 
-		add_action( 'init', array($this, 'register_post_type'));
-    // add_action( 'acf/init', array( $this, 'fields' ) );
+    add_action('rest_api_init', array( $this , 'rest_api_init'));
 
-    add_action( 'wp_ajax_contact', array($this, 'create') );
-    add_action( 'wp_ajax_nopriv_contact', array( $this, 'create'));
+		add_action('init', array($this, 'register_post_type'));
+    add_action('acf/init', array( $this, 'setting'));
+    add_action('acf/init', array( $this, 'fields'));
 
-    add_filter( 'manage_contact_posts_columns', array( $this, 'columns' ) );
-    add_action( 'manage_contact_posts_custom_column', array( $this, 'columns_display' ), 10, 2  );
+    add_action('wp_ajax_contact', array($this, 'create'));
+    add_action('wp_ajax_nopriv_contact', array( $this, 'create'));
+
+    add_filter('manage_contact_posts_columns', array( $this, 'columns'));
+    add_action('manage_contact_posts_custom_column', array( $this, 'columns_display'), 10, 2);
 	}
 
 
@@ -86,6 +89,93 @@ class Amano_Contact {
 
 	}
 
+  public function rest_api_init() {
+
+    register_rest_route('amano', '/contact', array(
+      'methods'  => 'POST',
+      'callback' => array($this, 'api'),
+      'args'     => array('firstname', 'lastname', 'email', 'phone', 'message')
+    ));
+
+  }
+  
+  public function api($data) {
+
+    $output = $emai_message = '';
+    $return = $headers = array();
+    $errors = false;
+
+    $firstname = $data['firstname'];
+    $lastname  = $data['lastname'];
+    $phone     = $data['phone'];
+    $email     = $data['email'];
+    $subject   = $data['subject'];
+    $message   = $data['message'];
+
+    if (!$firstname) {
+      $return['firstname'] = pll__('Please fill in First Name');
+      $errors = true;
+    }
+
+    if (!$phone) {
+      $return['phone'] = pll__('Please fill in phone no.');
+      $errors = true;
+    }
+
+    if (!is_email($email)) {
+      $return['email'] = pll__('Please fill in email');
+      $errors = true;
+    }
+
+    if ($errors == false) {
+
+      $post_id = wp_insert_post(array(
+        'post_type'         => 'contact',
+        'post_title'        => $firstname . ' ' . $lastname,
+        'post_status'       => 'publish',
+        'post_author'       => '1',
+      ));
+
+      update_post_meta( $post_id, 'contact_phone', $phone );
+      update_post_meta( $post_id, 'contact_email', $email );
+      update_post_meta( $post_id, 'contact_subject', $subject );
+      update_post_meta( $post_id, 'contact_message', $message );
+
+      $email_class = new Mimo_Email();
+
+      $email_subject = 'ต้องการติดต่อ #'. $post_id;
+
+      $recipients = explode( PHP_EOL, get_field('option_contact_recipient', 'option') );
+
+      $headers[] = 'Content-Type: text/html; charset=UTF-8';
+      $headers[] = 'From: '. get_bloginfo( 'name' ) .' <contact@siameastern.com>' . "\r\n";
+      $headers[] = 'Reply-To:' . $email;
+
+      $emai_message = $email_class->header( $email_subject );
+      $emai_message .= '
+        <strong>ชื่อ : </strong>' . $name . '<br/>
+        <strong>เบอร์โทร : </strong>' . $phone . '<br/>
+        <strong>อีเมล : </strong>' . $email . '<br/>
+        <strong>เรื่อง : </strong>' . $subject . '<br/>
+        <strong>รายละเอียด : </strong>' . $message . '<br/><br/>
+        อีเมล์นี้ถูกส่งจาก ' . site_url();
+      $emai_message .= $email_class->footer();
+
+      wp_mail( $recipients, $email_subject, $emai_message, $headers );
+
+      $return['msg'] = 'ส่งข้อมูลเรียบร้อย';
+      $return['msg_description'] = 'ขอบคุณที่สนใจ... เจ้าหน้าที่จะติดต่อกลับไปค่ะ';
+
+    }else{
+      $return['msg'] = 'ผิดพลาด';
+    }
+
+    $return['errors'] = $errors;
+
+    wp_send_json($return);
+
+  }
+
 	public function fields() {
 
 		$prefix = 'contact_';
@@ -96,120 +186,70 @@ class Amano_Contact {
       'key' => $prefix . 'setting',
       'title' => __( 'Contact Detail', THEME_SLUG ),
       'fields' => array (
-        array (
-          'key' => $prefix.'cover',
-          'label' => __( 'Cover', THEME_SLUG ),
-          'name' => '_thumbnail_id',
-          'type' => 'image',
-          'return_format' => 'id',
-          'preview_size' => 'thumbnail',
-          'library' => 'all',
-          'mime_types' => '',
-        ),
-
       ),
       'style' => 'seamless',
       'label_placement' => 'top',
       'instruction_placement' => 'label',
+      'hide_on_screen' => array(
+        0 => 'the_content',
+        1 => 'page_attributes',
+        2 => 'featured_image',
+      ),
       'location' => array (
         array (
           array (
-            'param' => 'post_type',
+            'param' => 'page_template',
             'operator' => '==',
-            'value' => 'contact',
+            'value' => 'template-contact8555.php',
           ),
         ),
       ),
     ));
 
-	}
+    $prefix = 'option_contact_';
 
-  public function create() {
-
-    check_ajax_referer( 'contact_nonce', 'security_nonce' );
-
-    $output = $emai_message = $headers = '';
-    $return = array();
-    $errors = false;
-
-    $name  = sanitize_text_field( $_POST["name"] );
-    $phone  = sanitize_text_field( $_POST["phone"] );
-    $email = sanitize_email( $_POST["email"] );
-    $subject  = sanitize_text_field( $_POST["subject"] );
-    $message  = esc_textarea( $_POST["message"] );
-
-    $email_subject = 'ต้องการให้ทีมงานติดต่อกลับ #'. $post_id;
-
-    $to = get_option('contact_email');
-
-
-    if (!$name) {
-      $return['name'] = "กรุณากรอก ชื่อ-สกุล";
-      $errors = true;
-    }
-
-    if (!$phone) {
-      $return['phone'] = "กรุณากรอก เบอร์โทร";
-      $errors = true;
-    }
-
-    if (!is_email($email)) {
-      $return['email'] = "กรุณากรอก อีเมล์";
-      $errors = true;
-    }
-
-    if ($errors == false) {
-
-      $email_class = new Amano_Email();
-
-      ob_start(); ?>
-
-      <?php echo $email_class->header($email_subject) ?>
-
-      <?php
-        echo "
-          ชื่อ : " . $name . "<br/>
-          เบอร์โทร : " . $phone . "<br/>
-          อีเมล : " . $email . "<br/>
-          หัวข้อ : " . $subject . "<br/>
-          รายละเอียด : " . $message . "<br/><br/>
-          อีเมล์นี้ถูกส่งจากหน้าติดต่อ kohpayamferry.com";;
-      ?>
-
-      <?php echo $email_class->footer() ?>
-
-      <?php $emai_message = ob_get_contents();
-
-      ob_end_clean();
-
-      wp_mail( $to, $email_subject, $emai_message, '', '' );
-
-      $post_id = wp_insert_post( array(
-        'post_type'         => 'contact',
-        'post_title'        => $name,
-        'post_status'       => 'publish',
-        'post_author'       => '1',
-      ) );
-
-      update_post_meta( $post_id, 'contact_phone', $phone );
-      update_post_meta( $post_id, 'contact_email', $email );
-      update_post_meta( $post_id, 'contact_subject', $subject );
-      update_post_meta( $post_id, 'contact_message', $message );
-
-      $return['msg'] = 'ส่งข้อมูลเรียบร้อย';
-      $return['msg_description'] = 'ทีมงานจะรีบติดกลับค่ะ';
-
-    }else{
-      $return['msg'] = 'ผิดพลาด';
-    }
-
-    $return['errors'] = $errors;
-
-    wp_send_json($return);
+    acf_add_local_field_group(array(
+      'key' => $prefix . 'setting',
+      'title' => __( 'Setting', THEME_SLUG ),
+      'fields' => array (
+        array (
+          'key' => $prefix.'recipient',
+          'label' => __( 'Email recipient', THEME_SLUG ),
+          'name' => $prefix.'recipient',
+          'type' => 'textarea',
+          'instructions' => '',
+          'required' => 0,
+          'conditional_logic' => 0,
+        ),
+      ),
+      'style' => 'seamless',
+      'label_placement' => 'left  ',
+      'instruction_placement' => 'label',
+      'location' => array (
+        array (
+          array (
+            'param' => 'options_page',
+            'operator' => '==',
+            'value' => 'contact_setting',
+          ),
+        ),
+      ),
+    ));
   }
-
-  public function columns( $columns ) {
-
+  
+  public function setting() {
+  
+    // add sub page
+    acf_add_options_sub_page(array(
+      'page_title' 	=> __( 'Contact Settings', THEME_SLUG ),
+      'menu_title' 	=> __( 'Settings', THEME_SLUG ),
+      'menu_slug' 	=> 'contact_setting',
+      'parent_slug' => 'edit.php?post_type=contact',
+    ));
+    
+  }
+  
+  public function columns($columns) {
 
     unset( $columns['date'] );
 
@@ -224,9 +264,9 @@ class Amano_Contact {
 
   }
 
-  public function columns_display( $column, $post_id ) {
+  public function columns_display($column, $post_id) {
 
-    switch ( $column ) {
+    switch ($column) {
 
       case 'phone' :
         echo get_post_meta( $post_id, 'contact_phone', true );

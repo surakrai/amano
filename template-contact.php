@@ -31,14 +31,14 @@ get_header(); ?>
           <form class="contact-form">
             <div class="row">
               <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="contact-firstname"><?php _e( 'First Name', THEME_SLUG ) ?> : </label>
+                <div class="form-group contact-firstname">
+                  <label for="contact-firstname"><?php pll_e('First Name') ?> : </label>
                   <input type="text" name="firstname" class="form-control" id="contact-firstname">
                 </div>
               </div>
               <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="contact-email"><?php _e( 'Last name', THEME_SLUG ) ?> : </label>
+                <div class="form-group contact-lastname">
+                  <label for="contact-email"><?php pll_e('Last name') ?> : </label>
                   <input type="text" name="lastname" class="form-control" id="contact-lastname">
                 </div>
               </div>
@@ -46,27 +46,27 @@ get_header(); ?>
 
             <div class="row">
               <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="contact-email"><?php _e( 'Email', THEME_SLUG ) ?> : </label>
+                <div class="form-group contact-email">
+                  <label for="contact-email"><?php pll_e('Email') ?> : </label>
                   <input type="email" name="email" class="form-control" id="contact-email">
                 </div>
               </div>
               <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="contact-phone"><?php _e( 'Phone', THEME_SLUG ) ?> : </label>
+                <div class="form-group contact-phone">
+                  <label for="contact-phone"><?php pll_e('Phone') ?> : </label>
                   <input type="tel" name="phone" class="form-control" id="contact-phone">
                 </div>
               </div>
             </div>
 
             <div class="form-group textarea">
-              <label for="contact-message"><?php _e( 'Message', THEME_SLUG ) ?> : </label>
+              <label for="contact-message"><?php pll_e('Message') ?> : </label>
               <textarea name="message" class="form-control" id="contact-message" rows="4"></textarea>
             </div>
 
-            <button class="submit-contact button"><span><?php _e( 'Submit', THEME_SLUG ) ?></button>
-            <?php wp_nonce_field( 'contact_nonce', 'security_nonce' ); ?>
-            <input type="hidden" name="action" value="contact">
+            <div class="contact-form__response"></div>
+
+            <button class="submit-contact button"><span><?php pll_e('Submit') ?></span><div class="rippleJS"></div></button>
           </form>
         </div>
 

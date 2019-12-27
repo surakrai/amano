@@ -3,8 +3,9 @@
 @import "~bootstrap/scss/bootstrap-reboot";
 @import "~bootstrap/scss/utilities";
 @import "~bootstrap/scss/bootstrap-grid";
-@import "~swiper/src/swiper";
+@import "~swiper/swiper";
 @import "~fullpage.js/dist/fullpage";
+@import "~glightbox/dist/css/glightbox";
 
 @import "styles/global-vars";
 @import "styles/base";
@@ -23,8 +24,9 @@
 @import "styles/components/product-item";
 @import "styles/components/accordion";
 @import "styles/components/social";
-
+@import "styles/components/sidebar";
 @import "styles/components/footer";
+@import "styles/components/checkmark";
 
 @import "styles/components/pagination";
 
@@ -36,6 +38,8 @@
 @import "styles/pages/home/project";
 @import "styles/pages/home/news";
 
+@import "styles/pages/about";
 @import "styles/pages/product";
 @import "styles/pages/news";
 @import "styles/pages/contact";
+@import "styles/pages/gallery";

@@ -1,0 +1,50 @@
+.sidebar {
+
+  &.is-sticky {
+    position: fixed;
+    top: 70px;
+    width: 255px;
+  }
+
+  .scrollup &.header-sticky.is-sticky {
+    top: 120px;
+  }
+  
+  .widget {
+    position: relative;
+
+    &__title {
+      font-size: 18px;
+      text-transform: uppercase;
+      color: $primary-color;
+      margin: 0 0 50px;
+    }
+
+    &__content {
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          a {
+            font-size: 16px;
+            color: #000;
+            font-weight: 500;
+            line-height: 1;
+            padding: 0 0 15px;
+            display: block;
+          }
+
+          .post-type-archive-product &.cat-item-all,
+          &.current-cat {
+            a {
+              font-weight: 700;
+              color: $primary-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}

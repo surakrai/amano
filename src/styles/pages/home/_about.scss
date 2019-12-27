@@ -1,6 +1,9 @@
-.about-company {
+.about {
   color: #000;
-  padding-top: 0;
+  
+  .fp-tableCell {
+    padding-top: 50px;
+  }
 
   h3 {
     font-weight: bold;
@@ -10,7 +13,7 @@
     margin-bottom: 45px;
   }
 
-  &-description {
+  &__description {
     max-width: 850px;
     margin: 0 auto 80px;
 
@@ -19,7 +22,7 @@
     }
   }
 
-  &-feature {
+  &__feature {
 
     &-item {
 
@@ -59,7 +62,7 @@
 
   &.fp-completely {
 
-    .about-company-feature-item {
+    .about__feature-item {
       opacity: 1;
       transform: translateY(0%);
     }

@@ -1,5 +1,6 @@
 import ImagesLoaded from 'imagesloaded'
-import Swiper from 'swiper/dist/js/swiper'
+import Swiper from 'swiper'
+import GLightbox from 'glightbox'
 
 export default {
   init() {
@@ -17,6 +18,16 @@ export default {
     ImagesLoaded('.product__gallery', () => {
       if (typeof productGallery !== 'undefined' && productGallery != null)
         gallery.init()
+    })
+
+    GLightbox({
+      touchNavigation: true,
+      loop: false
+    })
+
+    const question = GLightbox({
+      selector: 'product__question',
+      loop: false
     })
 
     gallery.on('slideChange init', () => {

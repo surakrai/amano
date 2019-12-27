@@ -20,9 +20,9 @@
                 <div class="swiper-wrapper">
                 <?php foreach ($images as $key => $image) : ?>
                   <div class="swiper-slide">
-                    <div class="product__gallery-item">
+                    <a class="product__gallery-item glightbox" href="<?php echo $image['url'] ?>">
                       <img src="<?php echo $image['url'] ?>">
-                    </div>
+                    </a>
                   </div>
                   <?php $thumb .= '<a href="#"><img src="'. $image['url'] .'"></a>'; ?>
                 <?php endforeach; ?>
@@ -32,7 +32,7 @@
                 <?php echo $thumb; ?>
               </div>
               <?php else : ?>
-                <div class="product__gallery-item"><?php the_post_thumbnail('full') ?></div>
+                <a class="product__gallery-item glightbox" href="<?php the_post_thumbnail_url('full') ?>"><?php the_post_thumbnail('full') ?></a>
               <?php endif; ?>
             </div>
           </div>
@@ -47,7 +47,7 @@
                 <?php $i = 0; ?>
                 <?php while( have_rows('_product_content') ): the_row(); ?>
                   <div class="accordion__item">
-                    <button class="accordion__toggle<?php if( $i === 0 ) echo ' is-active'; ?>"><?php the_sub_field('title') ?></button>
+                    <button class="accordion__toggle<?php if( $i === 0 ) echo ' is-active'; ?>"><?php the_sub_field('title') ?><div class="rippleJS"></div></button>
                     <div class="accordion__content"<?php if( $i === 0 ) echo ' style="max-height:none"'; ?>>
                       <div class="accordion__body">
                         <?php the_sub_field('description') ?>
@@ -59,16 +59,24 @@
               <?php endif; ?>
 
             </div>
-
+            <form id="question-form" style="display: none;">
+              <div class="inline-inner">
+                <h4 class="text-center">Example of inline content</h4>
+                <p class="text-center">Duis quis ipsum vehicula eros ultrices lacinia. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices</p>
+                <a class="gtrigger-close button" href="#">Close Box</a>
+              </div>
+            </form>
             <div class="product__footer d-flex justify-content-between align-items-center">
-              <a class="product__brochure button mr-1" href="#">
+              <a class="product__question button mr-1" href="#question-form" data-glightbox="width: 500; height: auto;">
                 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMiIgY2xhc3M9IiI+PGc+PHBhdGggZD0ibTUxMiAzNDYuNWMwLTYzLjUzNTE1Ni0zNi40NDkyMTktMTIwLjIzODI4MS05MS4wMzkwNjItMTQ3LjgyMDMxMi0xLjY5NTMxMyAxMjEuODIwMzEyLTEwMC40NjA5MzggMjIwLjU4NTkzNy0yMjIuMjgxMjUgMjIyLjI4MTI1IDI3LjU4MjAzMSA1NC41ODk4NDMgODQuMjg1MTU2IDkxLjAzOTA2MiAxNDcuODIwMzEyIDkxLjAzOTA2MiAyOS43ODkwNjIgMCA1OC43NTc4MTItNy45MzM1OTQgODQuMjEwOTM4LTIzLjAwNzgxMmw4MC41NjY0MDYgMjIuMjg1MTU2LTIyLjI4NTE1Ni04MC41NjY0MDZjMTUuMDc0MjE4LTI1LjQ1MzEyNiAyMy4wMDc4MTItNTQuNDIxODc2IDIzLjAwNzgxMi04NC4yMTA5Mzh6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojRkZGRkZGIiBkYXRhLW9sZF9jb2xvcj0iIzAwMDAwMCI+PC9wYXRoPjxwYXRoIGQ9Im0zOTEgMTk1LjVjMC0xMDcuODAwNzgxLTg3LjY5OTIxOS0xOTUuNS0xOTUuNS0xOTUuNXMtMTk1LjUgODcuNjk5MjE5LTE5NS41IDE5NS41YzAgMzUuMTMyODEyIDkuMzUxNTYyIDY5LjMzOTg0NCAyNy4xMDkzNzUgOTkuMzcxMDk0bC0yNi4zOTA2MjUgOTUuNDA2MjUgOTUuNDEwMTU2LTI2LjM4NjcxOWMzMC4wMzEyNSAxNy43NTc4MTMgNjQuMjM4MjgyIDI3LjEwOTM3NSA5OS4zNzEwOTQgMjcuMTA5Mzc1IDEwNy44MDA3ODEgMCAxOTUuNS04Ny42OTkyMTkgMTk1LjUtMTk1LjV6bS0yMjUuNS00NS41aC0zMGMwLTMzLjA4NTkzOCAyNi45MTQwNjItNjAgNjAtNjBzNjAgMjYuOTE0MDYyIDYwIDYwYzAgMTYuNzkyOTY5LTcuMTA5Mzc1IDMyLjkzMzU5NC0xOS41MTE3MTkgNDQuMjc3MzQ0bC0yNS40ODgyODEgMjMuMzI4MTI1djIzLjM5NDUzMWgtMzB2LTM2LjYwNTQ2OWwzNS4yMzQzNzUtMzIuMjVjNi4yOTY4NzUtNS43NjE3MTkgOS43NjU2MjUtMTMuNjI1IDkuNzY1NjI1LTIyLjE0NDUzMSAwLTE2LjU0Mjk2OS0xMy40NTcwMzEtMzAtMzAtMzBzLTMwIDEzLjQ1NzAzMS0zMCAzMHptMTUgMTIxaDMwdjMwaC0zMHptMCAwIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiNGRkZGRkYiIGRhdGEtb2xkX2NvbG9yPSIjMDAwMDAwIj48L3BhdGg+PC9nPiA8L3N2Zz4=" />
                 <?php pll_e('Have a question'); ?>
+                <div class="rippleJS"></div>
               </a>
               <?php if( $brochure ) : ?>
               <a class="product__brochure button ml-1" href="<?php echo $brochure['url']; ?>" target="_blank">
                 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiBjbGFzcz0iIj48Zz48Zz4KCTxnPgoJCTxwYXRoIGQ9Ik0zODIuNTYsMjMzLjM3NkMzNzkuOTY4LDIyNy42NDgsMzc0LjI3MiwyMjQsMzY4LDIyNGgtNjRWMTZjMC04LjgzMi03LjE2OC0xNi0xNi0xNmgtNjRjLTguODMyLDAtMTYsNy4xNjgtMTYsMTZ2MjA4aC02NCAgICBjLTYuMjcyLDAtMTEuOTY4LDMuNjgtMTQuNTYsOS4zNzZjLTIuNjI0LDUuNzI4LTEuNiwxMi40MTYsMi41MjgsMTcuMTUybDExMiwxMjhjMy4wNCwzLjQ4OCw3LjQyNCw1LjQ3MiwxMi4wMzIsNS40NzIgICAgYzQuNjA4LDAsOC45OTItMi4wMTYsMTIuMDMyLTUuNDcybDExMi0xMjhDMzg0LjE5MiwyNDUuODI0LDM4NS4xNTIsMjM5LjEwNCwzODIuNTYsMjMzLjM3NnoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgZGF0YS1vbGRfY29sb3I9IiMwMDAwMDAiIHN0eWxlPSJmaWxsOiNGRkZGRkYiPjwvcGF0aD4KCTwvZz4KPC9nPjxnPgoJPGc+CgkJPHBhdGggZD0iTTQzMiwzNTJ2OTZIODB2LTk2SDE2djEyOGMwLDE3LjY5NiwxNC4zMzYsMzIsMzIsMzJoNDE2YzE3LjY5NiwwLDMyLTE0LjMwNCwzMi0zMlYzNTJINDMyeiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBkYXRhLW9sZF9jb2xvcj0iIzAwMDAwMCIgc3R5bGU9ImZpbGw6I0ZGRkZGRiI+PC9wYXRoPgoJPC9nPgo8L2c+PC9nPiA8L3N2Zz4=" />
                 <?php pll_e('Download PDF'); ?>
+                <div class="rippleJS"></div>
               </a>
               <?php endif; ?>
               <ul class="social flex-fill">
@@ -95,6 +103,7 @@
       <?php endwhile; ?>
     <?php endif ?>
 
+    <div class="related-product">
     <?php
       $cats = wp_get_post_terms( get_the_ID(), 'product_cat', array( 'fields' => 'all' ) );
       $args = array(
@@ -105,37 +114,36 @@
         'orderby'         => 'rand',
         'tax_query'       => array(
           array(
-              'taxonomy' => 'product_cat',
-              'field'    => 'id',
-              'terms'    => array($cats[0]->term_id)
+            'taxonomy' => 'product_cat',
+            'field'    => 'id',
+            'terms'    => array($cats[0]->term_id)
           )
         )
       );
       $the_query = new WP_Query( $args );
       if ( $the_query->have_posts() ) { ?>
-      <div class="related-product">
-        <h3><span><?php pll_e('Related Product'); ?></span></h3>
-        <div class="row amano-row">
-          <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-            <div class="col-md-3 amano-col">
-              <div class="product-item">
-                <a href="<?php the_permalink() ?>" class="product-item__thumbnail">
-                  <?php
-                    if( has_post_thumbnail() ) : echo get_the_post_thumbnail( get_the_ID(), 'medium' );
-                    else : echo "<img src='https://via.placeholder.com/600x600/e8e8e8/e8e8e8'>";
-                    endif;
-                  ?>
-                </a>
-                <h4 class="product-item__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-                <div class="product-item__model"><?php the_field('_product_model'); ?></div>
-                <a class="product-item__view-detail" href="<?php the_permalink() ?>"><?php pll_e('View Detail') ?></a>
-              </div>
+      <h3><span><?php pll_e('Related Product'); ?></span></h3>
+      <div class="row amano-row">
+        <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+          <div class="col-md-3 amano-col">
+            <div class="product-item">
+              <a href="<?php the_permalink() ?>" class="product-item__thumbnail">
+                <?php
+                  if( has_post_thumbnail() ) : echo get_the_post_thumbnail( get_the_ID(), 'medium' );
+                  else : echo "<img src='https://via.placeholder.com/600x600/e8e8e8/e8e8e8'>";
+                  endif;
+                ?>
+              </a>
+              <h4 class="product-item__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+              <div class="product-item__model"><?php the_field('_product_model'); ?></div>
+              <a class="product-item__view-detail" href="<?php the_permalink() ?>"><?php pll_e('View Detail') ?></a>
             </div>
-          <?php endwhile; ?>
-        </div>
+          </div>
+        <?php endwhile; ?>
       </div>
     <?php }
       wp_reset_query();
     ?>
+    </div>
   </main>
 <?php get_footer(); ?>

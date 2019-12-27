@@ -6,13 +6,22 @@
   letter-spacing: 8px;
   margin: 0 auto;
   background: transparent;
-  transition: background 0.3s;
+  transition: opacity 0.3s;
+  background: rgba(255, 255, 255, 0.37);
 
-  .fp-completely & {
-    background: rgba(255, 255, 255, 0.37);
+  &:hover {
+    background: rgba(255, 255, 255, 0.47);
   }
 
-  &.is-playing:after {
+  body.home & {
+    opacity: 0;
+  }
+
+  body.home .fp-completely & {
+    opacity: 1;
+  }
+
+  &.is-playing::after {
     position: absolute;
     top: -10px;
     bottom: -10px;
@@ -61,12 +70,15 @@
     display: block;
     border: 1px solid #fff;
     border-radius: 100%;
-    opacity: 0;
-    transform: translateY(100%);
-    transition: opacity 0.4s, transform 0.5s;
-    transition-delay: 0.3s;
 
-    .fp-completely & {
+    body.home & {
+      opacity: 0;
+      transform: translateY(100%);
+      transition: opacity 0.4s, transform 0.5s;
+      transition-delay: 0.3s;
+    }
+
+    body.home .fp-completely & {
       opacity: 1;
       transform: translateY(0%);
     }
@@ -83,4 +95,6 @@
       transform: translate(-50%, -50%);
     }
   }
+
+  &:hover {}
 }

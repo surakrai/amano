@@ -1,5 +1,5 @@
 import ImagesLoaded from 'imagesloaded'
-import Swiper from 'swiper/dist/js/swiper'
+import Swiper from 'swiper'
 import Fullpage from 'fullpage.js'
 import Parallax from 'parallax-js'
 
@@ -9,12 +9,11 @@ export default {
     const navItems = document.querySelectorAll('.welcome__navigation-item')
     const scrollIcon = document.querySelector('.welcome__scroll-icon')
     const videoParallax = document.querySelector('.video-parallax')
-    const videoPlayer = document.querySelector('.video-player')
-    const playVideo = document.querySelector('.video-player__play')
     const hamburger = document.querySelector('.hamburger-menu')
     const body = document.querySelector('body')
 
     const fullpage = new Fullpage('.home-fullpage', {
+      licenseKey: 'D13C582-F31F4AE6-ABD78E7A-BAD33678',
       anchors: [
         'welcome',
         'about-company',
@@ -67,12 +66,13 @@ export default {
       init: false,
       slidesPerView: 4,
       slidesPerColumn: 2,
+      slidesPerGroup: 4,
+      slidesPerColumnFill: 'row',
       spaceBetween: 14,
-      speed: 400,
       loop: false,
       navigation: {
-        nextEl: '.our-project .swiper-button-next',
-        prevEl: '.our-project .swiper-button-prev'
+        nextEl: '.our-project .button-next',
+        prevEl: '.our-project .button-prev'
       }
     })
 
@@ -80,33 +80,36 @@ export default {
       swiperProject.init()
     })
 
+    const swiperProduct = new Swiper('.product-details .swiper-container', {
+      init: false,
+      slidesPerView: 'auto',
+      spaceBetween: 0,
+      speed: 400,
+      loop: false,
+      breakpoints: {
+        575: {
+          slidesPerView: 2
+        },
+        767: {
+          slidesPerView: 3
+        },
+        1199: {
+          slidesPerView: 4
+        },
+        1600: {
+          slidesPerView: 5
+        }
+      }
+    })
+
+    ImagesLoaded('.our-project', () => {
+      swiperProduct.init()
+    })
+
     new Parallax(videoParallax, {
       relativeInput: false,
       pointerEvents: true
     })
-
-    playVideo.onclick = function(event) {
-      event.preventDefault()
-
-      videoPlayer.classList.add('is-playing')
-
-      const iframe = document.createElement('iframe')
-
-      iframe.setAttribute(
-        'src',
-        `https://www.youtube.com/embed/${this.id}?autoplay=1&rel=0&modestbranding=1`
-      )
-      iframe.setAttribute('frameborder', 0)
-      iframe.setAttribute(
-        'allow',
-        'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-      )
-      iframe.setAttribute('allowfullscreen', true)
-      iframe.setAttribute('width', this.clientWidth)
-      iframe.setAttribute('height', this.clientHeight)
-
-      this.parentNode.replaceChild(iframe, this)
-    }
   },
 
   finalize() {}

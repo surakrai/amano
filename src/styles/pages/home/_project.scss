@@ -1,4 +1,8 @@
 .our-project {
+  .fp-tableCell {
+    padding-top: 40px;
+  }
+
   h3 {
     text-transform: uppercase;
     font-weight: 300;
@@ -52,4 +56,46 @@
   .swiper-slide:nth-child(5) img {
     transition-delay: 0.8s;
   }
+
+  button {
+    position: relative;
+    height: auto;
+    border: none;
+    background: none;
+    padding: 7px 12px;
+    margin: 30px -5px 0;
+    border-radius: 3px;
+    overflow: hidden;
+    outline: none !important;
+
+    &::before {
+      border-top: solid 5px transparent;
+      border-bottom: solid 5px transparent;
+      display: inline-block;
+      vertical-align: middle;
+      content: '';
+    }
+
+    &.button-prev {
+      text-align: right;
+
+      &::before {
+        border-right: solid 8px #fff;
+      }
+    }
+
+    &.button-next {
+      text-align: left;
+
+      &::before {
+        border-left: solid 8px #fff;
+      }
+    }
+
+    &.swiper-button-disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
 }

@@ -11,13 +11,15 @@
     </div>
     <div class="col-md-5">
       <h3>Site Map</h3>
-      <ul>
-        <li><a href="#">About Company</a></li>
-        <li><a href="#">Business Area</a></li>
-        <li><a href="#">Product Details</a></li>
-        <li><a href="#">Our News</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
+      <?php
+        wp_nav_menu (
+          array(
+            'menu_class'         => 'footer-nenu',
+            'container'          => 'ul',
+            'theme_location'     => 'footer_navigation'
+          )
+        );
+      ?>
     </div>
   </div>
 </div>
