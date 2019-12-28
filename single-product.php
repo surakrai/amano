@@ -59,13 +59,53 @@
               <?php endif; ?>
 
             </div>
-            <form id="question-form" style="display: none;">
-              <div class="inline-inner">
-                <h4 class="text-center">Example of inline content</h4>
-                <p class="text-center">Duis quis ipsum vehicula eros ultrices lacinia. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices</p>
-                <a class="gtrigger-close button" href="#">Close Box</a>
-              </div>
-            </form>
+            <div id="question-form" style="display: none;">
+              <form class="contact-form">
+                <h4><?php pll_e('Have a question'); ?></h4>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group contact-firstname">
+                      <label for="contact-firstname"><?php pll_e('First Name') ?> : </label>
+                      <input type="text" name="firstname" class="form-control" id="contact-firstname">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group contact-lastname">
+                      <label for="contact-email"><?php pll_e('Last name') ?> : </label>
+                      <input type="text" name="lastname" class="form-control" id="contact-lastname">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group contact-email">
+                      <label for="contact-email"><?php pll_e('Email') ?> : </label>
+                      <input type="email" name="email" class="form-control" id="contact-email">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group contact-phone">
+                      <label for="contact-phone"><?php pll_e('Phone') ?> : </label>
+                      <input type="tel" name="phone" class="form-control" id="contact-phone">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group textarea">
+                  <label for="contact-message"><?php pll_e('Message') ?> : </label>
+                  <textarea name="message" class="form-control" id="contact-message" rows="4"></textarea>
+                </div>
+                <input type="hidden" name="subject" value="<?php echo get_the_title() . ' (' . get_field('_product_model') ?> )">
+
+                <div class="contact-form__response"></div>
+
+                <p class="text-right">
+                  <button class="gtrigger-close button button--secondary">Close<div class="rippleJS"></div></button>
+                  <button class="submit-contact button"><span><?php pll_e('Submit') ?></span><div class="rippleJS"></div></button>
+                </p>
+              </form>
+            </div>
             <div class="product__footer d-flex justify-content-between align-items-center">
               <a class="product__question button mr-1" href="#question-form" data-glightbox="width: 500; height: auto;">
                 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMiIgY2xhc3M9IiI+PGc+PHBhdGggZD0ibTUxMiAzNDYuNWMwLTYzLjUzNTE1Ni0zNi40NDkyMTktMTIwLjIzODI4MS05MS4wMzkwNjItMTQ3LjgyMDMxMi0xLjY5NTMxMyAxMjEuODIwMzEyLTEwMC40NjA5MzggMjIwLjU4NTkzNy0yMjIuMjgxMjUgMjIyLjI4MTI1IDI3LjU4MjAzMSA1NC41ODk4NDMgODQuMjg1MTU2IDkxLjAzOTA2MiAxNDcuODIwMzEyIDkxLjAzOTA2MiAyOS43ODkwNjIgMCA1OC43NTc4MTItNy45MzM1OTQgODQuMjEwOTM4LTIzLjAwNzgxMmw4MC41NjY0MDYgMjIuMjg1MTU2LTIyLjI4NTE1Ni04MC41NjY0MDZjMTUuMDc0MjE4LTI1LjQ1MzEyNiAyMy4wMDc4MTItNTQuNDIxODc2IDIzLjAwNzgxMi04NC4yMTA5Mzh6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojRkZGRkZGIiBkYXRhLW9sZF9jb2xvcj0iIzAwMDAwMCI+PC9wYXRoPjxwYXRoIGQ9Im0zOTEgMTk1LjVjMC0xMDcuODAwNzgxLTg3LjY5OTIxOS0xOTUuNS0xOTUuNS0xOTUuNXMtMTk1LjUgODcuNjk5MjE5LTE5NS41IDE5NS41YzAgMzUuMTMyODEyIDkuMzUxNTYyIDY5LjMzOTg0NCAyNy4xMDkzNzUgOTkuMzcxMDk0bC0yNi4zOTA2MjUgOTUuNDA2MjUgOTUuNDEwMTU2LTI2LjM4NjcxOWMzMC4wMzEyNSAxNy43NTc4MTMgNjQuMjM4MjgyIDI3LjEwOTM3NSA5OS4zNzEwOTQgMjcuMTA5Mzc1IDEwNy44MDA3ODEgMCAxOTUuNS04Ny42OTkyMTkgMTk1LjUtMTk1LjV6bS0yMjUuNS00NS41aC0zMGMwLTMzLjA4NTkzOCAyNi45MTQwNjItNjAgNjAtNjBzNjAgMjYuOTE0MDYyIDYwIDYwYzAgMTYuNzkyOTY5LTcuMTA5Mzc1IDMyLjkzMzU5NC0xOS41MTE3MTkgNDQuMjc3MzQ0bC0yNS40ODgyODEgMjMuMzI4MTI1djIzLjM5NDUzMWgtMzB2LTM2LjYwNTQ2OWwzNS4yMzQzNzUtMzIuMjVjNi4yOTY4NzUtNS43NjE3MTkgOS43NjU2MjUtMTMuNjI1IDkuNzY1NjI1LTIyLjE0NDUzMSAwLTE2LjU0Mjk2OS0xMy40NTcwMzEtMzAtMzAtMzBzLTMwIDEzLjQ1NzAzMS0zMCAzMHptMTUgMTIxaDMwdjMwaC0zMHptMCAwIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiNGRkZGRkYiIGRhdGEtb2xkX2NvbG9yPSIjMDAwMDAwIj48L3BhdGg+PC9nPiA8L3N2Zz4=" />

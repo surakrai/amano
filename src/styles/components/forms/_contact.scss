@@ -1,0 +1,79 @@
+.contact {
+
+  &-form {
+    position: relative;
+    overflow: hidden;
+
+    h4 {
+      font-weight: 600;
+      font-size: 20px;
+      text-transform: uppercase;
+      color: $primary-color;
+      margin-bottom: 30px;
+      padding-bottom: 5px;
+    }
+    
+    .form-group {
+      position: relative;
+      margin-bottom: 30px;
+
+      em {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        font-size: 12px;
+        padding-top: 5px;
+        color: $primary-color;
+      }
+
+      &.has-error .form-control {
+        border-color: #0c74d7;
+      }
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 8px 0;
+      border: none;
+      outline: none;
+      border-bottom: solid 1px #c4c4c4;
+
+      &:focus {
+        border-bottom-color: #0c74d7;
+      }
+    }
+    
+    button {
+      font-size: 12px;
+    }
+
+    &__response {
+      div {
+        position: relative;
+        margin-bottom: 30px;
+        padding: 10px 10px 10px 65px;
+        background: #f8f8f8;
+
+        .checkmark {
+          position: absolute;
+          top: 10px;
+          left: 15px;
+        }
+
+        h4 {
+          font-size: 18px;
+          line-height: 1;
+          color: $primary-color;
+          margin: 0;
+        }
+
+        p {
+          margin: 0;
+        }
+
+      }
+    }
+
+  }
+}

@@ -12,8 +12,7 @@ get_header(); ?>
   <?php if ( have_posts() ) : ?>
     <div class="main-content container contact">
 
-      <div class="row">
-
+      <div class="row mb-5">
         <div class="col-md-5">
           <div class="contact-address">
             <h3>Amano Thai International Co., Ltd.</h3>

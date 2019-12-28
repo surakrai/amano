@@ -94,7 +94,7 @@ class Amano_Contact {
     register_rest_route('amano', '/contact', array(
       'methods'  => 'POST',
       'callback' => array($this, 'api'),
-      'args'     => array('firstname', 'lastname', 'email', 'phone', 'message')
+      'args'     => array('firstname', 'lastname', 'email', 'phone', 'subject', 'message')
     ));
 
   }

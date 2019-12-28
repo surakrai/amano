@@ -1,6 +1,7 @@
 import ImagesLoaded from 'imagesloaded'
 import Swiper from 'swiper'
 import GLightbox from 'glightbox'
+import Contact from './contact-form'
 
 export default {
   init() {
@@ -25,9 +26,12 @@ export default {
       loop: false
     })
 
-    const question = GLightbox({
+    GLightbox({
       selector: 'product__question',
-      loop: false
+      loop: false,
+      onOpen: () => {
+        Contact('#glightbox-body .contact-form')
+      }
     })
 
     gallery.on('slideChange init', () => {
