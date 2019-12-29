@@ -35,12 +35,6 @@
     transition: opacity 0.4s, transform 0.5s;
     transition-delay: 0.1s;
 
-    .fp-viewing-contact &,
-    .fp-viewing-our-news & {
-      opacity: 1;
-      transform: translateY(0%);
-    }
-
     &:nth-child(2) {
       transition-delay: 0.3s;
     }
@@ -50,4 +44,10 @@
     }
   }
 
+  &.loaded {
+    .news-col {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
 }

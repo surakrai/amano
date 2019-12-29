@@ -8,7 +8,7 @@ define('THEME_DIR', trailingslashit(get_template_directory()));
 define('THEME_URI', trailingslashit(get_template_directory_uri()));
 define('THEME_NAME', 'Amano');
 define('THEME_SLUG', 'amano');
-define('THEME_VERSION', '0.4.4');
+define('THEME_VERSION', '0.4.7');
 define('SRC_URI', THEME_URI . 'src');
 define('STATIC_URI', THEME_URI . 'static');
 define('INC_DIR', THEME_DIR . 'inc');

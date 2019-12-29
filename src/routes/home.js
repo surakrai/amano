@@ -33,7 +33,11 @@ export default {
         'Our Project',
         'Our News',
         'Contact'
-      ]
+      ],
+      onLeave(origin, destination) {
+        // eslint-disable-next-line no-param-reassign
+        destination.item.className += ' loaded'
+      }
     })
 
     hamburger.onclick = () => {
@@ -96,7 +100,7 @@ export default {
         1199: {
           slidesPerView: 4
         },
-        1600: {
+        1500: {
           slidesPerView: 5
         }
       }
@@ -112,5 +116,11 @@ export default {
     })
   },
 
-  finalize() {}
+  finalize() {
+    ImagesLoaded('.wrapper', () => {
+      setTimeout(() => {
+        document.body.className += ' loaded'
+      }, 400)
+    })
+  }
 }

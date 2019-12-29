@@ -19,8 +19,10 @@
   img {
     opacity: 0;
     transition: opacity 0.4s;
+  }
 
-    .fp-viewing-our-project &{
+  &.loaded {
+    img {
       opacity: 1;
     }
   }

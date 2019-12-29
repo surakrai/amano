@@ -1,18 +1,25 @@
 <?php get_header(); ?>
+<div class="preloader">
+	<svg class="logo" version="1.1" viewBox="0 0 174 174" enable-background="new 0 0 174 174" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+		<path class="logo__item logo__item--1" d="m82.166945,11.669529l-82,142c78,-40 84,-52 82,-142z" fill="#0c74d7"/>
+		<path class="logo__item logo__item--2" d="m4.366945,158.669529l164,-0.1c-64.2,-42.9 -95.2,-42.9 -164,0.1z" fill="#0c74d7"/>
+		<path class="logo__item logo__item--3" d="m173.766945,153.269529l-82.8,-141.5c-3.8,87.6 3.6,98.7 82.8,141.5z" fill="#0c74d7"/>
+	</svg>
+</div>
 <div class="home-fullpage">
   <div class="welcome section">
 		<div class="container">
-			<h1><small>Perfect technique, principle of Amano Thailand</small> World’s Innovative Technology Creator</h1>
+			<h1><small>Perfect technique, principle of Amano Thailand</small> <strong>World’s Innovative Technology Creator</strong></h1>
 		</div>
 		<div class="welcome__navigation">
 			<div class="container">
 				<ul class="d-flex justify-content-between">
-					<li class="flex-fill"><a class="welcome__navigation-item" data-anchor="about-company" href="#">About Company</a></li>
-					<li class="flex-fill"><a class="welcome__navigation-item" data-anchor="business-area" href="#">Business Area</a></li>
-					<li class="flex-fill"><a class="welcome__navigation-item" data-anchor="product-details" href="#">Product Details</a></li>
-					<li class="flex-fill"><a class="welcome__navigation-item" data-anchor="our-project" href="#">Our Project</a></li>
-					<li class="flex-fill"><a class="welcome__navigation-item" data-anchor="our-news" href="#">Our News</a></li>
-					<li class="flex-fill"><a class="welcome__navigation-item" data-anchor="contact" href="#">Contact</a></li>
+					<li><a class="welcome__navigation-item" data-anchor="about-company" href="#">About Company</a></li>
+					<li><a class="welcome__navigation-item" data-anchor="business-area" href="#">Business Area</a></li>
+					<li><a class="welcome__navigation-item" data-anchor="product-details" href="#">Product Details</a></li>
+					<li><a class="welcome__navigation-item" data-anchor="our-project" href="#">Our Project</a></li>
+					<li><a class="welcome__navigation-item" data-anchor="our-news" href="#">Our News</a></li>
+					<li><a class="welcome__navigation-item" data-anchor="contact" href="#">Contact</a></li>
 				</ul>
 			</div>
 		</div>
