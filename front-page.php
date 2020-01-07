@@ -13,7 +13,7 @@
 		</div>
 		<div class="welcome__navigation">
 			<div class="container">
-				<ul class="d-flex justify-content-between">
+				<ul class="d-none d-lg-flex justify-content-between">
 					<li><a class="welcome__navigation-item" data-anchor="about-company" href="#">About Company</a></li>
 					<li><a class="welcome__navigation-item" data-anchor="business-area" href="#">Business Area</a></li>
 					<li><a class="welcome__navigation-item" data-anchor="product-details" href="#">Product Details</a></li>
@@ -32,16 +32,19 @@
 		<div class="container">
 			<div class="about__description">
 				<?php the_field('_home_about_content'); ?>
+				<p class="text-center pt-3 d-none"><a href="#" class="button"><?php pll_e('Read More') ?></a></p>
 			</div>
-			<div class="about__feature row no-gutters">
-        <?php if( have_rows('_home_about_feature') ): ?>
-          <?php while( have_rows('_home_about_feature') ): the_row(); ?>
-            <div class="about__feature-item col-md-3">
+			<div class="about__feature swiper-container">
+				<div class="swiper-wrapper">
+				<?php if( have_rows('_home_about_feature') ): ?>
+					<?php while( have_rows('_home_about_feature') ): the_row(); ?>
+						<div class="about__feature-item swiper-slide">
 							<?php echo wp_get_attachment_image(get_sub_field('image'), 'about-feature'); ?>
 							<h4><?php the_sub_field('title'); ?></h4>
-            </div>
-          <?php endwhile; ?>
-        <?php endif; ?>
+						</div>
+					<?php endwhile; ?>
+				<?php endif; ?>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -115,11 +118,12 @@
 				$the_query = new WP_Query( $args );
 			?>
 			<?php if ( $the_query->have_posts() ) : ?>
-				<div class="row">
+				<div class="swiper-container swiper-our-news">
+					<div class="swiper-wrapper">
 					<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-						<div class="col-sm-4 news-col">
-							<figure class="news-item">
-								<a class="news-thumbnail" href="<?php the_permalink() ?>">
+						<div class="swiper-slide news-col">
+							<figure class="news-item d-flex flex-column">
+								<a class="news-item-thumbnail" href="<?php the_permalink() ?>">
 									<?php
 										if( has_post_thumbnail() ) :
 											the_post_thumbnail('thumb-news' );
@@ -127,16 +131,17 @@
 											echo '<img src="https://via.placeholder.com/150.jpg/f8f8f8/f8f8f8">';
 										endif
 									?>
-									<span class="news-date"><?php echo get_the_date(); ?></span>
+									<span class="news-item__date"><?php echo get_the_date(); ?></span>
 								</a>
-								<figcaption class="news-caption">
-									<h4 class="news-title">
+								<figcaption class="news-item__caption">
+									<h4 class="news-item__title">
 										<a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
 									</h4>
 								</figcaption>
 							</figure>
 						</div>
 					<?php endwhile; ?>
+					</div>
 				</div>
 				<?php wp_reset_query(); ?>
 			<?php endif ?>

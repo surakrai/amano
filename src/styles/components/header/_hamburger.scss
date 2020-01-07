@@ -4,7 +4,11 @@
   vertical-align: middle;
   margin: 30px 15px 29px 0;
   cursor: pointer;
-  
+
+  @media (max-width: 991px){
+    margin: 19px 0;
+  }
+
   span {
     color: #fff;
     font-weight: 300;

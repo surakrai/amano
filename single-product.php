@@ -8,16 +8,25 @@
   <main class="main-content container product">
     <?php if ( have_posts() ) : ?>
       <?php while ( have_posts() ) : the_post();
+        $thumb = '';
         $brochure = get_field('_product_brochure');
-        $images = get_field('_product_gallery');
+        $images = get_field('_product_gallery') ?: [];
+        $video = get_field('_product_video', false, false);
+        $video_cover = wp_get_attachment_image_url(get_field('_product_video_cover'), 'full');        
         array_unshift($images, array('url' => get_the_post_thumbnail_url( get_the_ID(), 'full')));
       ?>
         <div class="row">
-          <div class="col-md-5">
+          <div class="col-lg-5">
             <div class="product__gallery">
-              <?php if(count($images) > 1) : ?>
+              <?php if(count($images) > 1 || $video) : ?>
               <div class="swiper-container swiper-product-gallery">
                 <div class="swiper-wrapper">
+                <?php if($video) : ?>
+                  <div class="swiper-slide">
+                    <a class="product__gallery-item product__gallery-item--video glightbox" href="<?php echo $video; ?>"><img src="<?php echo $video_cover; ?>"></a>
+                  </div>
+                <?php $thumb .= '<a href="#" class="video"><img src="'. $video_cover .'"></a>'; ?>
+                <?php endif; ?>
                 <?php foreach ($images as $key => $image) : ?>
                   <div class="swiper-slide">
                     <a class="product__gallery-item glightbox" href="<?php echo $image['url'] ?>">
@@ -36,7 +45,7 @@
               <?php endif; ?>
             </div>
           </div>
-          <div class="col-md-6 offset-md-1">
+          <div class="col-lg-6 offset-lg-1">
             <h2 class="product__title"><?php the_title(); ?></h2>
             <div class="product__model"><?php the_field('_product_model'); ?></div>
             <div class="product__description"><?php the_content(); ?></div>
@@ -106,7 +115,7 @@
                 </p>
               </form>
             </div>
-            <div class="product__footer d-flex justify-content-between align-items-center">
+            <div class="product__footer d-block d-xl-flex d-lg-block d-md-flex justify-content-between align-items-center">
               <a class="product__question button mr-1" href="#question-form" data-glightbox="width: 500; height: auto;">
                 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMiIgY2xhc3M9IiI+PGc+PHBhdGggZD0ibTUxMiAzNDYuNWMwLTYzLjUzNTE1Ni0zNi40NDkyMTktMTIwLjIzODI4MS05MS4wMzkwNjItMTQ3LjgyMDMxMi0xLjY5NTMxMyAxMjEuODIwMzEyLTEwMC40NjA5MzggMjIwLjU4NTkzNy0yMjIuMjgxMjUgMjIyLjI4MTI1IDI3LjU4MjAzMSA1NC41ODk4NDMgODQuMjg1MTU2IDkxLjAzOTA2MiAxNDcuODIwMzEyIDkxLjAzOTA2MiAyOS43ODkwNjIgMCA1OC43NTc4MTItNy45MzM1OTQgODQuMjEwOTM4LTIzLjAwNzgxMmw4MC41NjY0MDYgMjIuMjg1MTU2LTIyLjI4NTE1Ni04MC41NjY0MDZjMTUuMDc0MjE4LTI1LjQ1MzEyNiAyMy4wMDc4MTItNTQuNDIxODc2IDIzLjAwNzgxMi04NC4yMTA5Mzh6bTAgMCIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojRkZGRkZGIiBkYXRhLW9sZF9jb2xvcj0iIzAwMDAwMCI+PC9wYXRoPjxwYXRoIGQ9Im0zOTEgMTk1LjVjMC0xMDcuODAwNzgxLTg3LjY5OTIxOS0xOTUuNS0xOTUuNS0xOTUuNXMtMTk1LjUgODcuNjk5MjE5LTE5NS41IDE5NS41YzAgMzUuMTMyODEyIDkuMzUxNTYyIDY5LjMzOTg0NCAyNy4xMDkzNzUgOTkuMzcxMDk0bC0yNi4zOTA2MjUgOTUuNDA2MjUgOTUuNDEwMTU2LTI2LjM4NjcxOWMzMC4wMzEyNSAxNy43NTc4MTMgNjQuMjM4MjgyIDI3LjEwOTM3NSA5OS4zNzEwOTQgMjcuMTA5Mzc1IDEwNy44MDA3ODEgMCAxOTUuNS04Ny42OTkyMTkgMTk1LjUtMTk1LjV6bS0yMjUuNS00NS41aC0zMGMwLTMzLjA4NTkzOCAyNi45MTQwNjItNjAgNjAtNjBzNjAgMjYuOTE0MDYyIDYwIDYwYzAgMTYuNzkyOTY5LTcuMTA5Mzc1IDMyLjkzMzU5NC0xOS41MTE3MTkgNDQuMjc3MzQ0bC0yNS40ODgyODEgMjMuMzI4MTI1djIzLjM5NDUzMWgtMzB2LTM2LjYwNTQ2OWwzNS4yMzQzNzUtMzIuMjVjNi4yOTY4NzUtNS43NjE3MTkgOS43NjU2MjUtMTMuNjI1IDkuNzY1NjI1LTIyLjE0NDUzMSAwLTE2LjU0Mjk2OS0xMy40NTcwMzEtMzAtMzAtMzBzLTMwIDEzLjQ1NzAzMS0zMCAzMHptMTUgMTIxaDMwdjMwaC0zMHptMCAwIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIHN0eWxlPSJmaWxsOiNGRkZGRkYiIGRhdGEtb2xkX2NvbG9yPSIjMDAwMDAwIj48L3BhdGg+PC9nPiA8L3N2Zz4=" />
                 <?php pll_e('Have a question'); ?>
@@ -165,11 +174,11 @@
       <h3><span><?php pll_e('Related Product'); ?></span></h3>
       <div class="row amano-row">
         <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-          <div class="col-md-3 amano-col">
+          <div class="col-lg-3 col-6 amano-col">
             <div class="product-item">
               <a href="<?php the_permalink() ?>" class="product-item__thumbnail">
                 <?php
-                  if( has_post_thumbnail() ) : echo get_the_post_thumbnail( get_the_ID(), 'medium' );
+                  if( has_post_thumbnail() ) : echo get_the_post_thumbnail( get_the_ID(), 'thumb-product' );
                   else : echo "<img src='https://via.placeholder.com/600x600/e8e8e8/e8e8e8'>";
                   endif;
                 ?>

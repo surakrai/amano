@@ -1,7 +1,11 @@
 .our-news {
 
   .fp-tableCell {
-    padding-top: 50px;
+    padding-top: 60px;
+  }
+
+  .swiper-container {
+    overflow: visible !important;
   }
 
   h3 {
@@ -11,6 +15,10 @@
     letter-spacing: 3px;
     color: $primary-color;
     margin-bottom: 90px;
+
+    @media (max-height: 800px){
+      margin-bottom: 40px;
+    }
 
     strong {
       font-weight: 700;
@@ -27,9 +35,14 @@
     background: #fff;
     border-radius: 30px;
     margin-top: 50px;
+
+    @media (max-height: 800px){
+      margin-top: 10px;
+    }
   }
 
   .news-col {
+    height: auto;
     opacity: 0;
     transform: translateY(40%);
     transition: opacity 0.4s, transform 0.5s;

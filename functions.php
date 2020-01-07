@@ -8,7 +8,7 @@ define('THEME_DIR', trailingslashit(get_template_directory()));
 define('THEME_URI', trailingslashit(get_template_directory_uri()));
 define('THEME_NAME', 'Amano');
 define('THEME_SLUG', 'amano');
-define('THEME_VERSION', '0.4.7');
+define('THEME_VERSION', '0.6.9');
 define('SRC_URI', THEME_URI . 'src');
 define('STATIC_URI', THEME_URI . 'static');
 define('INC_DIR', THEME_DIR . 'inc');
@@ -45,9 +45,8 @@ function amano_enqueue_scripts() {
   wp_localize_script(THEME_SLUG . '-js', 'AMANO', array(
 		'ajaxurl'      => admin_url( 'admin-ajax.php' ),
 		'api_endpoint' => get_rest_url(),
-		'device'       => '',		
-		'pin'          => STATIC_URI . '/images/pin.png',
-		'post_id'      => is_singular('review') ? get_the_ID() : ''
+		'producturl'   => get_post_type_archive_link('product'),
+		'device'       => ''
 	));
 	
 }
@@ -97,8 +96,8 @@ if ( ! function_exists( 'amano_setup' ) ) :
 
 		add_theme_support('title-tag');
 
-		add_theme_support( 'wp-block-styles' );
-		add_theme_support( 'responsive-embeds' );
+		// add_theme_support( 'wp-block-styles' );
+		// add_theme_support( 'responsive-embeds' );
 
     // add_theme_support('post-formats', array( 'video', 'gallery' ));
 
@@ -107,11 +106,13 @@ if ( ! function_exists( 'amano_setup' ) ) :
 		add_image_size('about-feature', 300, 300, true);
 		add_image_size('our-project', 534, 352, true);
 		add_image_size('thumb-gallery', 300, 240, true);
+		add_image_size('thumb-product', 400, 300, true);
 
 		add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form']);
 
 	  register_nav_menus(array(
 			'primary_navigation'         => __('Primary Navigation', THEME_SLUG),
+			'primary_navigation_mobile'  => __('Primary Navigation Mobile', THEME_SLUG),			
 	    'footer_navigation'          => __('Footer Navigation', THEME_SLUG),
 		));
 		
@@ -155,8 +156,6 @@ function amano_remove_menus_admin(){
 
 }
 
-
-
 add_filter('body_class', 'add_slug_to_body_class');
 
 function add_slug_to_body_class($classes) {
@@ -184,10 +183,11 @@ function add_slug_to_body_class($classes) {
 		$post_type = get_post_type_object(get_post_type());
 
 		if($post_type->name === 'gallery') $classes[] = sanitize_html_class($post_type->name);
+		if($post_type->name === 'product') $classes[] = sanitize_html_class('archive-' . $post_type->name);
 
 	} elseif(is_tax()) {
-		// $taxonomy = explode('_', get_queried_object()->taxonomy);
-		// $classes[] = sanitize_html_class($taxonomy[0]);
+		$taxonomy = explode('_', get_queried_object()->taxonomy);
+		$classes[] = sanitize_html_class('archive-' . $taxonomy[0]);
 	}
 	
 	return $classes;
@@ -242,10 +242,10 @@ function amano_login_logo() { ?>
   <style type="text/css">
     body.login div#login h1 a {
       width: 100%;
-      height: 165px;
+      height: 38px;
       padding: 0px;
       margin: 0px;
-      background-image: url(<?php echo IMG_URI ?>/logo.png);
+      background-image: url(<?php echo content_url('uploads/2019/12/logo-color_@2x.png'); ?>);
       background-size: 50%;
     }
   </style>
@@ -358,3 +358,28 @@ function add_the_table_plugin( $plugins ) {
 add_filter('mce_external_plugins', 'add_the_table_plugin');
 
 // $plugins['table'] = content_url('plugins/mce-table-buttons/tinymce47-table/plugin.min.js');
+
+
+function line_notify( $message, $token ){
+
+  $body = array(
+    'message'         => $message
+  );
+
+  $response = wp_remote_post( 'https://notify-api.line.me/api/notify', array(
+    'method' => 'POST',
+    'headers' => array(
+      'Authorization' => 'Bearer '.$token,
+    ),
+    'body' => $body,
+  ));
+
+  $code = wp_remote_retrieve_response_code( $response );
+
+  if ($code=='200' ){
+    return true;
+  }else{
+    return false;
+  }
+  
+}

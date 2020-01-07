@@ -7,6 +7,7 @@ import Router from './util/Router'
 import common from './routes/common'
 import home from './routes/home'
 import contactUs from './routes/contact'
+import archiveProduct from './routes/archive-product'
 import product from './routes/product'
 import gallery from './routes/gallery'
 
@@ -19,6 +20,7 @@ const routes = new Router({
   home,
   contactUs,
   product,
+  archiveProduct,
   gallery
 })
 

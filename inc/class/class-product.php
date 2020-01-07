@@ -146,11 +146,17 @@ class Amano_Product {
         ),
         array(
           'key' => $prefix . 'image_tab',
-          'label' => __( 'Images', THEME_SLUG ),
+          'label' => __( 'Images/Video', THEME_SLUG ),
           'name' => $prefix . 'image_tab',
           'type' => 'tab',
           'placement' => 'top',
           'endpoint' => 0,
+        ),
+        array(
+          'key' => $prefix . 'image_title',
+          'label' => __( 'Image', THEME_SLUG ),
+          'name' => $prefix . 'image_title',
+          'type' => 'title',
         ),
         array (
           'key' => $prefix.'cover',
@@ -173,6 +179,33 @@ class Amano_Product {
           'instructions' => '800px X 800px',
         ),
         array(
+          'key' => $prefix . 'video_title',
+          'label' => __( 'Video', THEME_SLUG ),
+          'name' => $prefix . 'video_title',
+          'type' => 'title',
+        ),
+        array (
+          'key' => $prefix . 'video_cover',
+          'label' => __( 'Cover', THEME_SLUG ),
+          'name' => $prefix . 'video_cover',
+          'type' => 'image',
+          'return_format' => 'id',
+          'preview_size' => 'thumbnail',
+          'library' => 'all',
+          'mime_types' => '',
+        ),
+        array(
+          'key' => $prefix . 'video',
+          'label' => __( 'Video', THEME_SLUG ),
+          'name' => $prefix . 'video',
+          'type' => 'oembed',
+          'instructions' => '',
+          'required' => 0,
+          'conditional_logic' => 0,
+          'width' => '400',
+          'height' => '300',
+        ),
+        array(
           'key' => $prefix . 'content_tab',
           'label' => __( 'Content', THEME_SLUG ),
           'name' => $prefix . 'content_tab',
@@ -188,7 +221,7 @@ class Amano_Product {
           'required' => 0,
           'min' => 0,
           'max' => 0,
-          'layout' => 'table',
+          'layout' => 'row',
           'button_label' => __( 'Add Content', THEME_SLUG ),
           'sub_fields' => array (
             array (

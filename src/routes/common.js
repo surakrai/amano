@@ -6,9 +6,11 @@ export default {
     const playVideo = document.querySelector('.video-player__play')
     const videoPlayer = document.querySelector('.video-player')
     const accordions = document.querySelectorAll('.accordion__toggle')
+    const navigationItems = document.querySelectorAll('.site-navigation a')
+    const { body } = document
 
     hamburger.onclick = () => {
-      document.body.classList.toggle('open-menu')
+      body.classList.toggle('open-menu')
     }
 
     if (typeof playVideo !== 'undefined' && playVideo != null) {
@@ -55,11 +57,20 @@ export default {
       })
     }
 
+    for (let i = 0; i < navigationItems.length; i++) {
+      navigationItems[i].addEventListener('click', function(event) {
+        body.classList.remove('open-menu')
+        setTimeout(() => {
+          window.open(this.getAttribute('href'), '_parent')
+        }, 300)
+        event.preventDefault()
+      })
+    }
+
     window.onload = () => {
       const header = document.querySelector('.site-header')
       const content = document.querySelector('.main-content')
       const sidebar = document.querySelector('.sidebar')
-      const { body } = document
 
       let scrollPos = 0
 

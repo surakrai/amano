@@ -4,8 +4,15 @@
   padding: 100px 0 !important;
   background: #0c74d7;
 
-  &-branding {
+  .footer-branding {
     width: 154px;
+
+    body.home & {
+      @media (max-width: 767px) {
+        display: none;
+      }
+    }
+
   }
 
   h3 {
@@ -20,23 +27,37 @@
     list-style: none;
 
     li {
-      width: 50%;
+      
       display: block;
-      float: left;
+
+      @media (min-width: 768px) {
+        width: 50%;
+        float: left;
+      }
 
       a {
         color: #fff;
+
+        @media (max-width: 767px) {
+          display: block;
+          padding: 5px 0;
+        }
       }
     }
   }
-  
-  body:not(.home) {}
 
-  body.home &:not(.section) {}
+  .col-md-4 {
+    @media (max-width: 767px) {
+      margin-bottom: 15px;
+    }
+  }
 
   body.home &.section {
-    height: 345px !important;
+    @media (min-width: 768px){
+      height: 345px !important;
+    }
   }
+  
   .fp-tableCell {
     display: block;
     height: auto !important;

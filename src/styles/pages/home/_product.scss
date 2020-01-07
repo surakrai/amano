@@ -48,7 +48,7 @@
       z-index: 1;
     }
 
-    &:hover {
+    html.pc &:hover {
       box-shadow: 0 0 100px rgba(21, 21, 21, 1);
       z-index: 2;
 
@@ -110,6 +110,10 @@
     opacity: 0;
     transform: translateY(300px);
     transition: opacity 0.3s, transform 0.5s;
+
+    @media (max-height: 800px){
+      bottom: 10%;
+    }
 
     h4 {
       position: absolute;

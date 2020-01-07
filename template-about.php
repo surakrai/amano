@@ -18,7 +18,7 @@ get_header(); ?>
         <div class="about__feature row no-gutters">
           <?php if( have_rows('_about_greetings_feature') ): ?>
             <?php while( have_rows('_about_greetings_feature') ): the_row(); ?>
-              <div class="about__feature-item col-md-3">
+              <div class="about__feature-item col-md-3 col-6">
                 <?php echo wp_get_attachment_image(get_sub_field('image'), 'about-feature'); ?>
                 <h4><?php the_sub_field('title'); ?></h4>
               </div>
@@ -45,35 +45,35 @@ get_header(); ?>
           <?php the_field('_about_management_philosophy_content'); ?>
         </div>
         <div class="row no-gutters">
-          <div class="col-md-4">
+          <div class="col-xl-4">
             <div class="management-philosophy-item row no-gutters">
-              <div class="management-philosophy-item__image col-12">
+              <div class="management-philosophy-item__image col-xl-12 col-md-6 col-12">
                 <?php echo wp_get_attachment_image(get_field('_about_management_philosophy_item_1_image'), 'full'); ?>
               </div>
-              <div class="management-philosophy-item__description col-12">
+              <div class="management-philosophy-item__description col-xl-12 col-md-6 col-12">
                 <h4><?php the_field('_about_management_philosophy_item_1_title') ?></h4>
                 <?php echo wpautop(get_field('_about_management_philosophy_item_1_description')); ?>
               </div>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-xl-4">
             <div class="management-philosophy-item row no-gutters">
-              <div class="management-philosophy-item__image order-md-last col-12">
+              <div class="management-philosophy-item__image order-md-last col-xl-12 col-md-6 col-12">
                 <?php echo wp_get_attachment_image(get_field('_about_management_philosophy_item_2_image'), 'full') ?>
               </div>
-              <div class="management-philosophy-item__description order-md-first col-12">
-                <h4 class="d-none"><?php the_field('_about_management_philosophy_item_2_title') ?></h4>
+              <div class="management-philosophy-item__description order-md-first col-xl-12 col-md-6 col-12">
+                <h4 class="d-xl-none"><?php the_field('_about_management_philosophy_item_2_title') ?></h4>
                 <?php echo wpautop(get_field('_about_management_philosophy_item_2_description')); ?>
-                <h4 class=""><?php the_field('_about_management_philosophy_item_2_title') ?></h4>
+                <h4 class="d-none d-xl-block"><?php the_field('_about_management_philosophy_item_2_title') ?></h4>
               </div>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-xl-4">
             <div class="management-philosophy-item row no-gutters">
-              <div class="management-philosophy-item__image col-12">
+              <div class="management-philosophy-item__image col-xl-12 col-md-6 col-12">
                 <?php echo wp_get_attachment_image(get_field('_about_management_philosophy_item_3_image'), 'full') ?>
               </div>
-              <div class="management-philosophy-item__description col-12">
+              <div class="management-philosophy-item__description col-xl-12 col-md-6 col-12">
                 <h4><?php the_field('_about_management_philosophy_item_3_title') ?></h4>
                 <?php echo wpautop(get_field('_about_management_philosophy_item_3_description')); ?>
               </div>
@@ -99,7 +99,7 @@ get_header(); ?>
         <div class="global-network__country row">
           <?php if( have_rows('_about_global_network_country') ): ?>
             <?php while( have_rows('_about_global_network_country') ): the_row(); ?>
-              <div class="col-md-2 global-network__country-item">
+              <div class="col-xl-2 col-lg-3 col-sm-4 col-6 global-network__country-item">
                 <?php echo wp_get_attachment_image(get_sub_field('flag'), 'full'); ?>
                 <h4><?php the_sub_field('name'); ?></h4>
               </div>

@@ -9,6 +9,29 @@
   transition: opacity 0.3s;
   background: rgba(255, 255, 255, 0.37);
 
+  @media (max-width: 991px){
+    width: 640px;
+    height: 360px;
+  }
+
+  @media (max-width: 767px){
+    width: 510px;
+    height: 287px;
+    transform: none !important;
+  }
+
+  @media (max-width: 575px){
+    width: 360px;
+    height: 202px;
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
+  @media (max-width: 420px){
+    width: 300px;
+    height: 169px;
+  }
+
   &:hover {
     background: rgba(255, 255, 255, 0.47);
   }
@@ -54,6 +77,15 @@
     color: #fff;
     font-size: 36px;
     font-weight: 200;
+
+    @media (max-width: 991px){
+      font-size: 28px;
+    }
+
+    @media (max-width: 575px){
+      font-size: 20px;
+      padding-top: 50px;
+    }
   }
 
   span {
@@ -70,6 +102,16 @@
     display: block;
     border: 1px solid #fff;
     border-radius: 100%;
+
+    @media (max-width: 575px){
+      left: 50%;
+      top: 50px;
+      margin-left: -18px;
+    }
+
+    @media (max-width: 420px){
+      top: 30px;
+    }
 
     body.home & {
       opacity: 0;
@@ -95,6 +137,4 @@
       transform: translate(-50%, -50%);
     }
   }
-
-  &:hover {}
 }

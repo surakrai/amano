@@ -30,14 +30,14 @@ class Amano_Menu {
 
   if ( isset($post->ID) ) {
 
-		$current_post_type = get_post_type_object(get_post_type($post->ID));
-		$current_post_type_slug = $current_post_type->rewrite['slug'];
+		// $current_post_type = get_post_type_object(get_post_type($post->ID));
+		// $current_post_type_slug = $current_post_type->rewrite['slug'];
 
-		$menu_slug = strtolower(trim($item->url));
+		// $menu_slug = strtolower(trim($item->url));
 
-		if (strpos($menu_slug,$current_post_type_slug) !== false && $item->post_parent == 0) {
-			$classes[] = 'is-active';
-		}
+		// if (strpos($menu_slug,$current_post_type_slug) !== false && $item->post_parent == 0) {
+		// 	$classes[] = 'is-active';
+		// }
 
 	}
 	

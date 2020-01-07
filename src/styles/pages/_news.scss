@@ -3,5 +3,9 @@
 
   .main-content {
     padding-top: 110px;
+
+    @media (max-width: 991px) {
+      padding-top: 50px;
+    }
   }
 }

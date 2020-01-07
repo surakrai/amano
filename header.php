@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?> class="">
+<html <?php language_attributes(); ?> class="<?php echo wp_is_mobile() ? 'mobile' : 'pc'; ?>">
 	<head>
 		<meta charset="<?php bloginfo('charset'); ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,10 +33,18 @@
 						<?php
 							wp_nav_menu (
 								array(
-									'menu_class'         => 'menu-main d-flex justify-content-between',
+									'menu_class'         => 'menu-main d-none d-lg-flex justify-content-between',
 									'container'          => 'ul',
 									'theme_location'     => 'primary_navigation',
 									'walker'             => new Amano_Walker_Nav_Menu
+							));
+						?>
+						<?php
+							wp_nav_menu (
+								array(
+									'menu_class'         => 'menu-main-mobile d-lg-none',
+									'container'          => 'ul',
+									'theme_location'     => 'primary_navigation_mobile'
 							));
 						?>
 					</div>

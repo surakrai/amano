@@ -9,13 +9,21 @@
   padding: 5px 15px 0 5px;
   z-index: 9999;
   transform: scale(0.9);
-
+  
+  @media (max-width: 991px) {
+    color: #aaa;
+    z-index: 2;
+  }
   .open-menu & {
     opacity: 0;
   }
 
   a {
     color: #fff;
+    
+    @media (max-width: 991px) {
+      color: #aaa;
+    }
 
     &:hover {
       color: #000;

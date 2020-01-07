@@ -1,23 +1,21 @@
-'use strict';
-
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-const AssetsPlugin = require('assets-webpack-plugin');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const path = require('path');
-const fs = require('fs');
+const webpack = require('webpack')
+const autoprefixer = require('autoprefixer')
+const AssetsPlugin = require('assets-webpack-plugin')
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const path = require('path')
+const fs = require('fs')
 
 // Make sure any symlinks in the project folder are resolved:
 // https://github.com/facebookincubator/create-react-app/issues/637
-const appDirectory = fs.realpathSync(process.cwd());
+const appDirectory = fs.realpathSync(process.cwd())
 
 function resolveApp(relativePath) {
-  return path.resolve(appDirectory, relativePath);
+  return path.resolve(appDirectory, relativePath)
 }
 
 const paths = {
@@ -25,10 +23,10 @@ const paths = {
   appBuild: resolveApp('build'),
   appFrontendJs: resolveApp('src/frontend.js'),
   appAdminJs: resolveApp('src/backend.js'),
-  appNodeModules: resolveApp('node_modules'),
-};
+  appNodeModules: resolveApp('node_modules')
+}
 
-const DEV = process.env.NODE_ENV === 'development';
+const DEV = process.env.NODE_ENV === 'development'
 
 module.exports = {
   bail: !DEV,
@@ -38,7 +36,7 @@ module.exports = {
   target: 'web',
   devtool: DEV ? 'cheap-eval-source-map' : 'source-map',
   entry: {
-    front: paths.appFrontendJs, 
+    front: paths.appFrontendJs,
     admin: paths.appAdminJs
   },
   output: {
@@ -75,28 +73,26 @@ module.exports = {
       {
         test: /\.js?$/,
         loader: 'babel-loader',
-        include: paths.appSrc,
+        include: paths.appSrc
       },
       {
         test: /.scss$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: "css-loader",
+            loader: 'css-loader'
           },
           {
-            loader: "postcss-loader",
+            loader: 'postcss-loader',
             options: {
-              ident: "postcss", // https://webpack.js.org/guides/migrating/#complex-options
-              plugins: () => [
-                autoprefixer()
-              ]
+              ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
+              plugins: () => [autoprefixer()]
             }
           },
-          "sass-loader"
-          ],
-        }
-    ],
+          'sass-loader'
+        ]
+      }
+    ]
   },
   optimization: {
     minimize: !DEV,
@@ -105,7 +101,7 @@ module.exports = {
         cssProcessorOptions: {
           map: {
             inline: false,
-            annotation: true,
+            annotation: true
           }
         }
       }),
@@ -129,15 +125,15 @@ module.exports = {
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
-      DEBUG: false,
+      DEBUG: false
     }),
     new AssetsPlugin({
       path: paths.appBuild,
-      filename: 'assets.json',
+      filename: 'assets.json'
     }),
     DEV &&
       new FriendlyErrorsPlugin({
-        clearConsole: false,
+        clearConsole: false
       }),
     DEV &&
       new BrowserSyncPlugin({
@@ -146,7 +142,7 @@ module.exports = {
         port: 4000,
         logLevel: 'silent',
         files: ['./*.php'],
-        proxy: 'http://localhost:9031/',
-      }),
-  ].filter(Boolean),
-};
+        proxy: 'http://localhost:9031/'
+      })
+  ].filter(Boolean)
+}

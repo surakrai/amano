@@ -1,6 +1,6 @@
 .our-project {
   .fp-tableCell {
-    padding-top: 40px;
+    padding-top: 60px;
   }
 
   h3 {
@@ -10,6 +10,10 @@
     letter-spacing: 3px;
     color: #fff;
     margin-bottom: 90px;
+
+    @media (max-height: 800px){
+      margin-bottom: 40px;
+    }
 
     strong {
       font-weight: 700;

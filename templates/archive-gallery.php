@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-lg-3">
     <div class="sidebar">
       <div class="widget">
         <h3 class="widget__title"><?php pll_e('Amano’s Reference'); ?></h3>
@@ -30,7 +30,7 @@
       </div>
     </div>
   </div>
-  <div class="col-md-9 gallery-col">
+  <div class="col-lg-9 gallery-col">
     <?php $gallery_ids = array();
     if ( have_posts() ) :
       while ( have_posts() ) : the_post();
@@ -51,7 +51,7 @@
       ?>
       <?php if ( $the_query->have_posts() ) : ?>
         <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-          <a class="gallery__item amano-col col-md-4 glightbox" 
+          <a class="gallery__item amano-col col-md-4 col-6 glightbox" 
             href="<?php echo wp_get_attachment_image_url(get_the_ID(), 'large') ?>"
             data-glightbox="description: <?php echo get_the_content(); ?>; descPosition: bottom"
           >

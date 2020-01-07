@@ -35,8 +35,7 @@ export default {
         'Contact'
       ],
       onLeave(origin, destination) {
-        // eslint-disable-next-line no-param-reassign
-        destination.item.className += ' loaded'
+        destination.item.classList.add('loaded')
       }
     })
 
@@ -47,36 +46,75 @@ export default {
       fullpage.setMouseWheelScrolling(scrolling)
     }
 
-    branding.onclick = event => {
+    branding.addEventListener('click', event => {
       event.preventDefault()
       fullpage.setMouseWheelScrolling(true)
       body.classList.remove('open-menu')
       fullpage.moveTo('welcome', 1)
-    }
+    })
 
     for (let i = 0; i < navItems.length; i++) {
-      navItems[i].onclick = function(event) {
+      navItems[i].addEventListener('click', event => {
         event.preventDefault()
-        fullpage.moveTo(this.dataset.anchor, 1)
-      }
+        fullpage.moveTo(event.target.dataset.anchor, 1)
+      })
     }
 
-    scrollIcon.onclick = event => {
+    scrollIcon.addEventListener('click', event => {
       event.preventDefault()
       fullpage.moveTo('about-company', 1)
-    }
+    })
+
+    const aboutFeature = new Swiper('.about__feature', {
+      init: false,
+      slidesPerView: 'auto',
+      spaceBetween: 0,
+      loop: false,
+      navigation: {
+        nextEl: '.our-project .button-next',
+        prevEl: '.our-project .button-prev'
+      },
+      breakpoints: {
+        576: {
+          slidesPerView: 2
+        },
+        768: {
+          slidesPerView: 3
+        },
+        1200: {
+          slidesPerView: 4,
+          simulateTouch: false
+        }
+      }
+    })
+
+    ImagesLoaded('.about__feature', () => {
+      aboutFeature.init()
+    })
 
     const swiperProject = new Swiper('.swiper-our-project', {
       init: false,
-      slidesPerView: 4,
-      slidesPerColumn: 2,
-      slidesPerGroup: 4,
+      slidesPerView: 3,
+      slidesPerColumn: 3,
+      slidesPerGroup: 3,
       slidesPerColumnFill: 'row',
       spaceBetween: 14,
       loop: false,
       navigation: {
         nextEl: '.our-project .button-next',
         prevEl: '.our-project .button-prev'
+      },
+      breakpoints: {
+        576: {
+          slidesPerView: 3,
+          slidesPerColumn: 3,
+          slidesPerGroup: 3
+        },
+        768: {
+          slidesPerView: 4,
+          slidesPerColumn: 2,
+          slidesPerGroup: 4
+        }
       }
     })
 
@@ -101,13 +139,33 @@ export default {
           slidesPerView: 4
         },
         1500: {
-          slidesPerView: 5
+          slidesPerView: 5,
+          simulateTouch: false
         }
       }
     })
 
     ImagesLoaded('.our-project', () => {
       swiperProduct.init()
+    })
+
+    const news = new Swiper('.swiper-our-news', {
+      init: false,
+      slidesPerView: 2,
+      spaceBetween: 16,
+      speed: 400,
+      loop: false,
+      breakpoints: {
+        1199: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+          simulateTouch: false
+        }
+      }
+    })
+
+    ImagesLoaded('.our-news', () => {
+      news.init()
     })
 
     new Parallax(videoParallax, {

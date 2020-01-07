@@ -9,9 +9,9 @@
     <?php if ( have_posts() ) : ?>
       <div class="row">
         <?php while ( have_posts() ) : the_post();  ?>
-          <div class="col-sm-4 news-col">
+          <div class="col-sm-4 col-6 news-col">
             <figure class="news-item">
-              <a class="news-thumbnail" href="<?php the_permalink() ?>">
+              <a class="news-item__thumbnail" href="<?php the_permalink() ?>">
                 <?php
                   if( has_post_thumbnail() ) :
                     the_post_thumbnail('thumb-news' );
@@ -19,10 +19,10 @@
                     echo '<img src="https://via.placeholder.com/150.jpg/f8f8f8/f8f8f8">';
                   endif
                 ?>
-                <span class="news-date"><?php echo get_the_date(); ?></span>
+                <span class="news-item__date"><?php echo get_the_date(); ?></span>
               </a>
-              <figcaption class="news-caption">
-                <h4 class="news-title">
+              <figcaption class="news-item__caption">
+                <h4 class="news-item__title">
                   <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
                 </h4>
               </figcaption>

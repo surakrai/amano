@@ -3,6 +3,10 @@
   margin-left: auto;
   padding-right: 25px;
 
+  @media (max-width: 991px){
+    padding-right: 15px;
+  }
+
   a {
     color: #fff;
     font-weight: 300;
@@ -10,6 +14,10 @@
     line-height: 1;
     display: inline-block;
     padding: 34px 5px 32px;
+
+    @media (max-width: 991px){
+      padding: 23px 5px;
+    }
 
     .open-menu & {
       color: #606060;

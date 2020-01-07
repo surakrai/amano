@@ -13,7 +13,8 @@ export default {
       slidesPerView: 1,
       spaceBetween: 0,
       speed: 400,
-      loop: false
+      loop: false,
+      autoHeight: true
     })
 
     ImagesLoaded('.product__gallery', () => {
@@ -29,6 +30,9 @@ export default {
     GLightbox({
       selector: 'product__question',
       loop: false,
+      touchFollowAxis: false,
+      touchNavigation: false,
+      keyboardNavigation: false,
       onOpen: () => {
         Contact('#glightbox-body .contact-form')
       }
@@ -44,7 +48,7 @@ export default {
     })
 
     for (let i = 0; i < thumbItems.length; i++) {
-      thumbItems[i].onclick = function(event) {
+      thumbItems[i].onclick = event => {
         event.preventDefault()
         gallery.slideTo(i, 400, true)
       }

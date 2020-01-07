@@ -1,9 +1,7 @@
-'use strict';
+const webpack = require('webpack')
+const config = require('./webpack.config')
 
-const webpack = require('webpack');
-const config = require('./webpack.config');
-
-const clientCompiler = webpack(config);
+const clientCompiler = webpack(config)
 
 clientCompiler.watch(
   {
@@ -11,6 +9,6 @@ clientCompiler.watch(
     quiet: true,
   },
   (err, stats) => {
-    if (err) return;
+    if (err) return
   }
-);
+)

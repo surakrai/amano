@@ -20,8 +20,13 @@
   }
 }
 
-#fp-nav ul li  {
-  a {
+#fp-nav {
+
+  @media (max-width: 991px){
+    display: none;
+  }
+
+  ul li a {
     span {
       background: #fff;
       transition: background 0.3s;
@@ -43,3 +48,10 @@
     }
   }
 }
+
+// @media (max-width: 575px){
+//   .container {
+//     padding-left: 30px;
+//     padding-right: 30px;
+//   }
+// }

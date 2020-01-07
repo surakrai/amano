@@ -54,7 +54,7 @@ class Amano_Contact {
 
 	public function register_post_type(){
 		$labels = array(
-			'name' => __('Contact', THEME_SLUG),
+			'name' => __('Contact', THEME_SLUG),~
 			'menu_name' => __('Contact', THEME_SLUG),
 			'all_items' => __('All Contact', THEME_SLUG),
 			'singular_name' => __('Contact', THEME_SLUG),
@@ -127,11 +127,13 @@ class Amano_Contact {
       $errors = true;
     }
 
+    $name = $firstname . ' ' . $lastname;
+
     if ($errors == false) {
 
       $post_id = wp_insert_post(array(
         'post_type'         => 'contact',
-        'post_title'        => $firstname . ' ' . $lastname,
+        'post_title'        => $name,
         'post_status'       => 'publish',
         'post_author'       => '1',
       ));
@@ -152,16 +154,17 @@ class Amano_Contact {
       $headers[] = 'Reply-To:' . $email;
 
       $emai_message = $email_class->header( $email_subject );
-      $emai_message .= '
-        <strong>ชื่อ : </strong>' . $name . '<br/>
-        <strong>เบอร์โทร : </strong>' . $phone . '<br/>
-        <strong>อีเมล : </strong>' . $email . '<br/>
-        <strong>เรื่อง : </strong>' . $subject . '<br/>
-        <strong>รายละเอียด : </strong>' . $message . '<br/><br/>
-        อีเมล์นี้ถูกส่งจาก ' . site_url();
+      $emai_message .= $line_message = '
+<strong>ชื่อ : </strong>' . $name . '<br/>
+<strong>เบอร์โทร : </strong>' . $phone . '<br/>
+<strong>อีเมล : </strong>' . $email . '<br/>
+<strong>เรื่อง : </strong>' . $subject . '<br/>
+<strong>รายละเอียด : </strong>' . $message . '<br/><br/>';
+      $emai_message .= 'อีเมล์นี้ถูกส่งจาก ' . site_url();
       $emai_message .= $email_class->footer();
 
       wp_mail( $recipients, $email_subject, $emai_message, $headers );
+      line_notify( PHP_EOL . wp_strip_all_tags( $line_message ), get_field( 'option_contact_line_token', 'option' ) );
 
       $return['msg'] = 'ส่งข้อมูลเรียบร้อย';
       $return['msg_description'] = 'ขอบคุณที่สนใจ... เจ้าหน้าที่จะติดต่อกลับไปค่ะ';
@@ -221,6 +224,15 @@ class Amano_Contact {
           'required' => 0,
           'conditional_logic' => 0,
         ),
+        array (
+          'key' => $prefix.'line_token',
+          'label' => __( 'Line token', THEME_SLUG ),
+          'name' => $prefix.'line_token',
+          'type' => 'text',
+          'instructions' => '',
+          'required' => 0,
+          'conditional_logic' => 0,
+        ),        
       ),
       'style' => 'seamless',
       'label_placement' => 'left  ',
