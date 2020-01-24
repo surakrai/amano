@@ -85,11 +85,17 @@ class Amano_Home {
               'library' => 'all',
               'mime_types' => '',
             ),
+            // array(
+            //   'key' => $prefix . 'about_feature_title',
+            //   'label' => __( 'Title', THEME_SLUG ),
+            //   'name' => 'title',
+            //   'type' => 'text',
+            // ),
             array(
-              'key' => $prefix . 'about_feature_title',
-              'label' => __( 'Title', THEME_SLUG ),
-              'name' => 'title',
-              'type' => 'text',
+              'key' => $prefix . 'about_feature_description',
+              'label' => __( 'Description', THEME_SLUG ),
+              'name' => 'description',
+              'type' => 'textarea',
             )
           ),
         ),

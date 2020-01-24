@@ -8,8 +8,15 @@
 </div>
 <div class="home-fullpage">
   <div class="welcome section">
+		<div class="swiper-container welcome-swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide" style="background-image:url(<?php echo content_url('uploads/2019/12/intro-bg.jpg') ?>)"></div>
+				<div class="swiper-slide" style="background-image:url(<?php echo content_url('uploads/2020/01/shutterstock_735034657777777.jpg') ?>)"></div>
+				<div class="swiper-slide" style="background-image:url(<?php echo content_url('uploads/2020/01/shutterstock_54979813999999.jpg') ?>)"></div>
+			</div>
+		</div>
 		<div class="container">
-			<h1><small>Perfect technique, principle of Amano Thailand</small> <strong>World’s Innovative Technology Creator</strong></h1>
+			<h1><small>Perfect technique, principle of Amano Thai International</small> <strong>World's Innovative Parking & Ecology</strong></h1>
 		</div>
 		<div class="welcome__navigation">
 			<div class="container">
@@ -34,18 +41,24 @@
 				<?php the_field('_home_about_content'); ?>
 				<p class="text-center pt-3 d-none"><a href="#" class="button"><?php pll_e('Read More') ?></a></p>
 			</div>
-			<div class="about__feature swiper-container">
-				<div class="swiper-wrapper">
-				<?php if( have_rows('_home_about_feature') ): ?>
-					<?php while( have_rows('_home_about_feature') ): the_row(); ?>
-						<div class="about__feature-item swiper-slide">
-							<?php echo wp_get_attachment_image(get_sub_field('image'), 'about-feature'); ?>
-							<h4><?php the_sub_field('title'); ?></h4>
-						</div>
-					<?php endwhile; ?>
-				<?php endif; ?>
+			<div class="about__feature">
+				<div class="swiper-container about-swiper-container">
+					<div class="swiper-wrapper">
+					<?php if( have_rows('_home_about_feature') ): ?>
+						<?php while( have_rows('_home_about_feature') ): the_row(); ?>
+							<div class="about__feature-item swiper-slide">
+								<?php echo wp_get_attachment_image(get_sub_field('image'), 'about-feature'); ?>
+								<p class="about__feature-description"><?php the_sub_field('description'); ?></p>
+							</div>
+						<?php endwhile; ?>
+					<?php endif; ?>
+					</div>
 				</div>
 			</div>
+			<p class="text-center m-0">
+				<button class="swiper-nav button-prev dark"><div class="rippleJS"></div></button>
+				<button class="swiper-nav button-next dark"><div class="rippleJS"></div></button>
+			</p>
 		</div>
 	</div>
 
@@ -55,7 +68,7 @@
 				<a href="#" id="VAe16A_NSFE" class="video-player__play">
 					<i class="video-player__icon-play"></i>
 					<div class="video-player__body">
-						<h3>AMANO THAILAND</h3>
+						<H3>AMANO THAI INTERNATIONAL</h3>
 						<span>PLAY VIDEO</span>
 					</div>
 				</a>
@@ -90,15 +103,21 @@
 				<div class="swiper-container swiper-our-project">
 					<div class="swiper-wrapper">
 						<?php foreach ($images as $image): ?>
-							<div class="swiper-slide"><?php echo wp_get_attachment_image($image['ID'], 'our-project') ?></div>
+							<div class="swiper-slide">
+								<img 
+									class="swiper-lazy"
+									data-src="<?php echo wp_get_attachment_image_url($image['ID'], 'thumb'); ?>" 
+									data-srcset="<?php echo wp_get_attachment_image_url($image['ID'], 'our-project'); ?> 2x"
+								>
+							</div>
 						<?php endforeach; ?>
 					</div>
 				</div>
 			<?php endif; ?>
 
-			<p class="text-center">
-				<button class="button-prev"><div class="rippleJS"></div></button>
-				<button class="button-next"><div class="rippleJS"></div></button>
+			<p class="text-center pt-5">
+				<button class="swiper-nav button-prev"><div class="rippleJS"></div></button>
+				<button class="swiper-nav button-next"><div class="rippleJS"></div></button>
 			</p>
 
 		</div>

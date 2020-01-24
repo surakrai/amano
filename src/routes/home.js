@@ -1,5 +1,5 @@
 import ImagesLoaded from 'imagesloaded'
-import Swiper from 'swiper'
+import Swiper from 'swiper/js/swiper'
 import Fullpage from 'fullpage.js'
 import Parallax from 'parallax-js'
 
@@ -65,25 +65,44 @@ export default {
       fullpage.moveTo('about-company', 1)
     })
 
-    const aboutFeature = new Swiper('.about__feature', {
+    const welcome = new Swiper('.welcome-swiper-container', {
+      init: false,
+      effect: 'fade',
+      speed: 800,
+      autoplay: {
+        delay: 5000
+      },
+      spaceBetween: 15,
+      loop: true,
+    })
+
+    ImagesLoaded('.welcome', () => {
+      welcome.init()
+    })
+
+    const aboutFeature = new Swiper('.about-swiper-container', {
       init: false,
       slidesPerView: 'auto',
-      spaceBetween: 0,
+      autoplay: {
+        delay: 5000
+      },
+      spaceBetween: 15,
       loop: false,
+      speed: 800,
       navigation: {
-        nextEl: '.our-project .button-next',
-        prevEl: '.our-project .button-prev'
+        nextEl: '.about .button-next',
+        prevEl: '.about .button-prev'
       },
       breakpoints: {
         576: {
-          slidesPerView: 2
-        },
-        768: {
-          slidesPerView: 3
+          slidesPerView: 2,
+          slidesPerGroup: 2,
+          spaceBetween: 15,
         },
         1200: {
-          slidesPerView: 4,
-          simulateTouch: false
+          slidesPerView: 3,
+          slidesPerGroup:3,
+          spaceBetween: 30
         }
       }
     })
@@ -94,6 +113,7 @@ export default {
 
     const swiperProject = new Swiper('.swiper-our-project', {
       init: false,
+      lazy: true,
       slidesPerView: 3,
       slidesPerColumn: 3,
       slidesPerGroup: 3,

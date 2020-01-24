@@ -2,13 +2,27 @@
   position: relative;
   height: 100%;
 
+  .swiper-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .swiper-slide {
+      height: 100%;
+      background-size: cover;
+      background-position: bottom;
+    }
+  }
+
   h1 {
     position: relative;
     color: #fff;
     line-height: 1;
     text-align: center;
     font-size: 38px;
-    z-index: 2;
+    z-index: 20;
     
     small,
     strong {
@@ -41,6 +55,7 @@
     left: 0;
     right: 0;
     content: '';
+    z-index: 18;
   }
 
   &::after {
@@ -58,7 +73,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 15;
+    z-index: 19;
 
     &::before {
       position: absolute;

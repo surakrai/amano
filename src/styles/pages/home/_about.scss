@@ -3,6 +3,10 @@
   
   .fp-tableCell {
     padding-top: 50px;
+
+    @media (max-width: 1439px){
+      padding-top: 70px;
+    }
   }
 
   h3 {
@@ -21,9 +25,9 @@
     max-width: 850px;
     margin: 0 auto 80px;
 
-    @media (max-height: 800px){
+    @media (max-width: 1639px){
       margin-bottom: 50px;
-      max-width: 1000px;
+      max-width: 1110px;
     }
 
     @media (max-width: 420px){
@@ -36,6 +40,7 @@
 
     p {
       margin-bottom: 30px;
+      text-indent: 30px;
 
       @media (max-height: 800px){
         margin-bottom: 15px;
@@ -45,7 +50,12 @@
 
   &__feature {
 
-    overflow: visible !important;
+    body.home & {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    // overflow: visible !important;
 
     @media (max-width: 420px){
       display: none;
@@ -55,7 +65,7 @@
       position: relative;
       opacity: 0;
       transition: opacity 0.4s, transform 0.5s;
-      transform: translateY(20%);
+      // transform: scale(0);
 
       @media (max-width: 767px){
         body.home & {
@@ -73,55 +83,98 @@
         }
       }
 
-      &:nth-child(odd) {
-        transform: translateY(-20%);
+      img {
+        border-radius: 100%;
+        transition: opacity 0.4s, transform 0.5s;
+        transform: rotateY(180deg);
       }
-
-      &:nth-child(2) {
-        transition-delay: 0.2s;
+      
+      &:nth-child(odd) img {
+        // transform: translateY(-20%);
       }
-
-      &:nth-child(3) {
+      
+      &:nth-child(1) img {
         transition-delay: 0.4s;
       }
 
-      &:nth-child(4) {
+      &:nth-child(2) img {
+        transition-delay: 0.5s;
+      }
+
+      &:nth-child(3) img {
         transition-delay: 0.6s;
       }
 
-      h4 {
-        font-size: 14px;
-        color: $primary-color;
-        font-weight: bold;
-        text-align: center;
-        padding: 15px 5px;
-
-        @media (min-width: 992px){
-          padding: 15px 30px 0;
-        }
-
-        @media (max-width: 767px){
-          body.home & {
-            position: absolute;
-            top: 50%;
-            padding-top: 0;
-            transform: translateY(-50%);
-            z-index: 2;
-            font-size: 18px;
-            font-weight: 400;
-            color: #fff;
-          }
-        }
-
+      &:nth-child(4) img {
+        transition-delay: 0.7s;
       }
-    }  
+
+      &:nth-child(5) img {
+        transition-delay: 0.8s;
+      }
+    }
+
+    &-image {
+      position: relative;
+    }
+
+    &-title {
+      position: absolute;
+      top: 30px;
+      bottom: 30px;
+      left: 30px;
+      right: 30px;
+      text-align: center;
+      color: #fff;
+      // background: rgba(255, 255, 255, 0.85);
+      border-radius: 100%;
+      margin: 0;
+      transition: 0.2s;
+    }
+
+    &-item:hover {
+      .about__feature-title {
+        color: #fff;
+        background: #0c74d7;
+      }
+    }
+    
+    &-description {
+      font-size: 14px;
+      color: $primary-color;
+      font-weight: bold;
+      text-align: center;
+      padding: 15px 5px;
+      margin: 0;
+
+      @media (min-width: 992px){
+        padding: 15px 0 0;
+      }
+
+      @media (max-width: 767px){
+        body.home & {
+          position: absolute;
+          top: 50%;
+          padding-top: 0;
+          transform: translateY(-50%);
+          z-index: 2;
+          font-size: 18px;
+          font-weight: 400;
+          color: #fff;
+        }
+      }
+    }
   }
 
   &.loaded {
 
     .about__feature-item {
       opacity: 1;
-      transform: translateY(0%);
+      transform: scale(1);
+
+      img {
+        transform: rotateY(0);
+      }
     }
 
   }

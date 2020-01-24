@@ -167,6 +167,7 @@ class Amano_Product {
           'preview_size' => 'thumbnail',
           'library' => 'all',
           'mime_types' => '',
+          'instructions' => '800px X 600px',
         ),
         array (
           'key' => $prefix . 'gallery',
@@ -176,7 +177,7 @@ class Amano_Product {
           'insert' => 'append',
           'library' => 'all',
           'mime_types' => '',
-          'instructions' => '800px X 800px',
+          'instructions' => '800px X 600px',
         ),
         array(
           'key' => $prefix . 'video_title',

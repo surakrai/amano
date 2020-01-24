@@ -1,5 +1,5 @@
 import ImagesLoaded from 'imagesloaded'
-import Swiper from 'swiper'
+import Swiper from 'swiper/js/swiper'
 import GLightbox from 'glightbox'
 import Contact from './contact-form'
 

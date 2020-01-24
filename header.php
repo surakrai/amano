@@ -14,8 +14,8 @@
 			<header class="site-header">
 				<div class="container-fluid d-flex">
 					<a href="<?php echo esc_url(home_url( '/' )); ?>" class="site-branding">
-						<img class="white" src="<?php echo content_url('uploads/2019/12/logo.png') ?>" data-rjs="<?php echo content_url('uploads/2019/12/logo_@2x.png'); ?>">
-						<img class="color" src="<?php echo content_url('uploads/2019/12/logo-color.png') ?>" data-rjs="<?php echo content_url('uploads/2019/12/logo-color_@2x.png'); ?>">
+						<img class="white" src="<?php echo content_url('uploads/2020/01/logo.png') ?>" data-rjs="<?php echo content_url('uploads/2020/01/logo_@2x.png'); ?>">
+						<img class="color" src="<?php echo content_url('uploads/2020/01/logo-color.png') ?>" data-rjs="<?php echo content_url('uploads/2020/01/logo-color_@2x.png'); ?>">
 					</a>
 					<div class="language-switcher"><?php echo languages_switcher(); ?></div>
 					<div class="hamburger-menu">

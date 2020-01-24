@@ -78,10 +78,10 @@ class Amano_About {
               'mime_types' => '',
             ),
             array(
-              'key' => $prefix . 'greetings_feature_title',
-              'label' => __( 'Title', THEME_SLUG ),
-              'name' => 'title',
-              'type' => 'text',
+              'key' => $prefix . 'greetings_feature_description',
+              'label' => __( 'Description', THEME_SLUG ),
+              'name' => 'description',
+              'type' => 'textarea',
             )
           ),
         ),

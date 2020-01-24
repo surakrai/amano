@@ -15,12 +15,12 @@ get_header(); ?>
         <div class="about__description">
           <?php the_field('_about_greetings_content'); ?>
         </div>
-        <div class="about__feature row no-gutters">
+        <div class="about__feature row">
           <?php if( have_rows('_about_greetings_feature') ): ?>
             <?php while( have_rows('_about_greetings_feature') ): the_row(); ?>
-              <div class="about__feature-item col-md-3 col-6">
+              <div class="about__feature-item col-xl-2 col-md-4  col-6">
                 <?php echo wp_get_attachment_image(get_sub_field('image'), 'about-feature'); ?>
-                <h4><?php the_sub_field('title'); ?></h4>
+                <p class="about__feature-description"><?php the_sub_field('description'); ?></p>
               </div>
             <?php endwhile; ?>
           <?php endif; ?>

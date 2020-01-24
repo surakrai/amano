@@ -2,7 +2,7 @@
   &-col {
     margin-bottom: 30px;
 
-    body:not(.home) {
+    body:not(.home) & {
       margin-bottom: 50px;
     }
 

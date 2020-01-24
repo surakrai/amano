@@ -1,4 +1,4 @@
-// import Waypoint from 'waypoints/lib/noframework.waypoints.min'
+import WebFont from 'webfontloader'
 
 export default {
   init() {
@@ -8,6 +8,14 @@ export default {
     const accordions = document.querySelectorAll('.accordion__toggle')
     const navigationItems = document.querySelectorAll('.site-navigation a')
     const { body } = document
+
+    WebFont.load({
+      google: {
+        families: [
+          'Prompt:200,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i&display=swap&subset=thai'
+        ]
+      }
+    })
 
     hamburger.onclick = () => {
       body.classList.toggle('open-menu')

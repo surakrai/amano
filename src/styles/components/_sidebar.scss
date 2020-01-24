@@ -54,10 +54,29 @@
           }
 
           .post-type-archive-product &.cat-item-all,
+          &.current-cat-parent,
           &.current-cat {
-            a {
+            > a {
               font-weight: 700;
               color: $primary-color;
+            }
+          }
+
+          &.current-cat-parent,
+          &.current-cat {
+            ul {
+              display: block;
+            }
+          }
+        }
+
+        ul {
+          padding: 0 0 0 10px;
+          display: none;
+
+          li {
+            a {
+              font-size: 12px;
             }
           }
         }

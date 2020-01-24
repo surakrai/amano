@@ -8,7 +8,7 @@ define('THEME_DIR', trailingslashit(get_template_directory()));
 define('THEME_URI', trailingslashit(get_template_directory_uri()));
 define('THEME_NAME', 'Amano');
 define('THEME_SLUG', 'amano');
-define('THEME_VERSION', '0.6.9');
+define('THEME_VERSION', '1.0.3');
 define('SRC_URI', THEME_URI . 'src');
 define('STATIC_URI', THEME_URI . 'static');
 define('INC_DIR', THEME_DIR . 'inc');
@@ -36,8 +36,7 @@ function amano_enqueue_scripts() {
 	
 	$manifest = json_decode(file_get_contents('build/assets.json', true));
 	$front     = $manifest->front;
-
-	wp_enqueue_style(THEME_SLUG . '-font', 'https://fonts.googleapis.com/css?family=Prompt:200,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i&display=swap&subset=thai',  false, null);
+	
 	// wp_enqueue_style(THEME_SLUG . '-icon', 'https://fonts.googleapis.com/icon?family=Material+Icons',  false, null);	
 	wp_enqueue_style(THEME_SLUG . '-css', THEME_URI . 'build/' . $front->css, array(), THEME_VERSION, 'all');		
 	wp_enqueue_script(THEME_SLUG . '-js', THEME_URI . 'build/' . $front->js, array(), THEME_VERSION, true);
@@ -107,6 +106,7 @@ if ( ! function_exists( 'amano_setup' ) ) :
 		add_image_size('our-project', 534, 352, true);
 		add_image_size('thumb-gallery', 300, 240, true);
 		add_image_size('thumb-product', 400, 300, true);
+		add_image_size('thumb-news', 350, 255, true);		
 
 		add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form']);
 
@@ -195,7 +195,7 @@ function add_slug_to_body_class($classes) {
 
 
 function amano_styles_inline() {
-	$custom_css   = '.welcome{background-image: url('. content_url('uploads/2019/12/intro-bg.jpg') .')}';
+	// $custom_css   = '.welcome{background-image: url('. content_url('uploads/2019/12/intro-bg.jpg') .')}';
 	$custom_css  .= '.business-area{background-image: url('. content_url('uploads/2019/12/business_bg.jpg') .')}';
 	$custom_css  .= '.our-project{background-image: url('. content_url('uploads/2019/12/project.jpg') .')}';
 	$custom_css  .= '.our-news{background-image: url('. content_url('uploads/2019/12/new_bg.jpg') .')}';

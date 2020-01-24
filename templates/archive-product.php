@@ -6,7 +6,7 @@
         <div class="widget__content">
           <?php $args = array(
             'taxonomy'          => 'product_cat',
-            'depth'             => 1,
+            'depth'             => 0,
             'hierarchical'      => 1,
             'selected'          => is_tax() ? get_queried_object()->slug : 0,
             'show_option_all'   => __('All Products' , THEME_SLUG),

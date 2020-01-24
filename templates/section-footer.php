@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-3">
       <a href="<?php echo esc_url(home_url( '/' )); ?>" class="footer-branding">
-        <img src="<?php echo content_url('uploads/2019/12/logo.png') ?>" data-rjs="<?php echo content_url('uploads/2019/12/logo_@2x.png') ?>">
+        <img src="<?php echo content_url('uploads/2020/01/logo.png') ?>" data-rjs="<?php echo content_url('uploads/2020/01/logo_@2x.png') ?>">
       </a>
     </div>
     <div class="col-md-4">
