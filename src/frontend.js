@@ -10,7 +10,7 @@ import contactUs from './routes/contact'
 import archiveProduct from './routes/archive-product'
 import product from './routes/product'
 import gallery from './routes/gallery'
-
+import aboutCompany from './routes/about'
 /**
  * Populate Router instance with DOM routes
  * @type {Router} routes - An instance of our router
@@ -21,7 +21,8 @@ const routes = new Router({
   contactUs,
   product,
   archiveProduct,
-  gallery
+  gallery,
+  aboutCompany
 })
 
 window.addEventListener('DOMContentLoaded', () => {

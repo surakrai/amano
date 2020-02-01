@@ -8,7 +8,7 @@ define('THEME_DIR', trailingslashit(get_template_directory()));
 define('THEME_URI', trailingslashit(get_template_directory_uri()));
 define('THEME_NAME', 'Amano');
 define('THEME_SLUG', 'amano');
-define('THEME_VERSION', '1.0.3');
+define('THEME_VERSION', '1.0.9');
 define('SRC_URI', THEME_URI . 'src');
 define('STATIC_URI', THEME_URI . 'static');
 define('INC_DIR', THEME_DIR . 'inc');
@@ -245,7 +245,7 @@ function amano_login_logo() { ?>
       height: 38px;
       padding: 0px;
       margin: 0px;
-      background-image: url(<?php echo content_url('uploads/2019/12/logo-color_@2x.png'); ?>);
+      background-image: url(<?php echo content_url('uploads/2020/01/logo-color_@2x.png'); ?>);
       background-size: 50%;
     }
   </style>

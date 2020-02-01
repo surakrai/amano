@@ -28,15 +28,24 @@ get_header(); ?>
       </div>
     </div>
     <div class="business-area">
-      <div class="video-player">
-        <a href="#" id="VAe16A_NSFE" class="video-player__play">
-          <i class="video-player__icon-play"></i>
-          <div class="video-player__body">
-            <h3>AMANO THAILAND</h3>
-            <span>PLAY VIDEO</span>
-          </div>
-        </a>
-      </div>
+			<div class="video-player">
+				<iframe
+					id="video-player__iframe"
+					class="video-player__iframe"
+					src="https://www.youtube.com/embed/VAe16A_NSFE?autoplay=0&rel=0&modestbranding=1" 
+					frameborder="0"
+					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen="true"
+				>
+				</iframe>
+				<a href="#" class="video-player__play">
+					<i class="video-player__icon-play"></i>
+					<div class="video-player__body">
+						<H3>AMANO THAI INTERNATIONAL</h3>
+						<span>PLAY VIDEO</span>
+					</div>
+				</a>
+			</div>
     </div>
 
     <div id="management-philosophy" class="management-philosophy">

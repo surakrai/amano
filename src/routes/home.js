@@ -2,6 +2,7 @@ import ImagesLoaded from 'imagesloaded'
 import Swiper from 'swiper/js/swiper'
 import Fullpage from 'fullpage.js'
 import Parallax from 'parallax-js'
+import Video from './video'
 
 export default {
   init() {
@@ -10,6 +11,7 @@ export default {
     const scrollIcon = document.querySelector('.welcome__scroll-icon')
     const videoParallax = document.querySelector('.video-parallax')
     const hamburger = document.querySelector('.hamburger-menu')
+    const playVideo = document.querySelector('.video-player__play')
     const body = document.querySelector('body')
 
     const fullpage = new Fullpage('.home-fullpage', {
@@ -34,10 +36,22 @@ export default {
         'Our News',
         'Contact'
       ],
-      onLeave(origin, destination) {
+      // onLeave(origin, destination) {
+      // },
+      afterLoad(origin, destination) {
+        if (destination.anchor === 'business-area') {
+          if (!destination.item.classList.contains('loaded')) Video('playVideo')
+        } else {
+          Video('pauseVideo')
+        }
         destination.item.classList.add('loaded')
       }
     })
+
+    playVideo.onclick = event => {
+      Video('playVideo')
+      event.preventDefault()
+    }
 
     hamburger.onclick = () => {
       let scrolling = true
@@ -73,7 +87,7 @@ export default {
         delay: 5000
       },
       spaceBetween: 15,
-      loop: true,
+      loop: true
     })
 
     ImagesLoaded('.welcome', () => {
@@ -97,11 +111,11 @@ export default {
         576: {
           slidesPerView: 2,
           slidesPerGroup: 2,
-          spaceBetween: 15,
+          spaceBetween: 15
         },
-        1200: {
+        767: {
           slidesPerView: 3,
-          slidesPerGroup:3,
+          slidesPerGroup: 3,
           spaceBetween: 30
         }
       }

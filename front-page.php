@@ -10,9 +10,8 @@
   <div class="welcome section">
 		<div class="swiper-container welcome-swiper-container">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide" style="background-image:url(<?php echo content_url('uploads/2019/12/intro-bg.jpg') ?>)"></div>
+				<div class="swiper-slide" style="background-image:url(<?php echo content_url('uploads/2020/01/banner-1.jpg') ?>)"></div>
 				<div class="swiper-slide" style="background-image:url(<?php echo content_url('uploads/2020/01/shutterstock_735034657777777.jpg') ?>)"></div>
-				<div class="swiper-slide" style="background-image:url(<?php echo content_url('uploads/2020/01/shutterstock_54979813999999.jpg') ?>)"></div>
 			</div>
 		</div>
 		<div class="container">
@@ -34,14 +33,16 @@
       <div></div>
     </a>
 	</div>
-
+	<?php $about = get_page_by_path('about-company'); ?>
 	<div class="section about">
 		<div class="container">
 			<div class="about__description">
 				<?php the_field('_home_about_content'); ?>
-				<p class="text-center pt-3 d-none"><a href="#" class="button"><?php pll_e('Read More') ?></a></p>
+				<div class="text-center pt-3 d-block d-md-none">
+					<a href="<?php echo get_permalink(pll_get_post($about->ID)) ?>" class="button"><?php pll_e('Read More') ?></a>
+				</div>
 			</div>
-			<div class="about__feature">
+			<div class="about__feature d-none d-md-block">
 				<div class="swiper-container about-swiper-container">
 					<div class="swiper-wrapper">
 					<?php if( have_rows('_home_about_feature') ): ?>
@@ -54,18 +55,27 @@
 					<?php endif; ?>
 					</div>
 				</div>
+				<p class="text-center mt-3 m-0">
+					<button class="swiper-nav button-prev dark"><div class="rippleJS"></div></button>
+					<button class="swiper-nav button-next dark"><div class="rippleJS"></div></button>
+				</p>
 			</div>
-			<p class="text-center m-0">
-				<button class="swiper-nav button-prev dark"><div class="rippleJS"></div></button>
-				<button class="swiper-nav button-next dark"><div class="rippleJS"></div></button>
-			</p>
 		</div>
 	</div>
 
 	<div class="section business-area">
 	  <div class="video-parallax">
 			<div class="video-player" data-depth="1.4">
-				<a href="#" id="VAe16A_NSFE" class="video-player__play">
+				<iframe
+					id="video-player__iframe"
+					class="video-player__iframe"
+					src="https://www.youtube.com/embed/VAe16A_NSFE?autoplay=0&rel=0&modestbranding=1" 
+					frameborder="0"
+					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen="true"
+				>
+				</iframe>
+				<a href="#" class="video-player__play">
 					<i class="video-player__icon-play"></i>
 					<div class="video-player__body">
 						<H3>AMANO THAI INTERNATIONAL</h3>

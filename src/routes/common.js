@@ -3,8 +3,6 @@ import WebFont from 'webfontloader'
 export default {
   init() {
     const hamburger = document.querySelector('.hamburger-menu')
-    const playVideo = document.querySelector('.video-player__play')
-    const videoPlayer = document.querySelector('.video-player')
     const accordions = document.querySelectorAll('.accordion__toggle')
     const navigationItems = document.querySelectorAll('.site-navigation a')
     const { body } = document
@@ -21,30 +19,12 @@ export default {
       body.classList.toggle('open-menu')
     }
 
-    if (typeof playVideo !== 'undefined' && playVideo != null) {
-      playVideo.onclick = function(event) {
-        event.preventDefault()
-
-        videoPlayer.classList.add('is-playing')
-
-        const iframe = document.createElement('iframe')
-
-        iframe.setAttribute(
-          'src',
-          `https://www.youtube.com/embed/${this.id}?autoplay=1&rel=0&modestbranding=1`
-        )
-        iframe.setAttribute('frameborder', 0)
-        iframe.setAttribute(
-          'allow',
-          'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-        )
-        iframe.setAttribute('allowfullscreen', true)
-        iframe.setAttribute('width', this.clientWidth)
-        iframe.setAttribute('height', this.clientHeight)
-
-        this.parentNode.replaceChild(iframe, this)
-      }
-    }
+    // if (typeof playVideo !== 'undefined' && playVideo != null) {
+    //   playVideo.onclick = function(event) {
+    //     videoPlayer.classList.add('is-playing')
+    //     event.preventDefault()
+    //   }
+    // }
 
     if (accordions[0]) {
       const firstPanel = accordions[0].nextElementSibling

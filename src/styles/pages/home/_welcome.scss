@@ -48,25 +48,25 @@
   
   }
 
-  &::before,
-  &::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    content: '';
-    z-index: 18;
-  }
+  // &::before,
+  // &::after {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   right: 0;
+  //   content: '';
+  //   z-index: 18;
+  // }
 
-  &::after {
-    bottom: 0;
-    background: rgba(12, 116, 215, 0.62);
-  }
+  // &::after {
+  //   bottom: 0;
+  //   background: rgba(12, 116, 215, 0.62);
+  // }
 
-  &::before {
-    height: 180px;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.94) 0%, rgba(0, 53, 104, 0) 100%);
-  }
+  // &::before {
+  //   height: 180px;
+  //   background: linear-gradient(180deg, rgba(0, 0, 0, 0.94) 0%, rgba(0, 53, 104, 0) 100%);
+  // }
 
   &__navigation {
     position: absolute;
