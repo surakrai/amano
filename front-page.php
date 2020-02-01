@@ -42,12 +42,14 @@
 					<a href="<?php echo get_permalink(pll_get_post($about->ID)) ?>" class="button"><?php pll_e('Read More') ?></a>
 				</div>
 			</div>
-			<div class="about__feature d-none d-md-block">
+			<div class="about__feature d-none d-md-block" data-page="1">
 				<div class="swiper-container about-swiper-container">
 					<div class="swiper-wrapper">
+					<?php $count = 0 ?>
 					<?php if( have_rows('_home_about_feature') ): ?>
 						<?php while( have_rows('_home_about_feature') ): the_row(); ?>
-							<div class="about__feature-item swiper-slide">
+							<?php $count++ ?>
+							<div class="about__feature-item swiper-slide item-<?php echo $count ?>">
 								<?php echo wp_get_attachment_image(get_sub_field('image'), 'about-feature'); ?>
 								<p class="about__feature-description"><?php the_sub_field('description'); ?></p>
 							</div>
@@ -135,10 +137,10 @@
 
 	<div class="section our-news">
 		<div class="container">
-			<h3 class="text-center">Our <strong>News</strong> </h3>
+			<h3 class="text-center">Amano’s<strong> Blog</strong> </h3>
 			<?php
 				$args = array(
-					'post_type'        => array('news'),
+					'post_type'        => array('news', 'blog'),
 					// 'meta_key'         => 'post_recommend',
 					// 'meta_value'       => 1,
 					'posts_per_page'   => 3,
@@ -171,6 +173,7 @@
 						</div>
 					<?php endwhile; ?>
 					</div>
+					<div class="swiper-pagination"></div>
 				</div>
 				<?php wp_reset_query(); ?>
 			<?php endif ?>

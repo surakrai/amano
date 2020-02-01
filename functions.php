@@ -8,7 +8,7 @@ define('THEME_DIR', trailingslashit(get_template_directory()));
 define('THEME_URI', trailingslashit(get_template_directory_uri()));
 define('THEME_NAME', 'Amano');
 define('THEME_SLUG', 'amano');
-define('THEME_VERSION', '1.0.9');
+define('THEME_VERSION', '1.1.1');
 define('SRC_URI', THEME_URI . 'src');
 define('STATIC_URI', THEME_URI . 'static');
 define('INC_DIR', THEME_DIR . 'inc');
@@ -20,11 +20,12 @@ require INC_DIR . '/class/class-email.php';
 require INC_DIR . '/class/class-menu.php';
 require INC_DIR . '/class/class-home.php';
 require INC_DIR . '/class/class-product.php';
+require INC_DIR . '/class/class-blog.php';
 require INC_DIR . '/class/class-news.php';
 require INC_DIR . '/class/class-about.php';
 require INC_DIR . '/class/class-contact.php';
 require INC_DIR . '/class/class-gallery.php';
-
+require INC_DIR . '/class/class-seo.php';
 
 add_action('wp_enqueue_scripts', 'amano_enqueue_scripts', 100);
 

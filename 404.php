@@ -15,8 +15,22 @@ switch ($_SERVER['REQUEST_URI']) {
       exit;
     break;
     
-  case '/type/Anti-Explosion-Dust-Collector/page/1':
+  case '/product/Industrial-Vacuum-Cleaner/57-V-7SDR':
       wp_redirect(get_post_type_archive_link('product'));
+      exit;
+    break;
+
+  case '/industries-and-application/1-Why-using-dust-collector-systems':
+      wp_redirect(get_post_type_archive_link('product'));
+      exit;
+    break;
+  case '/type/Mist--Oil-Mist-Collector/8-Mj-series/page/1':
+      wp_redirect('https://amanothai.co.th/product/category/environmental-systems/mist-collectors/');
+      exit;
+    break;    
+
+  case '/type/Anti-Explosion-Dust-Collector/page/1':
+      wp_redirect('https://amanothai.co.th/product/category/environmental-systems/large-scale-dust-collection-systems/');
       exit;
     break;
     

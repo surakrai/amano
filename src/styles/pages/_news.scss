@@ -13,10 +13,39 @@
 .single-news {
   .main-content {
     h3 {
+      font-weight: 600;
+      font-size: 28px;
       margin-bottom: 30px;
+    }
+
+    img {
+      width: 100%;
+      max-width: none;
     }
     p {
       margin-bottom: 30px;
+    }
+    
+    ul {
+      padding: 0;
+      margin: 0 0 30px;
+      list-style: none;
+
+      li {
+        position: relative;
+        padding: 0 0 0 20px;
+
+        &::before {
+          position: absolute;
+          top: 10px;
+          left: 0;
+          width: 4px;
+          height: 4px;
+          border-radius: 100%;
+          background: #1b66ad;
+          content: "";
+        }
+      }
     }
   }
 

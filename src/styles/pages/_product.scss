@@ -26,17 +26,8 @@
     margin-bottom: 30px;
   }
 
+  &__content,
   &__description {
-    color: #000;
-    font-size: 18px;
-    padding: 0 0 30px;
-  }
-
-  &__content {
-    color: #000;
-    font-size: 14px;
-    padding: 0 0 30px;
-
     li {
       margin-bottom: 10px;
     }
@@ -87,7 +78,20 @@
         }
       }
     }
+  }
 
+  &__description {
+    color: #000;
+    font-size: 18px;
+    padding: 0 0 30px;
+
+  }
+
+  &__content {
+    color: #000;
+    font-size: 14px;
+    padding: 0 0 30px;
+    
     table {
       // border: solid 1px #f1f1f1;
       vertical-align: top;

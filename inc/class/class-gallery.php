@@ -136,7 +136,7 @@ class Amano_Gallery {
     if ( $the_query->have_posts() ) : 
       while ( $the_query->have_posts() ) : $the_query->the_post();
 
-        $html .= '<a class="gallery__item amano-col col-md-4 glightbox" href="'. wp_get_attachment_image_url(get_the_ID(), 'large') .'" data-glightbox="description: '. get_the_content() .'; descPosition: bottom">';
+        $html .= '<a class="gallery__item amano-col col-md-4 col-6 glightbox" href="'. wp_get_attachment_image_url(get_the_ID(), 'large') .'" data-glightbox="description: '. get_the_content() .'; descPosition: bottom">';
         $html .= wp_get_attachment_image(get_the_ID(), 'thumb-gallery');
         $html .= '</a>';
         

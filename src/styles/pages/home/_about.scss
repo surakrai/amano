@@ -46,13 +46,15 @@
       max-width: 700px;
       margin: 0 auto;
     }
-    
-    // overflow: visible !important;
 
+    .about-swiper-container {
+      overflow: visible !important;
+    }
+    
     &-item {
       position: relative;
       opacity: 0;
-      transition: opacity 1s;
+      transition: opacity 0.6s;
       // transform: scale(0);
 
       img {
@@ -129,9 +131,31 @@
 
   &.loaded {
 
-    .about__feature-item {
-      opacity: 1;
-    }
+    .about__feature {
 
+      &[data-page="1"] {
+        .about__feature-item {
+          &.item {
+            &-1,
+            &-2,
+            &-3 {
+              opacity: 1;
+            }
+          }
+        }
+      }
+
+      &[data-page="2"] {
+        .about__feature-item {
+          &.item {
+            &-4,
+            &-5,
+            &-6 {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
   }
 }

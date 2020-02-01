@@ -1,13 +1,13 @@
 <?php
 
-class Amano_News {
+class Amano_Blog {
 
   protected static $instance = null;
 
   public static function get_instance() {
 
     if ( !self::$instance ) {
-      self::$instance = new Amano_News();
+      self::$instance = new Amano_Blog();
     }
     return self::$instance;
 
@@ -30,14 +30,14 @@ class Amano_News {
 
     add_action( 'display_post_states', array( $this, 'post_states' ), 10, 2 );
 
-    add_filter( 'manage_news_posts_columns', array( $this, 'columns' ) );
-    add_action( 'manage_news_posts_custom_column', array( $this, 'columns_display' ), 10, 2  );
+    add_filter( 'manage_blog_posts_columns', array( $this, 'columns' ) );
+    add_action( 'manage_blog_posts_custom_column', array( $this, 'columns_display' ), 10, 2  );
 	}
 
 	public function register_post_type(){
 		$labels = array(
-			'name' => __('News', THEME_SLUG),
-			'menu_name' => __('News', THEME_SLUG),
+			'name' => __('Blog', THEME_SLUG),
+			'menu_name' => __('Blog', THEME_SLUG),
 			'all_items' => __('All Post', THEME_SLUG),
 		);
 
@@ -55,7 +55,7 @@ class Amano_News {
 			'supports'  => array( 'title', 'editor', 'thumbnail'  )
 		);
 
-		register_post_type( 'news', $args );
+		register_post_type( 'blog', $args );
 
     unregister_post_type('post');
 
@@ -70,18 +70,18 @@ class Amano_News {
       'all_items'                  => __( 'All Category', THEME_SLUG ),
       'parent_item'                => __( 'Parent Category', THEME_SLUG ),
       'parent_item_colon'          => __( 'Parent Category:', THEME_SLUG ),
-      'new_item_name'              => __( 'News Category', THEME_SLUG ),
+      'new_item_name'              => __( 'Blog Category', THEME_SLUG ),
       'add_new_item'               => __( 'Add Category', THEME_SLUG ),
       'edit_item'                  => __( 'Edit Category', THEME_SLUG ),
       'update_item'                => __( 'Update Category', THEME_SLUG ),
       'view_item'                  => __( 'View Category', THEME_SLUG ),
     );
     register_taxonomy(
-      'news_cat', array( 'news' ), array(
+      'blog_cat', array( 'blog' ), array(
       'publicly_queryable' => true,
       'hierarchical' => true,
       'rewrite' => array(
-        'slug' => 'news/category',
+        'slug' => 'blog/category',
         'with_front' => false,
         'hierarchical' => true,
       ),
@@ -95,17 +95,17 @@ class Amano_News {
 
 	public function fields() {
 
-		$prefix = 'news_';
+		$prefix = 'blog_';
 
     $choice = array();
 
     acf_add_local_field_group(array(
       'key' => $prefix . 'setting',
-      'title' => __( 'News Detail', THEME_SLUG ),
+      'title' => __( 'Blog Detail', THEME_SLUG ),
       'fields' => array (
         array (
           'key' => $prefix . 'post_recommend',
-          'label' => __( 'Recommend news', THEME_SLUG ),
+          'label' => __( 'Recommend blog', THEME_SLUG ),
           'name' => 'post_recommend',
           'type' => 'true_false',
           'instructions' => '',
@@ -142,7 +142,7 @@ class Amano_News {
           array (
             'param' => 'post_type',
             'operator' => '==',
-            'value' => 'news',
+            'value' => 'blog',
           ),
         ),
       ),
@@ -153,8 +153,8 @@ class Amano_News {
 
   public function post_states( $post_states, $post ) {
 
-    if ( get_field('post_recommend', $post->ID == 1 ) && 'news' == get_post_type( $post->ID ) ) {
-      $post_states[] = __( 'Recommend news', THEME_SLUG );
+    if ( get_field('post_recommend', $post->ID == 1 ) && 'blog' == get_post_type( $post->ID ) ) {
+      $post_states[] = __( 'Recommend blog', THEME_SLUG );
     }
 
     return $post_states;
@@ -196,11 +196,11 @@ class Amano_News {
     if ( wp_is_post_revision( $post_id ) )
       return;
 
-    if ( 'news' != get_post_type( $post_id ) )
+    if ( 'blog' != get_post_type( $post_id ) )
 
       return;
   }
 
 }
 
-Amano_News::get_instance();
+Amano_Blog::get_instance();

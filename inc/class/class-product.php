@@ -87,7 +87,7 @@ class Amano_Product {
       ),
       'has_archive' => true,
       'meta_box_cb' => false,
-      'show_admin_column' => false,
+      'show_admin_column' => true,
       'labels' => $labels,
     ));
 
@@ -295,9 +295,11 @@ class Amano_Product {
 
     unset( $columns['title'] );
     unset( $columns['date'] );
+    unset( $columns['taxonomy-product_cat'] );
 
     $columns['amano_thumbnail']      = '<span class="dashicons-format-image"></span>';
     $columns['title']                = __( 'Title' );
+    $columns['taxonomy-product_cat'] = __( 'Category' );    
     $columns['product_model']        = __( 'Model', THEME_SLUG );
     $columns['author']               = __( 'Author', THEME_SLUG );
     $columns['date']                 = __( 'Date' );

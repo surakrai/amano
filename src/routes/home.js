@@ -12,6 +12,7 @@ export default {
     const videoParallax = document.querySelector('.video-parallax')
     const hamburger = document.querySelector('.hamburger-menu')
     const playVideo = document.querySelector('.video-player__play')
+    const aboutfeature = document.querySelector('.about__feature')
     const body = document.querySelector('body')
 
     const fullpage = new Fullpage('.home-fullpage', {
@@ -94,7 +95,7 @@ export default {
       welcome.init()
     })
 
-    const aboutFeature = new Swiper('.about-swiper-container', {
+    const feature = new Swiper('.about-swiper-container', {
       init: false,
       slidesPerView: 'auto',
       autoplay: {
@@ -122,7 +123,16 @@ export default {
     })
 
     ImagesLoaded('.about__feature', () => {
-      aboutFeature.init()
+      feature.init()
+    })
+
+    feature.on('slideChange', () => {
+      let page = 1
+
+      if (feature.realIndex === 3) {
+        page = 2
+      }
+      aboutfeature.setAttribute('data-page', page)
     })
 
     const swiperProject = new Swiper('.swiper-our-project', {
