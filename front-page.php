@@ -177,7 +177,7 @@
 				</div>
 				<?php wp_reset_query(); ?>
 			<?php endif ?>
-			<p class=text-center><a href="<?php echo get_post_type_archive_link('news'); ?>" class="our-news__see-more">see more</a></p>
+			<p class=text-center><a href="<?php echo get_post_type_archive_link('blog'); ?>" class="our-news__see-more">see more</a></p>
 		</div>
 	</div>
   <footer class="section site-footer">

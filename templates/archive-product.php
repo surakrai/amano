@@ -14,8 +14,8 @@
             'show_count'        => false,
             'hide_empty'        => false,
             'title_li'          => false,
-            'orderby'           => 'ID',
-            'order'             => 'ASC',
+            'orderby'           => 'name',
+            'order'             => 'DESC',
             'value_field'       => 'slug'
           ); ?>
           <?php wp_dropdown_categories($args); ?>
@@ -45,6 +45,7 @@
             </div>
           </div>
         <?php endwhile; ?>
+      <?php else: ?>
       <?php endif ?>
     </div>
     <?php the_pagination(); ?>
