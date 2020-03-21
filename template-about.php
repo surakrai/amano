@@ -15,16 +15,36 @@ get_header(); ?>
         <div class="about__description">
           <?php the_field('_about_greetings_content'); ?>
         </div>
-        <div class="about__feature row">
+        <div class="about__feature d-none d-md-block" data-page="1">
+          <div class="swiper-container about-swiper-container">
+            <div class="swiper-wrapper">
+            <?php $count = 0 ?>
+            <?php if( have_rows('_about_greetings_feature') ): ?>
+              <?php while( have_rows('_about_greetings_feature') ): the_row(); ?>
+                <?php $count++ ?>
+                <div class="about__feature-item swiper-slide item-<?php echo $count ?>">
+                  <?php echo wp_get_attachment_image(get_sub_field('image'), 'about-feature'); ?>
+                  <p class="about__feature-description"><?php the_sub_field('description'); ?></p>
+                </div>
+              <?php endwhile; ?>
+            <?php endif; ?>
+            </div>
+          </div>
+          <p class="text-center mt-3 m-0">
+            <button class="swiper-nav button-prev dark"><div class="rippleJS"></div></button>
+            <button class="swiper-nav button-next dark"><div class="rippleJS"></div></button>
+          </p>
+        </div>
+        <!-- <div class="about__feature row">
           <?php if( have_rows('_about_greetings_feature') ): ?>
             <?php while( have_rows('_about_greetings_feature') ): the_row(); ?>
-              <div class="about__feature-item col-xl-2 col-md-4  col-6">
+              <div class="about__feature-item col-xl-4 col-md-6 col-6">
                 <?php echo wp_get_attachment_image(get_sub_field('image'), 'about-feature'); ?>
                 <p class="about__feature-description"><?php the_sub_field('description'); ?></p>
               </div>
             <?php endwhile; ?>
           <?php endif; ?>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="business-area">

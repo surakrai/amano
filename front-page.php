@@ -23,7 +23,7 @@
 					<li><a class="welcome__navigation-item" data-anchor="about-company" href="#">About Company</a></li>
 					<li><a class="welcome__navigation-item" data-anchor="business-area" href="#">Business Area</a></li>
 					<li><a class="welcome__navigation-item" data-anchor="product-details" href="#">Product Details</a></li>
-					<li><a class="welcome__navigation-item" data-anchor="our-project" href="#">Our Project</a></li>
+					<!-- <li><a class="welcome__navigation-item" data-anchor="our-project" href="#">Our Project</a></li> -->
 					<li><a class="welcome__navigation-item" data-anchor="our-news" href="#">Our News</a></li>
 					<li><a class="welcome__navigation-item" data-anchor="contact" href="#">Contact</a></li>
 				</ul>
@@ -38,7 +38,7 @@
 		<div class="container">
 			<div class="about__description">
 				<?php the_field('_home_about_content'); ?>
-				<div class="text-center pt-3 d-block d-md-none">
+				<div class="text-center pt-3 d-none d-md-none">
 					<a href="<?php echo get_permalink(pll_get_post($about->ID)) ?>" class="button"><?php pll_e('Read More') ?></a>
 				</div>
 			</div>
@@ -95,10 +95,10 @@
 				<?php while( have_rows('_home_product') ): the_row(); ?>
 					<div class="product-details__item swiper-slide">
 						<?php $link = get_term_link(get_sub_field('category'), 'product_cat'); ?>
-						<a href="<?php echo $link; ?>" class="product-details__image"><?php echo wp_get_attachment_image(get_sub_field('image'), 'full'); ?></a>
+						<a href="<?php echo $link; ?>" class="product-details__image"><?php echo wp_get_attachment_image(get_sub_field('image'), 'full'); ?><div class="rippleJS"></div></a>
 						<div class="product-details__content">
 							<h4><?php the_sub_field('title'); ?></h4>
-							<a href="<?php echo $link; ?>">Learn more</a>
+							<a href="<?php echo $link; ?>">Learn more <div class="rippleJS"></div></a>
 						</div>
 					</div>
 				<?php endwhile; ?>
@@ -107,10 +107,9 @@
 		</div>
 	</div>
 
-	<div class="section our-project">
+	<!-- <div class="section our-project">
 		<div class="container">
-			<h3 class="text-center">Amano Thailand <strong>Project</strong></h3>
-
+			<h3 class="text-center">Our <strong>Customers</strong></h3>
 			<?php if( $images = get_field('_home_project') ): ?>
 				<div class="swiper-container swiper-our-project">
 					<div class="swiper-wrapper">
@@ -133,7 +132,7 @@
 			</p>
 
 		</div>
-	</div>
+	</div> -->
 
 	<div class="section our-news">
 		<div class="container">

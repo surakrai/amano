@@ -1,10 +1,14 @@
 .language-switcher {
-  display: flex;
-  margin-left: auto;
+
   padding-right: 25px;
 
   @media (max-width: 991px){
     padding-right: 15px;
+  }
+
+  @media (max-width: 400px){
+    display: flex;
+    margin-left: auto;
   }
 
   a {

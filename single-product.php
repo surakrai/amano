@@ -11,9 +11,12 @@
         $thumb = '';
         $brochure = get_field('_product_brochure');
         $images = get_field('_product_gallery') ?: [];
-        $video = get_field('_product_video', false, false);
+        $video = get_field('_product_video');
         $video_cover = wp_get_attachment_image_url(get_field('_product_video_cover'), 'full');        
         array_unshift($images, array('url' => get_the_post_thumbnail_url( get_the_ID(), 'full')));
+
+        if (!$video) $video_cover = 'https://img.youtube.com/vi/' . getYouTubeVideoId($video) . '/maxresdefault.jpg';
+        
       ?>
         <div class="row">
           <div class="col-lg-5">
@@ -23,7 +26,10 @@
                 <div class="swiper-wrapper">
                 <?php if($video) : ?>
                   <div class="swiper-slide">
-                    <a class="product__gallery-item product__gallery-item--video glightbox" href="<?php echo $video; ?>"><img src="<?php echo $video_cover; ?>"></a>
+                    <a class="product__gallery-item product__gallery-item--video glightbox" href="<?php echo $video; ?>">
+                      <div class="video-player__icon-play"></div>
+                      <img src="<?php echo $video_cover; ?>">
+                    </a>
                   </div>
                 <?php $thumb .= '<a href="#" class="video"><img src="'. $video_cover .'"></a>'; ?>
                 <?php endif; ?>

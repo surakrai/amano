@@ -16,13 +16,13 @@ export default {
     const body = document.querySelector('body')
 
     const fullpage = new Fullpage('.home-fullpage', {
-      licenseKey: 'D13C582-F31F4AE6-ABD78E7A-BAD33678',
+      licenseKey: 'BD13C582-F31F4AE6-ABD78E7A-BAD33678',
       anchors: [
         'welcome',
         'about-company',
         'business-area',
         'product-details',
-        'our-project',
+        // 'our-project',
         'our-news',
         'contact'
       ],
@@ -33,7 +33,7 @@ export default {
         'About Company',
         'Business Area',
         'Product Details',
-        'Our Project',
+        // 'Our Project',
         'Our News',
         'Contact'
       ],

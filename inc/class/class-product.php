@@ -199,7 +199,7 @@ class Amano_Product {
           'key' => $prefix . 'video',
           'label' => __( 'Video', THEME_SLUG ),
           'name' => $prefix . 'video',
-          'type' => 'oembed',
+          'type' => 'url',
           'instructions' => '',
           'required' => 0,
           'conditional_logic' => 0,

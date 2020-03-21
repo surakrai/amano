@@ -154,6 +154,15 @@
       }
     }
 
+    .video-player__icon-play {
+      border-color: #fff;
+      background: #0c74d7;
+
+      &:after {
+        border-left-color: #fff;
+      }
+    }
+
     &--thumb {
       padding-top: 15px;
 

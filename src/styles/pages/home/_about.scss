@@ -2,10 +2,10 @@
   color: #000;
   
   .fp-tableCell {
-    padding-top: 50px;
+    padding-top: 70px;
 
     @media (max-width: 1439px){
-      padding-top: 70px;
+      padding-top: 80px;
     }
   }
 
@@ -17,7 +17,7 @@
     margin-bottom: 45px;
 
     @media (max-height: 800px){
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
   }
 
@@ -42,10 +42,8 @@
 
   &__feature {
 
-    body.home & {
-      max-width: 700px;
-      margin: 0 auto;
-    }
+    max-width: 700px;
+    margin: 0 auto;
 
     .about-swiper-container {
       overflow: visible !important;

@@ -8,7 +8,7 @@ define('THEME_DIR', trailingslashit(get_template_directory()));
 define('THEME_URI', trailingslashit(get_template_directory_uri()));
 define('THEME_NAME', 'Amano');
 define('THEME_SLUG', 'amano');
-define('THEME_VERSION', '1.1.1');
+define('THEME_VERSION', '1.1.9');
 define('SRC_URI', THEME_URI . 'src');
 define('STATIC_URI', THEME_URI . 'static');
 define('INC_DIR', THEME_DIR . 'inc');
@@ -57,7 +57,7 @@ function amano_admin_enqueue_scripts(){
 	$admin     = $manifest->admin;
 
 	wp_enqueue_style(THEME_SLUG . '-admin-css', THEME_URI . 'build/' . $admin->css,  false, THEME_VERSION);
-	wp_enqueue_script(THEME_SLUG . '-admin-js', THEME_URI . 'build/' . $admin->js, array(), THEME_VERSION, true);
+	//wp_enqueue_script(THEME_SLUG . '-admin-js', THEME_URI . 'build/' . $admin->js, array(), THEME_VERSION, true);
 	
 }
 
@@ -383,4 +383,27 @@ function line_notify( $message, $token ){
     return false;
   }
   
+}
+
+
+function getYouTubeVideoId($pageVideUrl) {
+	$link = $pageVideUrl;
+	$video_id = explode("?v=", $link);
+
+	if (!isset($video_id[1])) {
+		$video_id = explode("youtu.be/", $link);
+	}
+
+	$youtubeID = $video_id[1];
+
+	if (empty($video_id[1])) $video_id = explode("/v/", $link);
+
+	$video_id = explode("&", $video_id[1]);
+	$youtubeVideoID = $video_id[0];
+
+	if ($youtubeVideoID) {
+		return $youtubeVideoID;
+	} else {
+		return false;
+	}
 }
