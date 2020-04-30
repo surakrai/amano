@@ -7,7 +7,7 @@
     </div>
     <div class="col-md-4">
       <h3>Amano Thai International Co., Ltd.</h3>
-      <p>Room No. 3A, 3 rd Fl., Chai-Ho Wong Wai Wit Building 889 Moo 5, Srinakarin Road, <br> T. Samroong-Nua, A. Muang, <br> Samutprakarn 10270</p>
+      <p>Room No. 3A, 3 rd Fl., Chai-Ho Wong Wai Wit Building 889 Moo 5, Srinakarin Road, <br> T. Samrong-Nua, A. Muang, <br> Samutprakarn 10270</p>
     </div>
     <div class="col-md-5">
       <h3>Site Map</h3>

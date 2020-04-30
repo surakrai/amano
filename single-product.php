@@ -15,7 +15,7 @@
         $video_cover = wp_get_attachment_image_url(get_field('_product_video_cover'), 'full');        
         array_unshift($images, array('url' => get_the_post_thumbnail_url( get_the_ID(), 'full')));
 
-        if (!$video) $video_cover = 'https://img.youtube.com/vi/' . getYouTubeVideoId($video) . '/maxresdefault.jpg';
+        if (!$video_cover) $video_cover = 'https://img.youtube.com/vi/' . getYouTubeVideoId($video) . '/maxresdefault.jpg';
         
       ?>
         <div class="row">

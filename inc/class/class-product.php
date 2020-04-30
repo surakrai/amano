@@ -30,6 +30,8 @@ class Amano_Product {
 
     add_action('display_post_states', array($this, 'post_states'), 10, 2);
 
+    // add_filter( 'pre_get_posts', array($this, 'pre_get_posts'), 500);
+
     add_filter('manage_product_posts_columns', array( $this, 'columns'));
     add_action('manage_product_posts_custom_column', array($this, 'columns_display'), 10, 2);
 	}
@@ -279,8 +281,22 @@ class Amano_Product {
       ),
     ));
 
-	}
+  }
 
+  public function pre_get_posts( $query ) {
+    if ( !is_admin() && $query->is_search ) {
+      $query->set('meta_query', array(
+        // 'relation' => 'OR',
+        array(
+          'key' => '_product_model',
+          'value' => $query->query_vars['s'],
+          'compare' => 'LIKE'
+        )
+      ));
+
+      // $query->set('post_type', 'product');
+    }
+  }
 
   public function post_states( $post_states, $post ) {
 

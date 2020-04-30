@@ -16,7 +16,7 @@ get_header(); ?>
         <div class="col-md-5">
           <div class="contact-address">
             <h3>Amano Thai International Co., Ltd.</h3>
-            <p>Room No. 3A, 3 rd Fl., Chai-Ho Wong Wai <br> Wit Building 889 Moo 5, Srinakarin Road, <br> T. Samroong-Nua,  A. Muang, <br> Samutprakarn 10270</p>
+            <p>Room No. 3A, 3 rd Fl., Chai-Ho Wong Wai <br> Wit Building 889 Moo 5, Srinakarin Road, <br> T. Samrong-Nua,  A. Muang, <br> Samutprakarn 10270</p>
             <ul>
               <li><a href="tel:02-7458812-3">Tel. (66) 02-7458812-3</a></li>
               <li>Fax. (66) 02-7458814</li>

@@ -14,12 +14,17 @@
   
   .widget {
     position: relative;
+    margin-bottom: 50px;
 
     &__title {
       font-size: 18px;
       text-transform: uppercase;
       color: $primary-color;
-      margin: 0 0 50px;
+      margin: 0 0 15px;
+
+      &.is-product-category {
+        margin-bottom: 30px;
+      }
 
       @media (max-width: 991px){
         text-align: center;
@@ -83,13 +88,49 @@
       }
     }
 
+    form {
+      position: relative;
+      max-width: 250px;
+      margin: 0 auto;
+    }
+
+    input {
+      width: 100%;
+      height: 40px;
+      padding: 5px 10px;
+      border: solid 1px #e8e8e8;
+    }
+
+    button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border: none;
+      outline: none !important;
+
+      svg {
+        width: 20px;
+        transition: fill 0.3s;
+      }
+
+      &:hover {
+        svg {
+          fill: $primary-color;
+        }
+      }
+    }
+
     .category-select {
+      width: 100%;
+      height: 40px;
       display: block;
       margin: 0 auto;
-      padding: 10px 30px;
-      border: solid 1px #ddd;
+      padding: 5px 10px;
+      border: solid 1px #e8e8e8;
       background: #fff;
-      border-radius: 30px;
     }
   }
 }
