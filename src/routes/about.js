@@ -1,5 +1,5 @@
-import Swiper from 'swiper/js/swiper'
 import ImagesLoaded from 'imagesloaded'
+import Swiper from 'swiper/js/swiper'
 import Video from './video'
 
 export default {
@@ -60,5 +60,5 @@ export default {
       aboutfeature.setAttribute('data-page', page)
     })
   },
-  finalize() {}
+  finalize() { }
 }

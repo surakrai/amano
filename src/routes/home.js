@@ -163,7 +163,7 @@ export default {
     })
 
     ImagesLoaded('.our-project', () => {
-      swiperProject.init()
+      // swiperProject.init()
     })
 
     const swiperProduct = new Swiper('.product-details .swiper-container', {
@@ -189,7 +189,7 @@ export default {
       }
     })
 
-    ImagesLoaded('.our-project', () => {
+    ImagesLoaded('.product-details', () => {
       swiperProduct.init()
     })
 

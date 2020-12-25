@@ -1,6 +1,6 @@
+import GLightbox from 'glightbox'
 import ImagesLoaded from 'imagesloaded'
 import Swiper from 'swiper/js/swiper'
-import GLightbox from 'glightbox'
 import Contact from './contact-form'
 
 export default {
@@ -55,5 +55,5 @@ export default {
     }
   },
 
-  finalize() {}
+  finalize() { }
 }

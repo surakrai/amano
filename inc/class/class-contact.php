@@ -30,18 +30,18 @@ class Amano_Contact {
     add_action('acf/init', array( $this, 'setting'));
     add_action('acf/init', array( $this, 'fields'));
 
-    add_action('wp_ajax_contact', array($this, 'create'));
-    add_action('wp_ajax_nopriv_contact', array( $this, 'create'));
+    add_action('wp_ajax_booking_room', array($this, 'create'));
+    add_action('wp_ajax_nopriv_booking_room', array( $this, 'create'));
 
-    add_filter('manage_contact_posts_columns', array( $this, 'columns'));
-    add_action('manage_contact_posts_custom_column', array( $this, 'columns_display'), 10, 2);
+    add_filter('manage_booking_room_posts_columns', array( $this, 'columns'));
+    add_action('manage_booking_room_posts_custom_column', array( $this, 'columns_display'), 10, 2);
 	}
 
 
   public function scripts() {
     global $post;
 
-    if( is_page_template('template-contact.php') ) {
+    if( is_page_template('template-booking_room.php') ) {
       wp_enqueue_script(
         THEME_SLUG . '-google-map',
         'https://maps.googleapis.com/maps/api/js?key=AIzaSyC9Y183VzljYHM2a1paTUMih4O-FVklb74&language=th&region=th-TH',
@@ -85,13 +85,13 @@ class Amano_Contact {
 			'supports'  => array( 'title' )
 		);
 
-		register_post_type( 'contact', $args );
+		register_post_type( 'booking_room', $args );
 
 	}
 
   public function rest_api_init() {
 
-    register_rest_route('amano', '/contact', array(
+    register_rest_route('amano', '/booking_room', array(
       'methods'  => 'POST',
       'callback' => array($this, 'api'),
       'args'     => array('firstname', 'lastname', 'email', 'phone', 'subject', 'message')
@@ -132,42 +132,19 @@ class Amano_Contact {
     if ($errors == false) {
 
       $post_id = wp_insert_post(array(
-        'post_type'         => 'contact',
+        'post_type'         => 'booking_room',
         'post_title'        => $name,
         'post_status'       => 'publish',
         'post_author'       => '1',
       ));
 
-      update_post_meta( $post_id, 'contact_phone', $phone );
-      update_post_meta( $post_id, 'contact_email', $email );
-      update_post_meta( $post_id, 'contact_subject', $subject );
-      update_post_meta( $post_id, 'contact_message', $message );
+      update_post_meta( $post_id, 'booking_room_phone', $phone );
+      update_post_meta( $post_id, 'booking_room_email', $email );
+      update_post_meta( $post_id, 'booking_room_subject', $subject );
+      update_post_meta( $post_id, 'booking_room_message', $message );
 
-      $email_class = new Mimo_Email();
 
-      $email_subject = 'ต้องการติดต่อ #'. $post_id;
-
-      $recipients = explode( PHP_EOL, get_field('option_contact_recipient', 'option') );
-
-      $headers[] = 'Content-Type: text/html; charset=UTF-8';
-      $headers[] = 'From: '. get_bloginfo( 'name' ) .' <contact@siameastern.com>' . "\r\n";
-      $headers[] = 'Reply-To:' . $email;
-
-      $emai_message = $email_class->header( $email_subject );
-      $emai_message .= $line_message = '
-<strong>ชื่อ : </strong>' . $name . '<br/>
-<strong>เบอร์โทร : </strong>' . $phone . '<br/>
-<strong>อีเมล : </strong>' . $email . '<br/>
-<strong>เรื่อง : </strong>' . $subject . '<br/>
-<strong>รายละเอียด : </strong>' . $message . '<br/><br/>';
-      $emai_message .= 'อีเมล์นี้ถูกส่งจาก ' . site_url();
-      $emai_message .= $email_class->footer();
-
-      wp_mail( $recipients, $email_subject, $emai_message, $headers );
-      line_notify( PHP_EOL . wp_strip_all_tags( $line_message ), get_field( 'option_contact_line_token', 'option' ) );
-
-      $return['msg'] = 'ส่งข้อมูลเรียบร้อย';
-      $return['msg_description'] = 'ขอบคุณที่สนใจ... เจ้าหน้าที่จะติดต่อกลับไปค่ะ';
+      line_notify( PHP_EOL . wp_strip_all_tags( $line_message ), get_field( 'option_booking_room_line_token', 'option' ) );
 
     }else{
       $return['msg'] = 'ผิดพลาด';
@@ -181,7 +158,7 @@ class Amano_Contact {
 
 	public function fields() {
 
-		$prefix = 'contact_';
+		$prefix = 'booking_room_';
 
     $choice = array();
 
@@ -203,13 +180,13 @@ class Amano_Contact {
           array (
             'param' => 'page_template',
             'operator' => '==',
-            'value' => 'template-contact8555.php',
+            'value' => 'template-booking_room8555.php',
           ),
         ),
       ),
     ));
 
-    $prefix = 'option_contact_';
+    $prefix = 'option_booking_room_';
 
     acf_add_local_field_group(array(
       'key' => $prefix . 'setting',
@@ -242,7 +219,7 @@ class Amano_Contact {
           array (
             'param' => 'options_page',
             'operator' => '==',
-            'value' => 'contact_setting',
+            'value' => 'booking_room_setting',
           ),
         ),
       ),
@@ -255,8 +232,8 @@ class Amano_Contact {
     acf_add_options_sub_page(array(
       'page_title' 	=> __( 'Contact Settings', THEME_SLUG ),
       'menu_title' 	=> __( 'Settings', THEME_SLUG ),
-      'menu_slug' 	=> 'contact_setting',
-      'parent_slug' => 'edit.php?post_type=contact',
+      'menu_slug' 	=> 'booking_room_setting',
+      'parent_slug' => 'edit.php?post_type=booking_room',
     ));
     
   }
@@ -281,19 +258,19 @@ class Amano_Contact {
     switch ($column) {
 
       case 'phone' :
-        echo get_post_meta( $post_id, 'contact_phone', true );
+        echo get_post_meta( $post_id, 'booking_room_phone', true );
       break;
 
       case 'email' :
-        echo get_post_meta( $post_id, 'contact_email', true );
+        echo get_post_meta( $post_id, 'booking_room_email', true );
       break;
 
       case 'subject' :
-        echo get_post_meta( $post_id, 'contact_subject', true );
+        echo get_post_meta( $post_id, 'booking_room_subject', true );
       break;
 
       case 'message' :
-        echo get_post_meta( $post_id, 'contact_message', true );
+        echo get_post_meta( $post_id, 'booking_room_message', true );
       break;
 
     }
