@@ -207,9 +207,9 @@ function get_short_excerpt( $text, $length ){
   
 }
 
-add_action('wp_head', 'amano_add_favicon');
-add_action('login_head', 'amano_add_favicon');
-add_action('admin_head', 'amano_add_favicon');
+// add_action('wp_head', 'amano_add_favicon');
+// add_action('login_head', 'amano_add_favicon');
+// add_action('admin_head', 'amano_add_favicon');
 
 function amano_add_favicon() {
 
