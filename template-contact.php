@@ -23,6 +23,9 @@ get_header(); ?>
               <li><a href="mailto:mail@amanothai.co.th<">E-mail: mail@amanothai.co.th</a></li>
               <li><a href="https://www.amanothai.co.th">www.amanothai.co.th</a></li>
             </ul>
+
+            <h3>Rayong Branch Office</h3>
+            <p>Huai Prap Mueang Thong , 323/39, Moo3, T.Bowin, A.SriRacha, Chonburi 20230 Thailand</p>
           </div>
         </div>
         <div class="col-md-7">
@@ -71,12 +74,23 @@ get_header(); ?>
 
       </div>
 
-      <div class="row contact-map">
+      <h4>Amano Thai International Co., Ltd.</h4>
+      <div class="row contact-map mb-5">
         <div class="col-md-5">
           <img src="<?php echo content_url('uploads/2019/12/amano_map.jpg') ?>">
         </div>
         <div class="col-md-7">
           <div id="contact-map" class="google-map"></div>
+        </div>
+      </div>
+
+      <h4>Rayong Branch Office</h4>
+      <div class="row contact-map">
+        <div class="col-md-5">
+          <img src="<?php echo content_url('uploads/2021/10/rayong_map.jpg') ?>">
+        </div>
+        <div class="col-md-7">
+          <div id="contact-map-2" class="google-map"></div>
         </div>
       </div>
     </div>

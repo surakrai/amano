@@ -219,9 +219,9 @@ function get_short_excerpt( $text, $length ){
   
 }
 
-add_action('wp_head', 'amano_add_favicon');
-add_action('login_head', 'amano_add_favicon');
-add_action('admin_head', 'amano_add_favicon');
+// add_action('wp_head', 'amano_add_favicon');
+// add_action('login_head', 'amano_add_favicon');
+// add_action('admin_head', 'amano_add_favicon');
 
 function amano_add_favicon() {
 	echo '<link rel="apple-touch-icon-precomposed" sizes="144x144" href="' . content_url('uploads/2019/12/favicon114.png') . '">' . PHP_EOL;
