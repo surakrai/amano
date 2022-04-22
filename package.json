@@ -18,7 +18,7 @@
   "dependencies": {
     "bootstrap": "^4.4.1",
     "bulma": "^0.8.0",
-    "fullpage.js": "^3.0.8",
+    "fullpage.js": "^4.0.5",
     "imagesloaded": "^4.1.4",
     "parallax-js": "^3.1.0",
     "retinajs": "^2.1.3",
